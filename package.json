@@ -1,6 +1,7 @@
 {
   "name": "srbattle",
   "version": "0.0.1",
+  "description": "srbattle server",
 
   "repository": {
   	"type": "git",
@@ -12,5 +13,9 @@
     "express": "*",
     "mysql": "*",
     "md5": "*"
-  }
+  },
+  "script": {
+  	"start": "node server.js"
+  },
+  "main": "server.js"
 }
