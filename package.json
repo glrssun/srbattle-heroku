@@ -1,0 +1,16 @@
+{
+  "name": "srbattle",
+  "version": "0.0.1",
+
+  "repository": {
+  	"type": "git",
+  	"url": "https://github.com/glrssun/srbattle.git"
+  },
+
+  "dependencies": {
+    "socket.io": "*",
+    "express": "*",
+    "mysql": "*",
+    "md5": "*"
+  }
+}
