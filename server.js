@@ -9,10 +9,6 @@ io.on('connection', function (socket) {
     require('./account')(socket);
 });
 
-app.get('/', function (req, res) {
-    res.render('index');
-});
-
 http.listen(port, function () {
     console.log('listening on *:'+port);
 });
