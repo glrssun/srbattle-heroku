@@ -9,10 +9,10 @@
   },
 
   "dependencies": {
-    "socket.io": "*",
-    "express": "*",
-    "mysql": "*",
-    "md5": "*"
+    "socket.io": "2.0.4",
+    "express": "4.16.2",
+    "mysql": "2.15.0",
+    "md5": "2.2.1"
   },
   "script": {
   	"start": "node server.js"
