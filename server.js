@@ -8,7 +8,7 @@ var address = process.env.OPENSHIFT_NODEJS_IP || '127.0.0.1';
 app.get('/', function(req, res){
     res.writeHead(200, {"Content-Type": "text/plain"});
     res.end("Server running !! \n");
-    console.log("ahahaha");
+    console.log("ahahwhhhaha");
 });
 
 io.on('connection', function (socket) {
