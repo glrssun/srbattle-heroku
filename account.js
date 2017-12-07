@@ -20,8 +20,8 @@ module.exports = function (socket) {
                 var sql = 'INSERT INTO users SET ?';
                 conn.query(sql,users, function () {
                     conn.query("SELECT * FROM users where username='"+data.username+"'", function (err, res) {
-                        console.log(res[0].username);
-                        socket.emit('register result', {userId : res[0].userid, username: res[0].username});
+                        console.log(res.rows[0].username);
+                        socket.emit('register result', {userId : res.rows[0].userid, username: res.rows[0].username});
                     });
                 });
             }
@@ -31,7 +31,7 @@ module.exports = function (socket) {
     socket.on('login', function (data) {
         conn.query("SELECT * FROM users where username='"+data.username+"' AND password = '"+md5(data.password)+"'", function (err, res) {
             if (res.length !== 0 ){
-                socket.emit('login result', {userId : res[0].userid, username: res[0].username});
+                socket.emit('login result', {userId : res.rows[0].userid, username: res.rows[0].username});
             }else {
                 socket.emit('login result', 'failed');
             }

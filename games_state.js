@@ -9,19 +9,23 @@ var rooms = {};
 module.exports = function (socket, io) {
     socket.on('request game', function (data) {
         conn.query("SELECT * FROM game_material OFFSET floor(random()*(select COUNT(*) from game_material)) LIMIT 1", function (err, res) {
-            console.log('Answer number one = '+res[0].answer1);
-            var grid = gen.createGrid(11, [res[0].answer1, res[0].answer2, res[0].answer3]);
-            socket.emit('game material', {
-                game_board : grid,
-                sentence : res[0].sentences,
-                question1 : res[0].question1,
-                answer1 : res[0].answer1,
-                question2 : res[0].question2,
-                answer2 : res[0].answer2,
-                question3 : res[0].question3,
-                answer3 : res[0].answer3,
-                WPM : data.WPM
-            });
+            if(!err){
+                console.log('Answer number one = '+res.rows[0].answer1);
+                var grid = gen.createGrid(11, [res.rows[0].answer1, res.rows[0].answer2, res.rows[0].answer3]);
+                socket.emit('game material', {
+                    game_board : grid,
+                    sentence : res.rows[0].sentences,
+                    question1 : res.rows[0].question1,
+                    answer1 : res.rows[0].answer1,
+                    question2 : res.rows[0].question2,
+                    answer2 : res.rows[0].answer2,
+                    question3 : res.rows[0].question3,
+                    answer3 : res.rows[0].answer3,
+                    WPM : data.WPM
+                });
+            }else {
+                console.log("Error : "+err);
+            }
         });
     });
 
@@ -40,20 +44,24 @@ module.exports = function (socket, io) {
                 //peer.emit('found match', names[socket.id]);
                 //socket.emit('found match', names[peer.id]);
                 conn.query("SELECT * FROM game_material OFFSET floor(random()*(select COUNT(*) from game_material)) LIMIT 1", function (err, res) {
-                    console.log('Answer number one = '+res[0].answer1);
-                    var grid = gen.createGrid(11, [res[0].answer1, res[0].answer2, res[0].answer3]);
-                    io.in(room).emit('found match', {
-                        game_board : grid,
-                        sentence : res[0].sentences,
-                        question1 : res[0].question1,
-                        answer1 : res[0].answer1,
-                        question2 : res[0].question2,
-                        answer2 : res[0].answer2,
-                        question3 : res[0].question3,
-                        answer3 : res[0].answer3,
-                        WPM : socket.WPM,
-                        player : [socket.username, peer.username]
-                    });
+                    if (!err){
+                        console.log('Answer number one = '+res.rows[0].answer1);
+                        var grid = gen.createGrid(11, [res.rows[0].answer1, res.rows[0].answer2, res.rows[0].answer3]);
+                        io.in(room).emit('found match', {
+                            game_board : grid,
+                            sentence : res.rows[0].sentences,
+                            question1 : res.rows[0].question1,
+                            answer1 : res.rows[0].answer1,
+                            question2 : res.rows[0].question2,
+                            answer2 : res.rows[0].answer2,
+                            question3 : res.rows[0].question3,
+                            answer3 : res.rows[0].answer3,
+                            WPM : socket.WPM,
+                            player : [socket.username, peer.username]
+                        });
+                    } else {
+                        console.log("Error : "+err);
+                    }
                 });
             }else {
                 queue.push(socket);
