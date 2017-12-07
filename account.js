@@ -7,7 +7,7 @@ var md5 = require('md5');
 module.exports = function (socket) {
     socket.on('register', function (data) {
         conn.query("SELECT * FROM users where username='"+data.username+"'", function (err, res) {
-        	console.log(res.rows);
+        	console.log(err);
             if (res.rows.length !== 0){
                 console.log(socket.id);
                 socket.emit('register result', 'exist');
