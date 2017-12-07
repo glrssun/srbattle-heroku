@@ -40,7 +40,7 @@ var placeword = function (gridSize, word, grid) {
     word.split('');
     orientation = orientations[Math.floor(Math.random() * orientations.length)];
 
-    console.log('Position x is '+x+' and y is'+y+' while the orientation is +'+orientation);
+    console.log('Position y is '+x+' and x is'+y+' while the orientation is +'+orientation);
 
     if (orientation === 'horizontal' && !( y + word.length > gridSize)) {
         for (var i = 0; i < word.length; i++) {
