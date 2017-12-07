@@ -8,7 +8,7 @@ var rooms = {};
 
 module.exports = function (socket, io) {
     socket.on('request game', function (data) {
-        conn.query("SELECT * FROM game_material ORDER BY RAND() LIMIT 1", function (err, res) {
+        conn.query("SELECT * FROM game_material OFFSET floor(random()*(select COUNT(*) from game_material)) LIMIT 1", function (err, res) {
             console.log('Answer number one = '+res[0].answer1);
             var grid = gen.createGrid(11, [res[0].answer1, res[0].answer2, res[0].answer3]);
             socket.emit('game material', {
@@ -40,7 +40,7 @@ module.exports = function (socket, io) {
                 //peer.emit('found match', names[socket.id]);
                 //socket.emit('found match', names[peer.id]);
                 conn.query("SELECT * FROM game_material OFFSET floor(random()*(select COUNT(*) from game_material)) LIMIT 1", function (err, res) {
-                    console.log('Answer number one = '+res);
+                    console.log('Answer number one = '+res[0].answer1);
                     var grid = gen.createGrid(11, [res[0].answer1, res[0].answer2, res[0].answer3]);
                     io.in(room).emit('found match', {
                         game_board : grid,
