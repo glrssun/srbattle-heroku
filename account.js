@@ -18,7 +18,7 @@ module.exports = function (socket) {
                         password: md5(data.password),
                         modified: today };
 
-                    var sql = 'INSERT INTO users SET ?';
+                    var sql = 'INSERT INTO users(username, password, modified) VALUES($1, $2, $3)';
                     conn.query(sql,users, function (err) {
                         if (!err){
                             conn.query("SELECT * FROM users where username='"+data.username+"'", function (err, res) {
