@@ -1,11 +1,8 @@
-var mysql = require('mysql');
+var pg = require('pg');
 
-var connection = mysql.createConnection({
-    host     : 'localhost',
-    user     : 'root',
-    password : 'zxcvbnm',
-    database : 'srbattle'
-});
+var conString = process.env.ELEPHANTSQL_URL || "postgres://postgres:5432@localhost/srbattle";
+
+var connection = new pg.Client(conString);
 
 connection.connect(function(err){
     if(!err) {
@@ -16,7 +13,3 @@ connection.connect(function(err){
 });
 
 exports.connection = connection;
-
-
-
-
