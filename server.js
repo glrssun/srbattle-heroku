@@ -2,13 +2,17 @@ var app = require('express')();
 var http = require('http').Server(app);
 var io = require('socket.io')(http);
 
-var port = process.env.OPENSHIFT_NODEJS_PORT || 8080;
-var address = process.env.OPENSHIFT_NODEJS_IP || '127.0.0.1';
+var port = process.env.PORT || 3000;
 
 app.get('/', function(req, res){
     res.writeHead(200, {"Content-Type": "text/plain"});
     res.end("Server running !! \n");
     console.log("ahahwhhhaha");
+});
+
+io.configure(function () {
+	io.set('transports', ['xhr-polling']);
+	io.set('polling duration', 10);
 });
 
 io.on('connection', function (socket) {
@@ -17,7 +21,7 @@ io.on('connection', function (socket) {
     require('./account')(socket);
 });
 
-http.listen(port, address, function () {
-    console.log('listening on ip: '+address+' and port :'+port);
+http.listen(port, function () {
+    console.log('listening on port :'+port);
 });
 
