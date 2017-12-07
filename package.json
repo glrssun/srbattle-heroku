@@ -2,12 +2,10 @@
   "name": "srbattle",
   "version": "0.0.1",
   "description": "srbattle server",
-
   "repository": {
-  	"type": "git",
-  	"url": "https://github.com/glrssun/srbattle.git"
+    "type": "git",
+    "url": "https://github.com/glrssun/srbattle.git"
   },
-
   "dependencies": {
     "socket.io": "2.0.4",
     "express": "4.16.2",
@@ -15,7 +13,7 @@
     "md5": "2.2.1"
   },
   "script": {
-  	"start": "node server.js"
+    "start": "node server.js"
   },
   "main": "server.js"
 }
