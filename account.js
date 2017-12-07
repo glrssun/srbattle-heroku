@@ -19,11 +19,19 @@ module.exports = function (socket) {
                         modified: today };
 
                     var sql = 'INSERT INTO users SET ?';
-                    conn.query(sql,users, function () {
-                        conn.query("SELECT * FROM users where username='"+data.username+"'", function (err, res) {
-                            console.log(res.rows[0].username);
-                            socket.emit('register result', {userId : res.rows[0].userid, username: res.rows[0].username});
-                        });
+                    conn.query(sql,users, function (err) {
+                        if (!err){
+                            conn.query("SELECT * FROM users where username='"+data.username+"'", function (err, res) {
+                                if (!err){
+                                    console.log(res.rows[0].username);
+                                    socket.emit('register result', {userId : res.rows[0].userid, username: res.rows[0].username});
+                                } else{
+                                    console.log("Error : "+err);
+                                }
+                            });
+                        } else{
+                            console.log("Error : "+err);
+                        }
                     });
                 }
             } else {
