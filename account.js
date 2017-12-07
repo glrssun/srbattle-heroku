@@ -1,4 +1,6 @@
-var moduleConnection = require('./mysqlconnect');
+//var moduleConnection = require('./mysqlconnect');
+var moduleConnection = require('./pgconnect');
+
 var conn = moduleConnection.connection;
 var md5 = require('md5');
 
