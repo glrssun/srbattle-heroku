@@ -38,32 +38,29 @@ var placeword = function (gridSize, word, grid) {
         word = word.split('').reverse().join('');
 
     word.split('');
-
     orientation = orientations[Math.floor(Math.random() * orientations.length)];
 
+    console.log('Position x is '+x+' and y is'+y+' while the orientation is +'+orientation);
+
     if (orientation === 'horizontal' && !( y + word.length > gridSize)) {
-        console.log('horizontal');
         for (var i = 0; i < word.length; i++) {
             if (grid[x][y + i] === '' || grid[x][y + i] === word[i]) {
                 grid[x][y + i] = word[i];
             } else placeword(gridSize, word, grid);
         }
     } else if (orientation === 'vertical' && !( x + word.length > gridSize)) {
-        console.log('vertical');
         for (i = 0; i < word.length; i++) {
             if (grid[x + i][y] === '' || grid[x + i][y] === word[i]) {
                 grid[x + i][y] = word[i];
             } else placeword(gridSize, word, grid);
         }
     } else if (orientation === 'diagonal' && !((x + word.length > gridSize) || (y + word.length > gridSize))) {
-        console.log('diagonal');
         for (i = 0; i < word.length; i++) {
             if (grid[x + i][y + i] === '' || grid[x + i][y + i] === word[i]) {
                 grid[x + i][y + i] = word[i];
             } else placeword(gridSize, word, grid);
         }
     } else if (orientation === 'diagonalUp' && !((x - word.length < 0) || (y + word.length > gridSize))) {
-        console.log('diagonalUp');
         for (i = 0; i < word.length; i++) {
             if (grid[x - i][y + i] === '' || grid[x - i][y + i] === word[i]) {
                 grid[x - i][y + i] = word[i];
