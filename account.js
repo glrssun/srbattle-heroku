@@ -7,34 +7,41 @@ var md5 = require('md5');
 module.exports = function (socket) {
     socket.on('register', function (data) {
         conn.query("SELECT * FROM users where username='"+data.username+"'", function (err, res) {
-        	console.log(err);
-            if (res.rows.length !== 0){
-                console.log(socket.id);
-                socket.emit('register result', 'exist');
-            }else {
-                var today = new Date();
-                var users = {
-                    username: data.username,
-                    password: md5(data.password),
-                    modified: today };
+        	if (!err){
+                if (res.rows.length !== 0){
+                    console.log(socket.id);
+                    socket.emit('register result', 'exist');
+                }else {
+                    var today = new Date();
+                    var users = {
+                        username: data.username,
+                        password: md5(data.password),
+                        modified: today };
 
-                var sql = 'INSERT INTO users SET ?';
-                conn.query(sql,users, function () {
-                    conn.query("SELECT * FROM users where username='"+data.username+"'", function (err, res) {
-                        console.log(res.rows[0].username);
-                        socket.emit('register result', {userId : res.rows[0].userid, username: res.rows[0].username});
+                    var sql = 'INSERT INTO users SET ?';
+                    conn.query(sql,users, function () {
+                        conn.query("SELECT * FROM users where username='"+data.username+"'", function (err, res) {
+                            console.log(res.rows[0].username);
+                            socket.emit('register result', {userId : res.rows[0].userid, username: res.rows[0].username});
+                        });
                     });
-                });
+                }
+            } else {
+        	    console.log("Error : "+err);
             }
         });
     });
 
     socket.on('login', function (data) {
         conn.query("SELECT * FROM users where username='"+data.username+"' AND password = '"+md5(data.password)+"'", function (err, res) {
-            if (res.rows.length !== 0 ){
-                socket.emit('login result', {userId : res.rows[0].userid, username: res.rows[0].username});
-            }else {
-                socket.emit('login result', 'failed');
+            if (!err){
+                if (res.rows.length !== 0 ){
+                    socket.emit('login result', {userId : res.rows[0].userid, username: res.rows[0].username});
+                }else {
+                    socket.emit('login result', 'failed');
+                }
+            } else {
+                console.log("Error : "+err);
             }
         })
     })
