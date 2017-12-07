@@ -26,16 +26,16 @@ module.exports = function (socket) {
                                     console.log(res.rows[0].username);
                                     socket.emit('register result', {userId : res.rows[0].userid, username: res.rows[0].username});
                                 } else{
-                                    console.log("Error : "+err);
+                                    console.log("Error select user: "+err);
                                 }
                             });
                         } else{
-                            console.log("Error : "+err);
+                            console.log("Error insert : "+err);
                         }
                     });
                 }
             } else {
-        	    console.log("Error : "+err);
+        	    console.log("Error checking "+err);
             }
         });
     });
