@@ -13,10 +13,7 @@ module.exports = function (socket) {
                     socket.emit('register result', 'exist');
                 }else {
                     var today = new Date();
-                    var users = {
-                        username: data.username,
-                        password: md5(data.password),
-                        modified: today };
+                    var users = [ data.username, md5(data.password), today ];
 
                     var sql = 'INSERT INTO users(username, password, modified) VALUES($1, $2, $3)';
                     conn.query(sql,users, function (err) {
