@@ -7,7 +7,7 @@ var md5 = require('md5');
 module.exports = function (socket) {
     socket.on('register', function (data) {
         conn.query("SELECT * FROM users where username='"+data.username+"'", function (err, res) {
-            if (res.length !== 0){
+            if (res.rows.length !== 0){
                 console.log(socket.id);
                 socket.emit('register result', 'exist');
             }else {
@@ -30,7 +30,7 @@ module.exports = function (socket) {
 
     socket.on('login', function (data) {
         conn.query("SELECT * FROM users where username='"+data.username+"' AND password = '"+md5(data.password)+"'", function (err, res) {
-            if (res.length !== 0 ){
+            if (res.rows.length !== 0 ){
                 socket.emit('login result', {userId : res.rows[0].userid, username: res.rows[0].username});
             }else {
                 socket.emit('login result', 'failed');
