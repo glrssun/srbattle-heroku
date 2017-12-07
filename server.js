@@ -4,6 +4,9 @@ var io = require('socket.io')(http);
 
 var port = process.env.PORT || 3000;
 
+io.set('transports', ['xhr-polling']);
+io.set('polling duration', 10);
+
 app.get('/', function(req, res){
     res.writeHead(200, {"Content-Type": "text/plain"});
     res.end("Server running !! \n");
