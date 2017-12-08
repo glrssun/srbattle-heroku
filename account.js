@@ -49,5 +49,20 @@ module.exports = function (socket) {
                 console.log("Error : "+err);
             }
         })
+    });
+
+    socket.on('check user', function (data) {
+        conn.query("SELECT * FROM users where username='"+data+"'", function (err, res) {
+            if (!err) {
+                if (res.rows.length !== 0){
+                    console.log(socket.id);
+                    socket.emit('verify user', 'user verified');
+                } else {
+                    socket.emit('verify user', 'not exist');
+                }
+            } else {
+                console.log("Error checking "+err);
+            }
+        });
     })
 };
