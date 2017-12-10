@@ -116,6 +116,7 @@ module.exports = function (socket, io) {
                 socket.join(room);
                 rooms[peer.id] = room;
                 rooms[socket.id] = room;
+                console.log(room);
                 conn.query("SELECT * FROM game_material OFFSET floor(random()*(select COUNT(*) from game_material)) LIMIT 1", function (err, res) {
                     if (!err) {
                         console.log('Answer number one = ' + res.rows[0].answer1);
