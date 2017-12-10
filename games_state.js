@@ -98,6 +98,7 @@ module.exports = function (socket, io) {
        }
        socket.host = hostcode;
        host.push(socket);
+       console.log('Host '+hostcode+' created');
        socket.emit('host code', hostcode);
     });
 
@@ -105,8 +106,9 @@ module.exports = function (socket, io) {
         socket.userid = data.userid;
         socket.username = data.username;
         var peer;
+        console.log('find host '+data.host);
         if (host.length > 0) {
-            if ((peer = find(host, "host", data.host)) && (socket.id !== peer.id)) {
+            if ((peer = find(host, 'host', data.host)) && (socket.id !== peer.id)) {
                 host.splice(host.indexOf(peer.host), 1);
                 var room = socket.id + '#' + peer.id;
 
@@ -191,10 +193,10 @@ module.exports = function (socket, io) {
         roomId = rooms[socket.id];
         console.log('user disconected');
         console.log('user '+socket.id+' canceled match');
+        console.log('delete host '+socket.host);
         host.splice(host.indexOf(socket.host),1);
+        console.log('delete queue '+socket.id);
         queue.splice(queue.indexOf(socket.id),1);
-        console.log('host '+host);
-        console.log('queue '+queue);
         socket.leave(roomId);
     });
 
