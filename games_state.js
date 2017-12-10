@@ -78,11 +78,11 @@ module.exports = function (socket, io) {
         socket.username = data.username;
 
         findOpponent(socket);
-        socket.on('disconnect', function () {
-            console.log('user '+socket.id+' canceled match');
-            queue.splice(queue.indexOf(socket.id),1);
+        //socket.on('disconnect', function () {
+         //   console.log('user '+socket.id+' canceled match');
+         //   queue.splice(queue.indexOf(socket.id),1);
 
-        });
+        //});
 
     });
 
@@ -132,7 +132,11 @@ module.exports = function (socket, io) {
     });
 
     socket.on('disconnect', function () {
+        roomId = rooms[socket.id];
         console.log('user disconected');
+        console.log('user '+socket.id+' canceled match');
+        queue.splice(queue.indexOf(socket.id),1);
+        socket.leave(roomId);
     });
 
     socket.on('game finished', function(){
