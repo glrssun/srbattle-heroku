@@ -172,7 +172,7 @@ module.exports = function (socket, io) {
         var code = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
 
         for (var i = 0; i < 5; i++)
-            text += code.charAt(Math.floor(Math.random() * possible.length));
+            text += code.charAt(Math.floor(Math.random() * code.length));
 
         return text;
     }
