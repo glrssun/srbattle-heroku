@@ -152,6 +152,8 @@ module.exports = function (socket, io) {
         console.log('user '+socket.id+' canceled match');
         host.splice(host.indexOf(socket.host),1);
         queue.splice(queue.indexOf(socket.id),1);
+        console.log('host '+host);
+        console.log('queue '+queue)
         socket.leave(roomId);
     });
 
