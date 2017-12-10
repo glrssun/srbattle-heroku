@@ -133,6 +133,7 @@ module.exports = function (socket, io) {
                             WPM: socket.WPM,
                             player: [socket.username, peer.username]
                         });
+                        console.log("emmiting");
                     } else {
                         console.log("Error : " + err);
                     }
