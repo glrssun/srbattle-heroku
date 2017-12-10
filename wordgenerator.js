@@ -41,7 +41,7 @@ function placeword(gridSize, word, grid) {
     orientation = orientations[Math.floor(Math.random() * orientations.length)];
 
     if (word.length !== 0){
-        console.log('Position y is '+x+' and x is'+y+' while the orientation is +'+orientation);
+        console.log('Word is '+word+' Position y is '+x+' and x is'+y+' while the orientation is +'+orientation);
 
         if (orientation === 'horizontal' && !( y + word.length > gridSize)) {
             for (var i = 0; i < word.length; i++) {
