@@ -5,6 +5,7 @@ var conn = moduleConnection.connection;
 
 var queue = [];
 var rooms = {};
+var host = [];
 
 module.exports = function (socket, io) {
     socket.on('request game', function (data) {
@@ -86,6 +87,20 @@ module.exports = function (socket, io) {
 
     });
 
+    socket.on('create host', function (data) {
+       socket.WPM = data.WPM;
+       socket.userid = data.userid;
+       socket.username =data.username;
+
+       var hostcode = generateCode();
+       while (host.includes(hostcode)){
+           hostcode = generateCode();
+       }
+       socket.host = hostcode;
+       socket.emit('host code', hostcode);
+
+    });
+
     socket.on('client ready', function (data) {
         var readyClients = 0;
         var roomId = rooms[socket.id];
@@ -135,6 +150,7 @@ module.exports = function (socket, io) {
         roomId = rooms[socket.id];
         console.log('user disconected');
         console.log('user '+socket.id+' canceled match');
+        host.splice(host.indexOf(socket.host),1);
         queue.splice(queue.indexOf(socket.id),1);
         socket.leave(roomId);
     });
@@ -149,5 +165,15 @@ module.exports = function (socket, io) {
         for (var i = 0; i < arr.length; i++)
             if (arr[i][propName] === propValue)
                 return arr[i];
+    }
+
+    function generateCode() {
+        var text = "";
+        var code = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
+
+        for (var i = 0; i < 5; i++)
+            text += code.charAt(Math.floor(Math.random() * possible.length));
+
+        return text;
     }
 };
