@@ -182,7 +182,7 @@ module.exports = function (socket, io) {
         if (readyClients === 2){
             console.log('game state is : '+data);
             socket.ready = 'no';
-            io.in(roomId).emit('games continue', data);
+            setTimeout(function(){ io.in(roomId).emit('games continue', data) }, 2000);
         }
     });
 
