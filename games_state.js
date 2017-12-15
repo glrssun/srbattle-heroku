@@ -202,11 +202,11 @@ module.exports = function (socket, io) {
         socket.leave(roomId);
     });
 
-    socket.on('game finished', function(){
-        roomId = rooms[socket.id];
-        socket.leave(roomId);
-        socket.disconnect();
-    });
+    //socket.on('game finished', function(){
+    //    roomId = rooms[socket.id];
+    //    socket.leave(roomId);
+    //    socket.disconnect();
+    //});
 
     function find(arr, propName, propValue) {
         for (var i = 0; i < arr.length; i++)
