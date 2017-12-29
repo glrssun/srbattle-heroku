@@ -2,7 +2,6 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="3aaaa39a-34ec-4d70-9f12-5bc3012d2a6f" name="Default" comment="&quot;Update server&quot;">
-      <change beforePath="$PROJECT_DIR$/account.js" afterPath="$PROJECT_DIR$/account.js" />
       <change beforePath="$PROJECT_DIR$/mongo_connect.js" afterPath="$PROJECT_DIR$/mongo_connect.js" />
     </list>
     <ignored path="$PROJECT_DIR$/.tmp/" />
@@ -67,10 +66,10 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="account.js" pinned="false" current-in-tab="true">
+      <file leaf-file-name="account.js" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/account.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="68">
+            <state relative-caret-position="-85">
               <caret line="4" column="33" lean-forward="false" selection-start-line="4" selection-start-column="33" selection-end-line="4" selection-end-column="33" />
               <folding>
                 <element signature="n#!!doc" expanded="true" />
@@ -89,11 +88,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="mongo_connect.js" pinned="false" current-in-tab="false">
+      <file leaf-file-name="mongo_connect.js" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/mongo_connect.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="17">
-              <caret line="1" column="75" lean-forward="false" selection-start-line="1" selection-start-column="75" selection-end-line="1" selection-end-column="75" />
+            <state relative-caret-position="34">
+              <caret line="2" column="18" lean-forward="false" selection-start-line="2" selection-start-column="18" selection-end-line="2" selection-end-column="18" />
               <folding />
             </state>
           </provider>
@@ -130,8 +129,8 @@
         <option value="$PROJECT_DIR$/pgconnect.js" />
         <option value="$PROJECT_DIR$/wordgenerator.js" />
         <option value="$PROJECT_DIR$/games_state.js" />
-        <option value="$PROJECT_DIR$/mongo_connect.js" />
         <option value="$PROJECT_DIR$/account.js" />
+        <option value="$PROJECT_DIR$/mongo_connect.js" />
       </list>
     </option>
   </component>
@@ -220,12 +219,12 @@
       <workItem from="1512905360219" duration="6987000" />
       <workItem from="1512927485616" duration="2385000" />
       <workItem from="1514198270717" duration="620000" />
-      <workItem from="1514514820562" duration="12692000" />
+      <workItem from="1514514820562" duration="12879000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="33207000" />
+    <option name="totallyTimeSpent" value="33394000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="289" width="1378" height="780" extended-state="0" />
@@ -650,21 +649,21 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/mongo_connect.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="17">
-          <caret line="1" column="75" lean-forward="false" selection-start-line="1" selection-start-column="75" selection-end-line="1" selection-end-column="75" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/account.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="68">
+        <state relative-caret-position="-85">
           <caret line="4" column="33" lean-forward="false" selection-start-line="4" selection-start-column="33" selection-end-line="4" selection-end-column="33" />
           <folding>
             <element signature="n#!!doc" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/mongo_connect.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="34">
+          <caret line="2" column="18" lean-forward="false" selection-start-line="2" selection-start-column="18" selection-end-line="2" selection-end-column="18" />
+          <folding />
         </state>
       </provider>
     </entry>
