@@ -1,6 +1,6 @@
 var MongoClient = require('mongodb').MongoClient;
 var url = process.env.MONGOLAB_URI;
-var mongodb = null;
+var mongodb;
 
 MongoClient.connect(url, function (err, db) {
     if(!err) {
@@ -11,4 +11,8 @@ MongoClient.connect(url, function (err, db) {
     }
 });
 
-exports.mongodb = mongodb;
+var getDb = function () {
+    return mongodb;
+};
+
+exports.getDb = getDb;
