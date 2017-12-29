@@ -1,27 +1,28 @@
 //var moduleConnection = require('./mysqlconnect');
-var moduleConnection = require('./pgconnect');
+//var moduleConnection = require('./pgconnect');
 
-var conn = moduleConnection.connection;
+var mongodb = require('./mongo_connect').mongodb;
 var md5 = require('md5');
+
 
 module.exports = function (socket) {
     socket.on('register', function (data) {
-        conn.query("SELECT * FROM users where username='"+data.username+"'", function (err, res) {
+        var query = {username: data.username};
+        mongodb.collection("users").find(query).toArray(function (err, res) {
         	if (!err){
-                if (res.rows.length !== 0){
+                if (res.length !== 0){
                     console.log(socket.id);
                     socket.emit('register result', 'exist');
                 }else {
                     var today = new Date();
-                    var users = [ data.username, md5(data.password), today ];
+                    var users = { _id:getNextSequence("user_id"), username: data.username, password: md5(data.password), modified: today  };
 
-                    var sql = 'INSERT INTO users(username, password, modified) VALUES($1, $2, $3)';
-                    conn.query(sql,users, function (err) {
+                    mongodb.collection("users").insertOne(users, function (err) {
                         if (!err){
-                            conn.query("SELECT * FROM users where username='"+data.username+"'", function (err, res) {
+                            mongodb.collection("users").find(query).toArray(function (err, res) {
                                 if (!err){
-                                    console.log(res.rows[0].username);
-                                    socket.emit('register result', {userId : res.rows[0].userid, username: res.rows[0].username});
+                                    console.log(res.username);
+                                    socket.emit('register result', {_id : res.userid, username: res.username});
                                 } else{
                                     console.log("Error select user: "+err);
                                 }

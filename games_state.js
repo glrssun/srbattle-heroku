@@ -1,6 +1,7 @@
 var gen = require('./wordgenerator.js');
 //var moduleConnection = require('./mysqlconnect');
-var moduleConnection = require('./pgconnect');
+//var moduleConnection = require('./pgconnect');
+var moduleConnection = require('./mongo_connect');
 var conn = moduleConnection.connection;
 
 var queue = [];
