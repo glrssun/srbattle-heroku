@@ -22,7 +22,7 @@ module.exports = function (socket) {
                             mongodb.collection("users").find(query).toArray(function (err, res) {
                                 if (!err){
                                     console.log(res.username);
-                                    socket.emit('register result', {_id : res.userid, username: res.username});
+                                    socket.emit('register result', {userid : res._id, username: res.username});
                                 } else{
                                     console.log("Error select user: "+err);
                                 }
@@ -39,10 +39,11 @@ module.exports = function (socket) {
     });
 
     socket.on('login', function (data) {
-        conn.query("SELECT * FROM users where username='"+data.username+"' AND password = '"+md5(data.password)+"'", function (err, res) {
+        var query = {username: data.username, password: md5(data.password)};
+        mongodb.collection("users").find(query).toArray(function (err, res) {
             if (!err){
-                if (res.rows.length !== 0 ){
-                    socket.emit('login result', {userId : res.rows[0].userid, username: res.rows[0].username});
+                if (res.length !== 0 ){
+                    socket.emit('login result', {userId : res._id, username: res.username});
                 }else {
                     socket.emit('login result', 'failed');
                 }
@@ -53,9 +54,10 @@ module.exports = function (socket) {
     });
 
     socket.on('check user', function (data) {
-        conn.query("SELECT * FROM users where username='"+data+"'", function (err, res) {
+        var query = {username: data.username};
+        mongodb.collection("users").find(query).toArray(function (err, res) {
             if (!err) {
-                if (res.rows.length !== 0){
+                if (res.length !== 0){
                     console.log(socket.id);
                     socket.emit('verify user', 'user verified');
                 } else {
