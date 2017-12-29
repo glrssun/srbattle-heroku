@@ -40,21 +40,21 @@ function findword(gridsize, word, grid){
     for (var x = 0; x < gridsize; x++){
         for (var y = 0; y < gridsize; y++){
             for (var i = 0; i < wordSplit.length; i++){
-                if ((grid[x + i][y]) === (wordSplit[i] + i)){
+                if (((grid[x + i][y]) && (grid[x + i] < gridsize)) === (wordSplit[i] + i)){
                     count++;
-                }else if ((grid[x - i][y]) === (wordSplit[i] + i)){
+                }else if (((grid[x - i][y]) && (grid[x - i] > 0)) === (wordSplit[i] + i)){
                     count++;
-                }else if ((grid[x][y + i]) === (wordSplit[i] + i)){
+                }else if (((grid[x][y + i]) && (grid[y + i] < gridsize)) === (wordSplit[i] + i)){
                     count++;
-                }else if ((grid[x][y - i]) === (wordSplit[i] + i)) {
+                }else if (((grid[x][y - i]) && (grid[y - i] > 0)) === (wordSplit[i] + i)) {
                     count++;
-                }else if ((grid[x + i][y + i]) === (wordSplit[i] + i)) {
+                }else if (((grid[x + i][y + i]) && ((grid[x + i] < gridsize)||([y + i] < gridsize))) === (wordSplit[i] + i)) {
                     count++;
-                }else if ((grid[x + i][y - i]) === (wordSplit[i] + i)) {
+                }else if (((grid[x + i][y - i]) && ((grid[x + i] < gridsize)||([y - i] > 0))) === (wordSplit[i] + i)) {
                     count++;
-                }else if ((grid[x - i][y - i]) === (wordSplit[i] + i)) {
+                }else if (((grid[x - i][y - i]) && ((grid[x - i] > 0)||([y - i] > 0))) === (wordSplit[i] + i)) {
                     count++;
-                }else if ((grid[x - i][y + i]) === (wordSplit[i] + i)) {
+                }else if (((grid[x - i][y + i]) && ((grid[x - i] > 0)||([y + i] < gridsize))) === (wordSplit[i] + i)) {
                     count++;
                 }
             }
