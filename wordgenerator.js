@@ -40,6 +40,7 @@ function findword(gridsize, word, grid){
     for (var x = 0; x < gridsize; x++){
         for (var y = 0; y < gridsize; y++){
             for (var i = 0; i < wordSplit.length; i++){
+                console.log(" x & y "+x+y);
                 if (((grid[x + i][y]) && (grid[x + i] < gridsize)) === (wordSplit[i] + i)){
                     count++;
                 }else if (((grid[x - i][y]) && (grid[x - i] > 0)) === (wordSplit[i] + i)){
