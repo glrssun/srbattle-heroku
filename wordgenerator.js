@@ -1,9 +1,8 @@
 
-
 var orientations = ['horizontal', 'vertical', 'diagonal', 'diagonalUp'];
 var letters = 'QWERTYUIOPASDFGHJKLZXCVBNM';
 
-exports.createGrid = function (gridSize, words) {
+var createGrid = function (gridSize, words) {
     var grid = [];
     var wordList = words;
     for(var i = 0; i < gridSize; i++){
@@ -16,8 +15,6 @@ exports.createGrid = function (gridSize, words) {
         console.log("try placing word: "+i+" word : "+wordList[i]);
         placeword(gridSize, words[i], grid);
     }
-
-
     //placeword(gridSize, words[0], grid);
     //placeword(gridSize, words[1], grid);
     //placeword(gridSize, words[2], grid);
@@ -27,8 +24,44 @@ exports.createGrid = function (gridSize, words) {
            if(grid[i][j] === '') grid[i][j] = letters[Math.floor(Math.random() * letters.length)];
         }
     }
-    return grid;
+
+    for(i = 0; i < wordList.length; i++){
+        if (findword(gridSize, words[i], grid) > 1){
+            createGrid(gridSize, wordList);
+        } else {
+            return grid;
+        }
+    }
 };
+
+function findword(gridsize, word, grid){
+    var count = 0;
+    var wordSplit = word.split('');
+    for (var x = 0; x < gridsize; x++){
+        for (var y = 0; y < gridsize; y++){
+            for (var i = 0; i < wordSplit.length; i++){
+                if ((grid[x + i][y]) === (wordSplit[i] + i)){
+                    count++;
+                }else if ((grid[x - i][y]) === (wordSplit[i] + i)){
+                    count++;
+                }else if ((grid[x][y + i]) === (wordSplit[i] + i)){
+                    count++;
+                }else if ((grid[x][y - i]) === (wordSplit[i] + i)) {
+                    count++;
+                }else if ((grid[x + i][y + i]) === (wordSplit[i] + i)) {
+                    count++;
+                }else if ((grid[x + i][y - i]) === (wordSplit[i] + i)) {
+                    count++;
+                }else if ((grid[x - i][y - i]) === (wordSplit[i] + i)) {
+                    count++;
+                }else if ((grid[x - i][y + i]) === (wordSplit[i] + i)) {
+                    count++;
+                }
+            }
+        }
+    }
+    return count;
+}
 
 function placeword(gridSize, word, grid) {
     var x = Math.floor(Math.random() * gridSize);
@@ -71,4 +104,6 @@ function placeword(gridSize, word, grid) {
             placeword(gridSize, word, grid);
         }
     }
-};
+}
+
+exports.createGrid = createGrid ;
