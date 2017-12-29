@@ -92,7 +92,7 @@
         <entry file="file://$PROJECT_DIR$/mongo_connect.js">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="34">
-              <caret line="2" column="0" lean-forward="true" selection-start-line="2" selection-start-column="0" selection-end-line="2" selection-end-column="0" />
+              <caret line="2" column="18" lean-forward="false" selection-start-line="2" selection-start-column="18" selection-end-line="2" selection-end-column="18" />
               <folding />
             </state>
           </provider>
@@ -144,8 +144,8 @@
     <handled-path value="$PROJECT_DIR$/node_modules" />
   </component>
   <component name="ProjectFrameBounds">
-    <option name="x" value="38" />
-    <option name="y" value="273" />
+    <option name="x" value="12" />
+    <option name="y" value="322" />
     <option name="width" value="1378" />
     <option name="height" value="780" />
   </component>
@@ -219,15 +219,15 @@
       <workItem from="1512905360219" duration="6987000" />
       <workItem from="1512927485616" duration="2385000" />
       <workItem from="1514198270717" duration="620000" />
-      <workItem from="1514514820562" duration="13422000" />
+      <workItem from="1514514820562" duration="13575000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="33937000" />
+    <option name="totallyTimeSpent" value="34090000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="38" y="273" width="1378" height="780" extended-state="0" />
+    <frame x="12" y="322" width="1378" height="780" extended-state="0" />
     <editor active="true" />
     <layout>
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.2503671" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
@@ -662,7 +662,7 @@
     <entry file="file://$PROJECT_DIR$/mongo_connect.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="34">
-          <caret line="2" column="0" lean-forward="true" selection-start-line="2" selection-start-column="0" selection-end-line="2" selection-end-column="0" />
+          <caret line="2" column="18" lean-forward="false" selection-start-line="2" selection-start-column="18" selection-end-line="2" selection-end-column="18" />
           <folding />
         </state>
       </provider>
