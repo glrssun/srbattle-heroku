@@ -1,6 +1,5 @@
 var MongoClient = require('mongodb').MongoClient;
 var url = "mongodb://localhost:27017/srbattle" || process.env.MONGOLAB_URI;
-var mongodb;
 
 MongoClient.connect(url, function (err, db) {
     if(!err) {
