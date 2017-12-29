@@ -13,7 +13,7 @@ var createGrid = function (gridSize, words) {
     }
     for(i = 0; i < wordList.length; i++){
         console.log("try placing word: "+i+" word : "+wordList[i]);
-        placeword(gridSize, words[i], grid);
+        placeWord(gridSize, words[i], grid);
     }
     //placeword(gridSize, words[0], grid);
     //placeword(gridSize, words[1], grid);
@@ -26,7 +26,7 @@ var createGrid = function (gridSize, words) {
     }
 
     for(i = 0; i < wordList.length; i++){
-        if (findword(gridSize, words[i], grid) > 1){
+        if (findWord(gridSize, words[i], grid) > 1){
             createGrid(gridSize, wordList);
         } else {
             return grid;
@@ -34,13 +34,13 @@ var createGrid = function (gridSize, words) {
     }
 };
 
-function findword(gridsize, word, grid){
+function findWord(gridsize, word, grid){
     var count = 0;
     var wordSplit = word.split('');
     for (x = 0; x < gridsize; x++){
         for (y = 0; y < gridsize; y++){
             for (i = 0; i < wordSplit.length; i++){
-                console.log(" x & y "+x+y);
+                console.log(" x & y "+x+y+i);
                 if (((grid[x + i][y]) && (grid[x + i] < gridsize)) === (wordSplit[i] + i)){
                     count++;
                 }else if (((grid[x - i][y]) && (grid[x - i] > 0)) === (wordSplit[i] + i)){
@@ -64,7 +64,7 @@ function findword(gridsize, word, grid){
     return count;
 }
 
-function placeword(gridSize, word, grid) {
+function placeWord(gridSize, word, grid) {
     var x = Math.floor(Math.random() * gridSize);
     var y = Math.floor(Math.random() * gridSize);
 
@@ -81,28 +81,28 @@ function placeword(gridSize, word, grid) {
             for (var i = 0; i < word.length; i++) {
                 if (grid[x][y + i] === '' || grid[x][y + i] === word[i]) {
                     grid[x][y + i] = word[i];
-                } else placeword(gridSize, word, grid);
+                } else placeWord(gridSize, word, grid);
             }
         } else if (orientation === 'vertical' && !( x + word.length > gridSize)) {
             for (i = 0; i < word.length; i++) {
                 if (grid[x + i][y] === '' || grid[x + i][y] === word[i]) {
                     grid[x + i][y] = word[i];
-                } else placeword(gridSize, word, grid);
+                } else placeWord(gridSize, word, grid);
             }
         } else if (orientation === 'diagonal' && !((x + word.length > gridSize) || (y + word.length > gridSize))) {
             for (i = 0; i < word.length; i++) {
                 if (grid[x + i][y + i] === '' || grid[x + i][y + i] === word[i]) {
                     grid[x + i][y + i] = word[i];
-                } else placeword(gridSize, word, grid);
+                } else placeWord(gridSize, word, grid);
             }
         } else if (orientation === 'diagonalUp' && !((x - word.length < 0) || (y + word.length > gridSize))) {
             for (i = 0; i < word.length; i++) {
                 if (grid[x - i][y + i] === '' || grid[x - i][y + i] === word[i]) {
                     grid[x - i][y + i] = word[i];
-                } else placeword(gridSize, word, grid);
+                } else placeWord(gridSize, word, grid);
             }
         }else{
-            placeword(gridSize, word, grid);
+            placeWord(gridSize, word, grid);
         }
     }
 }
