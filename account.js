@@ -9,7 +9,7 @@ var md5 = require('md5');
 module.exports = function (socket) {
     socket.on('register', function (data) {
         var query = {username: data.username};
-        mongodb.collection("users").findOne(query).toArray(function (err, res) {
+        mongodb.collection("users").find(query).toArray(function (err, res) {
         	if (!err){
                 if (res.length !== 0){
                     console.log(socket.id);
@@ -20,10 +20,10 @@ module.exports = function (socket) {
 
                     mongodb.collection("users").insertOne(users, function (err) {
                         if (!err){
-                            mongodb.collection("users").findOne(query).toArray(function (err, res) {
+                            mongodb.collection("users").find(query).toArray(function (err, res) {
                                 if (!err){
                                     console.log(res.username);
-                                    socket.emit('register result', {userid : res._id, username: res.username});
+                                    socket.emit('register result', {userid : res[0]._id, username: res[0].username});
                                 } else{
                                     console.log("Error select user: "+err);
                                 }
@@ -41,10 +41,10 @@ module.exports = function (socket) {
 
     socket.on('login', function (data) {
         var query = {username: data.username, password: md5(data.password)};
-        mongodb.collection("users").findOne(query).toArray(function (err, res) {
+        mongodb.collection("users").find(query).toArray(function (err, res) {
             if (!err){
                 if (res.length !== 0 ){
-                    socket.emit('login result', {userId : res._id, username: res.username});
+                    socket.emit('login result', {userId : res[0]._id, username: res[0].username});
                 }else {
                     socket.emit('login result', 'failed');
                 }
