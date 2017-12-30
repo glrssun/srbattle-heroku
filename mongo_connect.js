@@ -1,18 +1,17 @@
-var MongoClient = require('mongodb').MongoClient;
+var MongoClient = require( 'mongodb' ).MongoClient;
 var url = process.env.MONGOLAB_URI;
-var mongodb;
+var _db;
 
-MongoClient.connect(url, function (err, db) {
-    if(!err) {
-        console.log("Database is connected ... nn");
-        mongodb = db;
-    } else {
-        console.log("Error connecting database ... nn"+err);
+module.exports = {
+
+    connectToServer: function( callback ) {
+        MongoClient.connect( url, function( err, db ) {
+            _db = db;
+            return callback( err );
+        } );
+    },
+
+    getDb: function() {
+        return _db;
     }
-});
-
-var getDb = function () {
-    return mongodb;
 };
-
-exports.getDb = getDb;

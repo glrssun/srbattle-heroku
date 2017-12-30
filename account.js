@@ -1,7 +1,7 @@
 //var moduleConnection = require('./mysqlconnect');
 //var moduleConnection = require('./pgconnect');
 
-var connection = require('./mongo_connect');
+var connection = require('mongo_connect');
 var mongodb = connection.getDb();
 var md5 = require('md5');
 
@@ -56,7 +56,7 @@ module.exports = function (socket) {
 
     socket.on('check user', function (data) {
         var query = {username: data.username};
-        mongodb.find(query).toArray(function (err, res) {
+        mongodb.collection("users").find(query).toArray(function (err, res) {
             if (!err) {
                 if (res.length !== 0){
                     console.log(socket.id);
