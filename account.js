@@ -15,7 +15,6 @@ module.exports = function (socket) {
                     console.log(socket.id);
                     socket.emit('register result', 'exist');
                 }else {
-
                     mongodb.eval('getNextSequence(\'user_id\')', function (err, seqRes) {
                         if (!err){
                             var today = new Date();
@@ -38,6 +37,8 @@ module.exports = function (socket) {
                                     console.log("Error insert : "+err);
                                 }
                             });
+                        } else {
+                            console.log("Error sequence");
                         }
                     });
                 }
