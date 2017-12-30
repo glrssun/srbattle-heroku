@@ -15,21 +15,29 @@ module.exports = function (socket) {
                     console.log(socket.id);
                     socket.emit('register result', 'exist');
                 }else {
-                    var today = new Date();
-                    var users = { _id:mongoConnect.getNextSequence("user_id"), username: data.username, password: md5(data.password), modified: today  };
 
-                    mongodb.collection("users").insertOne(users, function (err) {
+                    mongodb.eval('getNextSequence(\'user_id\')', function (err, seqRes) {
                         if (!err){
-                            mongodb.collection("users").find(query).toArray(function (err, res) {
+                            var today = new Date();
+                            mongodb.collection("users").insert({
+                                _id: seqRes,
+                                username: data.username,
+                                password: md5(data.password),
+                                modified: today
+                            },function (err) {
                                 if (!err){
-                                    console.log(res[0].username);
-                                    socket.emit('register result', {userid : res[0]._id, username: res[0].username});
+                                    mongodb.collection("users").find(query).toArray(function (err, res) {
+                                        if (!err){
+                                            console.log(res[0].username);
+                                            socket.emit('register result', {userid : res[0]._id, username: res[0].username});
+                                        } else{
+                                            console.log("Error select user: "+err);
+                                        }
+                                    });
                                 } else{
-                                    console.log("Error select user: "+err);
+                                    console.log("Error insert : "+err);
                                 }
                             });
-                        } else{
-                            console.log("Error insert : "+err);
                         }
                     });
                 }

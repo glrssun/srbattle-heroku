@@ -3,6 +3,7 @@
   <component name="ChangeListManager">
     <list default="true" id="3aaaa39a-34ec-4d70-9f12-5bc3012d2a6f" name="Default" comment="&quot;Update server&quot;">
       <change beforePath="$PROJECT_DIR$/account.js" afterPath="$PROJECT_DIR$/account.js" />
+      <change beforePath="$PROJECT_DIR$/mongo_connect.js" afterPath="$PROJECT_DIR$/mongo_connect.js" />
     </list>
     <ignored path="$PROJECT_DIR$/.tmp/" />
     <ignored path="$PROJECT_DIR$/temp/" />
@@ -69,8 +70,8 @@
       <file leaf-file-name="account.js" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/account.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="492">
-              <caret line="33" column="23" lean-forward="true" selection-start-line="33" selection-start-column="23" selection-end-line="33" selection-end-column="23" />
+            <state relative-caret-position="153">
+              <caret line="33" column="83" lean-forward="true" selection-start-line="33" selection-start-column="83" selection-end-line="33" selection-end-column="83" />
               <folding>
                 <element signature="n#!!doc" expanded="true" />
               </folding>
@@ -91,8 +92,8 @@
       <file leaf-file-name="mongo_connect.js" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/mongo_connect.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="476">
-              <caret line="28" column="0" lean-forward="true" selection-start-line="28" selection-start-column="0" selection-end-line="28" selection-end-column="0" />
+            <state relative-caret-position="272">
+              <caret line="16" column="0" lean-forward="true" selection-start-line="16" selection-start-column="0" selection-end-line="16" selection-end-column="0" />
               <folding />
             </state>
           </provider>
@@ -113,6 +114,7 @@
       <find>peer</find>
       <find>disco</find>
       <find>getNext</find>
+      <find>find</find>
     </findStrings>
     <replaceStrings>
       <replace>res.rows[0]</replace>
@@ -144,11 +146,11 @@
   <component name="NodeModulesDirectoryManager">
     <handled-path value="$PROJECT_DIR$/node_modules" />
   </component>
-  <component name="ProjectFrameBounds" extendedState="6">
-    <option name="x" value="-8" />
-    <option name="y" value="-8" />
-    <option name="width" value="1382" />
-    <option name="height" value="784" />
+  <component name="ProjectFrameBounds">
+    <option name="x" value="-123" />
+    <option name="y" value="316" />
+    <option name="width" value="1378" />
+    <option name="height" value="780" />
   </component>
   <component name="ProjectView">
     <navigator currentView="ProjectPane" proportions="" version="1">
@@ -221,18 +223,18 @@
       <workItem from="1512927485616" duration="2385000" />
       <workItem from="1514198270717" duration="620000" />
       <workItem from="1514514820562" duration="14546000" />
-      <workItem from="1514613464160" duration="8027000" />
+      <workItem from="1514613464160" duration="8618000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="43088000" />
+    <option name="totallyTimeSpent" value="43679000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="-8" y="-8" width="1382" height="784" extended-state="6" />
+    <frame x="-123" y="316" width="1378" height="780" extended-state="0" />
     <editor active="true" />
     <layout>
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.24963397" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.2503671" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Docker" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
@@ -676,14 +678,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/mongo_connect.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="476">
-          <caret line="28" column="0" lean-forward="true" selection-start-line="28" selection-start-column="0" selection-end-line="28" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/games_state.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="85">
@@ -692,10 +686,18 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/mongo_connect.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="272">
+          <caret line="16" column="0" lean-forward="true" selection-start-line="16" selection-start-column="0" selection-end-line="16" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/account.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="492">
-          <caret line="33" column="23" lean-forward="true" selection-start-line="33" selection-start-column="23" selection-end-line="33" selection-end-column="23" />
+        <state relative-caret-position="153">
+          <caret line="33" column="83" lean-forward="true" selection-start-line="33" selection-start-column="83" selection-end-line="33" selection-end-column="83" />
           <folding>
             <element signature="n#!!doc" expanded="true" />
           </folding>
