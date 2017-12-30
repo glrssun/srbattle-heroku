@@ -33,6 +33,7 @@ var createGrid = function (gridSize, words) {
 
 function findWord(gridsize, word, grid){
     var count = 0;
+    var wordToFind = '';
     wordSplit = word.split('');
     for (var i = 0; i < wordSplit.length; i++){
         console.log(wordSplit[i]);
@@ -41,31 +42,23 @@ function findWord(gridsize, word, grid){
         for (var y = 0; y < gridsize; y++){
             for (var i = 0; i < wordSplit.length; i++){
                 console.log(" x & y "+x+y+word+" grid : "+grid[x][y]+" word split"+wordSplit[i] );
-                while ((x + i < gridsize) || (y + i < gridsize) || (x - i > 0) || (y - i > 0)){
+                if ((x + i < gridsize) && (y + i < gridsize) && (x - i > 0) && (y - i > 0)){
                     if ((grid[x + i][y]) === (wordSplit[i])){
-                        console.log(grid[x + i][y]);
-                        count++;
+                        wordToFind = wordToFind + grid[x + i][y];
                     }else if ((grid[x - i][y]) === (wordSplit[i])){
-                        console.log(grid[x - i][y]);
-                        count++;
+                        wordToFind = wordToFind + grid[x - i][y];
                     }else if ((grid[x][y + i]) === (wordSplit[i])){
-                        console.log(grid[x][y + i]);
-                        count++;
+                        wordToFind = wordToFind + grid[x][y+i];
                     }else if ((grid[x][y - i]) === (wordSplit[i])) {
-                        console.log(grid[x][y - i]);
-                        count++;
+                        wordToFind = wordToFind + grid[x][y - i];
                     }else if ((grid[x + i][y + i]) === (wordSplit[i])) {
-                        console.log(grid[x + i][y + i]);
-                        count++;
+                        wordToFind = wordToFind + grid[x + i][y + i];
                     }else if ((grid[x + i][y - i]) === (wordSplit[i])) {
-                        console.log(grid[x + i][y - i]);
-                        count++;
+                        wordToFind = wordToFind + grid[x + i][y - i];
                     }else if ((grid[x - i][y - i]) === (wordSplit[i])) {
-                        console.log(grid[x - i][y - i]);
-                        count++;
+                        wordToFind = wordToFind + grid[x - i][y - i];
                     }else if ((grid[x - i][y + i]) === (wordSplit[i])) {
-                        console.log(grid[x - i][y + i]);
-                        count++;
+                        wordToFind = wordToFind + grid[x - i][y + i];
                     }
                 }
             }
