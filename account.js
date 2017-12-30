@@ -16,7 +16,7 @@ module.exports = function (socket) {
                     socket.emit('register result', 'exist');
                 }else {
                     var today = new Date();
-                    var users = { _id:getNextSequence("user_id"), username: data.username, password: md5(data.password), modified: today  };
+                    var users = { _id:mongoConnect.getNextSequence("user_id"), username: data.username, password: md5(data.password), modified: today  };
 
                     mongodb.collection("users").insertOne(users, function (err) {
                         if (!err){

@@ -13,18 +13,16 @@ module.exports = {
 
     getDb: function() {
         return _db;
+    },
+
+    getNextSequence: function(name) {
+        var ret = db.counters.findAndModify(
+            {
+                query: { _id: name },
+                update: { $inc: { seq: 1 } },
+                new: true
+            }
+        );
+        return ret.seq;
     }
 };
-
-var getNextSequence = function(name) {
-    var ret = db.counters.findAndModify(
-        {
-            query: { _id: name },
-            update: { $inc: { seq: 1 } },
-            new: true
-        }
-    );
-    return ret.seq;
-};
-
-exports.getNextSequence = getNextSequence;
