@@ -2,6 +2,7 @@
 //var moduleConnection = require('./pgconnect');
 
 var mongoConnect = require('./mongo_connect.js');
+var autoIncrement = require('mongodb-autoincrement');
 var mongodb = mongoConnect.getDb();
 var md5 = require('md5');
 
@@ -15,7 +16,7 @@ module.exports = function (socket) {
                     console.log(socket.id);
                     socket.emit('register result', 'exist');
                 }else {
-                    mongodb.eval('getNextSequence(\'user_id\')', function (err, seqRes) {
+                    autoIncrement.getNextSequence(mongodb, "users", function (err, seqRes) {
                         if (!err){
                             var today = new Date();
                             mongodb.collection("users").insert({
