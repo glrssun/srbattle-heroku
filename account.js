@@ -71,8 +71,10 @@ module.exports = function (socket) {
                 if (!err) {
                     if (res.length !== 0){
                         console.log(socket.id);
+                        console.log("yes");
                         socket.emit('verify user', 'user verified');
                     } else {
+                        console.log("no");
                         socket.emit('verify user', 'not exist');
                     }
                 } else {
