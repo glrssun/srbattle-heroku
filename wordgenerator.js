@@ -42,28 +42,28 @@ function findWord(gridsize, word, grid){
             for (var i = 0; i < wordSplit.length; i++){
                 console.log(" x & y "+x+y+word+" grid : "+grid[x][y]+" word split"+wordSplit[i] );
                 while ((x + i < gridsize) || (y + i < gridsize) || (x - i > 0) || (y - i > 0)){
-                    if ((grid[x + i][y]) === (wordSlit[i])){
+                    if ((grid[x + i][y]) === (wordSplit[i])){
                         console.log(grid[x + i][y]);
                         count++;
-                    }else if ((grid[x - i][y]) === (wordSlit[i])){
+                    }else if ((grid[x - i][y]) === (wordSplit[i])){
                         console.log(grid[x - i][y]);
                         count++;
-                    }else if ((grid[x][y + i]) === (wordSlit[i])){
+                    }else if ((grid[x][y + i]) === (wordSplit[i])){
                         console.log(grid[x][y + i]);
                         count++;
-                    }else if ((grid[x][y - i]) === (wordSlit[i])) {
+                    }else if ((grid[x][y - i]) === (wordSplit[i])) {
                         console.log(grid[x][y - i]);
                         count++;
-                    }else if ((grid[x + i][y + i]) === (wordSlit[i])) {
+                    }else if ((grid[x + i][y + i]) === (wordSplit[i])) {
                         console.log(grid[x + i][y + i]);
                         count++;
-                    }else if ((grid[x + i][y - i]) === (wordSlit[i])) {
+                    }else if ((grid[x + i][y - i]) === (wordSplit[i])) {
                         console.log(grid[x + i][y - i]);
                         count++;
-                    }else if ((grid[x - i][y - i]) === (wordSlit[i])) {
+                    }else if ((grid[x - i][y - i]) === (wordSplit[i])) {
                         console.log(grid[x - i][y - i]);
                         count++;
-                    }else if ((grid[x - i][y + i]) === (wordSlit[i])) {
+                    }else if ((grid[x - i][y + i]) === (wordSplit[i])) {
                         console.log(grid[x - i][y + i]);
                         count++;
                     }
