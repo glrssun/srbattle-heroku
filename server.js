@@ -1,7 +1,7 @@
 var app = require('express')();
 var http = require('http').Server(app);
 var io = require('socket.io')(http);
-var mongoConnect = require( 'mongo_connect' );
+var mongoConnect = require('./mongo_connect.js');
 var port = process.env.PORT || 3000;
 
 mongoConnect.connectToServer( function( err ) {
