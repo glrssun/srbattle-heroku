@@ -13,7 +13,7 @@ var createGrid = function (gridSize, words) {
     }
     for(i = 0; i < wordList.length; i++){
         console.log("try placing word: "+i+" word : "+wordList[i]);
-        placeWord(gridSize, words[i], grid);
+        placeWord(gridSize, wordList[i], grid);
     }
 
     for(i = 0; i < gridSize; i++){
@@ -23,8 +23,8 @@ var createGrid = function (gridSize, words) {
     }
 
     for(i = 0; i < wordList.length; i++){
-        if (findWord(gridSize, words[i], grid) > 1){
-            createGrid(gridSize, words);
+        if (findWord(gridSize, wordList[i], grid) > 1){
+            createGrid(gridSize, wordList);
         } else {
             return grid;
         }
