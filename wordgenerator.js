@@ -34,7 +34,7 @@ var createGrid = function (gridSize, words) {
 function findWord(gridsize, word, grid){
     var count = 0;
     wordSplit = word.split('');
-    for (var i = 0; i < wordSplit.length, i++){
+    for (var i = 0; i < wordSplit.length; i++){
         console.log(wordSplit[i]);
     }
     for (var x = 0; x < gridsize; x++){
@@ -86,7 +86,6 @@ function placeWord(gridSize, word, grid) {
 
     if (word.length !== 0){
         console.log('Word is '+word+' Position y is '+x+' and x is'+y+' while the orientation is +'+orientation);
-
         if (orientation === 'horizontal' && !( y + word.length > gridSize)) {
             for (var i = 0; i < word.length; i++) {
                 if (grid[x][y + i] === '' || grid[x][y + i] === word[i]) {
