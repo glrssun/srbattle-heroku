@@ -4,7 +4,8 @@ var _db;
 
 module.exports = {
     connectToServer: function( callback ) {
-        MongoClient.connect( url, function( err, db ) {
+        MongoClient.connect( url, function( err, client ) {
+            var db = client.db('srbattle');
             _db = db;
             return callback( err );
         } );
