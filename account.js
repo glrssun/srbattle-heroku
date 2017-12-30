@@ -9,7 +9,7 @@ var md5 = require('md5');
 module.exports = function (socket) {
     socket.on('register', function (data) {
         var query = {username: data.username};
-        mongodb.collection("users").find(query).toArray(function (err, res) {
+        mongodb.collection("users").findOne(query, function (err, res) {
         	if (!err){
                 if (res.length !== 0){
                     console.log(socket.id);
@@ -20,7 +20,7 @@ module.exports = function (socket) {
 
                     mongodb.collection("users").insertOne(users, function (err) {
                         if (!err){
-                            mongodb.collection("users").find(query).toArray(function (err, res) {
+                            mongodb.collection("users").findOne(query, function (err, res) {
                                 if (!err){
                                     console.log(res.username);
                                     socket.emit('register result', {userid : res._id, username: res.username});
@@ -41,7 +41,7 @@ module.exports = function (socket) {
 
     socket.on('login', function (data) {
         var query = {username: data.username, password: md5(data.password)};
-        mongodb.collection("users").find(query).toArray(function (err, res) {
+        mongodb.collection("users").find(query, function (err, res) {
             if (!err){
                 if (res.length !== 0 ){
                     socket.emit('login result', {userId : res._id, username: res.username});
