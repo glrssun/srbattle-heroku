@@ -8,7 +8,7 @@ module.exports = {
             var db = client.db('srbattle');
             _db = db;
             return callback( err );
-        } );
+        });
     },
 
     getDb: function() {
@@ -16,7 +16,7 @@ module.exports = {
     },
 
     getNextSequence: function(name) {
-        var ret = db.counters.findAndModify(
+        var ret = _db.counters.findAndModify(
             {
                 query: { _id: name },
                 update: { $inc: { seq: 1 } },
