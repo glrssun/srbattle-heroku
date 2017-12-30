@@ -65,20 +65,18 @@ module.exports = function (socket) {
     });
 
     socket.on('check user', function (data) {
-        if (data !== null) {
-            var query = {username: data.username};
-            mongodb.collection("users").find(query).toArray(function (err, res) {
-                if (!err) {
-                    if (res.length !== 0){
-                        console.log(socket.id);
-                        socket.emit('verify user', 'user verified');
-                    } else {
-                        socket.emit('verify user', 'not exist');
-                    }
+        var query = {username: data.username};
+        mongodb.collection("users").find(query).toArray(function (err, res) {
+            if (!err) {
+                if (res.length !== 0){
+                    console.log(socket.id);
+                    socket.emit('verify user', 'user verified');
                 } else {
-                    console.log("Error checking "+err);
+                    socket.emit('verify user', 'not exist');
                 }
-            });
-        }
+            } else {
+                console.log("Error checking "+err);
+            }
+        });
     })
 };
