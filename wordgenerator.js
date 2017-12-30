@@ -34,6 +34,9 @@ var createGrid = function (gridSize, words) {
 function findWord(gridsize, word, grid){
     var count = 0;
     wordSplit = word.split('');
+    for (var i = 0; i < wordSplit.length, i++){
+        console.log(wordSplit[i]);
+    }
     for (var x = 0; x < gridsize; x++){
         for (var y = 0; y < gridsize; y++){
             for (var i = 0; i < wordSplit.length; i++){
