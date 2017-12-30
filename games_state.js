@@ -1,8 +1,8 @@
 var gen = require('./wordgenerator.js');
 //var moduleConnection = require('./mysqlconnect');
 //var moduleConnection = require('./pgconnect');
-var moduleConnection = require('./mongo_connect');
-var conn = moduleConnection.connection;
+var mongoConnect = require('./mongo_connect.js');
+var mongodb = mongoConnect.getDb();
 
 var queue = [];
 var rooms = {};
@@ -10,19 +10,19 @@ var host = [];
 
 module.exports = function (socket, io) {
     socket.on('request game', function (data) {
-        conn.query("SELECT * FROM game_material OFFSET floor(random()*(select COUNT(*) from game_material)) LIMIT 1", function (err, res) {
+        mongodb.collection("game_material").aggregate( { $sample: { size: 1 } }, function (err, res) {
             if(!err){
-                console.log('Answer number one = '+res.rows[0].answer1);
-                var grid = gen.createGrid(11, [res.rows[0].answer1, res.rows[0].answer2, res.rows[0].answer3]);
+                console.log('Answer number one = '+res[0].answer1);
+                var grid = gen.createGrid(11, [res[0].answer1, res[0].answer2, res[0].answer3]);
                 socket.emit('game material', {
                     game_board : grid,
-                    sentence : res.rows[0].sentences,
-                    question1 : res.rows[0].question1,
-                    answer1 : res.rows[0].answer1,
-                    question2 : res.rows[0].question2,
-                    answer2 : res.rows[0].answer2,
-                    question3 : res.rows[0].question3,
-                    answer3 : res.rows[0].answer3,
+                    sentence : res[0].sentences,
+                    question1 : res[0].question1,
+                    answer1 : res[0].answer1,
+                    question2 : res[0].question2,
+                    answer2 : res[0].answer2,
+                    question3 : res.question3,
+                    answer3 : res[0].answer3,
                     WPM : data.WPM
                 });
             }else {
@@ -46,19 +46,19 @@ module.exports = function (socket, io) {
                 //foundmatch
                 //peer.emit('found match', names[socket.id]);
                 //socket.emit('found match', names[peer.id]);
-                conn.query("SELECT * FROM game_material OFFSET floor(random()*(select COUNT(*) from game_material)) LIMIT 1", function (err, res) {
+                mongodb.collection("game_material").aggregate( { $sample: { size: 1 } }, function (err, res) {
                     if (!err) {
-                        console.log('Answer number one = ' + res.rows[0].answer1);
-                        var grid = gen.createGrid(11, [res.rows[0].answer1, res.rows[0].answer2, res.rows[0].answer3]);
+                        console.log('Answer number one = ' + res[0].answer1);
+                        var grid = gen.createGrid(11, [res[0].answer1, res[0].answer2, res[0].answer3]);
                         io.in(room).emit('found match', {
                             game_board: grid,
-                            sentence: res.rows[0].sentences,
-                            question1: res.rows[0].question1,
-                            answer1: res.rows[0].answer1,
-                            question2: res.rows[0].question2,
-                            answer2: res.rows[0].answer2,
-                            question3: res.rows[0].question3,
-                            answer3: res.rows[0].answer3,
+                            sentence: res[0].sentences,
+                            question1: res[0].question1,
+                            answer1: res[0].answer1,
+                            question2: res[0].question2,
+                            answer2: res[0].answer2,
+                            question3: res[0].question3,
+                            answer3: res[0].answer3,
                             WPM: socket.WPM,
                             player: [socket.username, peer.username]
                         });
@@ -120,17 +120,17 @@ module.exports = function (socket, io) {
                 console.log(room);
                 conn.query("SELECT * FROM game_material OFFSET floor(random()*(select COUNT(*) from game_material)) LIMIT 1", function (err, res) {
                     if (!err) {
-                        console.log('Answer number one = ' + res.rows[0].answer1);
-                        var grid = gen.createGrid(11, [res.rows[0].answer1, res.rows[0].answer2, res.rows[0].answer3]);
+                        console.log('Answer number one = ' + res[0].answer1);
+                        var grid = gen.createGrid(11, [res[0].answer1, res[0].answer2, res[0].answer3]);
                         io.in(room).emit('versus match ready', {
                             game_board: grid,
-                            sentence: res.rows[0].sentences,
-                            question1: res.rows[0].question1,
-                            answer1: res.rows[0].answer1,
-                            question2: res.rows[0].question2,
-                            answer2: res.rows[0].answer2,
-                            question3: res.rows[0].question3,
-                            answer3: res.rows[0].answer3,
+                            sentence: res[0].sentences,
+                            question1: res[0].question1,
+                            answer1: res[0].answer1,
+                            question2: res[0].question2,
+                            answer2: res[0].answer2,
+                            question3: res[0].question3,
+                            answer3: res[0].answer3,
                             WPM: peer.WPM,
                             player: [socket.username, peer.username]
                         });
