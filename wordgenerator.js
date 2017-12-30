@@ -35,9 +35,6 @@ function findWord(gridsize, word, grid){
     var count = 0;
     var wordToFind = '';
     wordSplit = word.split('');
-    for (var i = 0; i < wordSplit.length; i++){
-        console.log(wordSplit[i]);
-    }
     for (var x = 0; x < gridsize; x++){
         for (var y = 0; y < gridsize; y++){
             for (var i = 0; i < wordSplit.length; i++){
@@ -59,10 +56,13 @@ function findWord(gridsize, word, grid){
                         wordToFind = wordToFind + grid[x - i][y - i];
                     }else if ((grid[x - i][y + i]) === (wordSplit[i])) {
                         wordToFind = wordToFind + grid[x - i][y + i];
+                    }else {
+                        findWord(gridsize, word, grid);
                     }
                 }
             }
         }
+        console.log('wordtofind'+wordToFind);
         if (word === wordToFind){
             count++;
         }
