@@ -1,7 +1,6 @@
 
 var orientations = ['horizontal', 'vertical', 'diagonal', 'diagonalUp'];
 var letters = 'QWERTYUIOPASDFGHJKLZXCVBNM';
-var complete = false;
 
 var createGrid = function (gridSize, words) {
     var grid = [];
@@ -86,7 +85,7 @@ function placeWord(gridSize, word, grid) {
     word.split('');
     orientation = orientations[Math.floor(Math.random() * orientations.length)];
 
-    while(!isComplete()){
+    if(word.length !== 0){
         console.log('Word is '+word+' Position y is '+x+' and x is'+y+' while the orientation is +'+orientation);
         if (orientation === 'horizontal' && !( y + word.length > gridSize)) {
             for (var i = 0; i < word.length; i++) {
@@ -130,8 +129,5 @@ function placeWord(gridSize, word, grid) {
     }
 }
 
-function isComplete() {
-    return complete;
-}
 
 exports.createGrid = createGrid ;
