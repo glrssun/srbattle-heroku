@@ -16,7 +16,7 @@ module.exports = {
     }
 };
 
-module.exports = function getNextSequence(name) {
+var getNextSequence = function(name) {
     var ret = db.counters.findAndModify(
         {
             query: { _id: name },
@@ -26,3 +26,5 @@ module.exports = function getNextSequence(name) {
     );
     return ret.seq;
 };
+
+exports.getNextSequence = getNextSequence;
