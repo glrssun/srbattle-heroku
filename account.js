@@ -10,9 +10,9 @@ var md5 = require('md5');
 module.exports = function (socket) {
     socket.on('register', function (data) {
         var query = {username: data.username};
-        mongodb.collection("users").find(query, function (err, res) {
+        mongodb.collection("users").find(query).toArray(function (err, res) {
         	if (!err){
-                if (res){
+                if (res.length !== 0){
                     console.log(socket.id);
                     socket.emit('register result', 'exist');
                 }else {
@@ -28,8 +28,8 @@ module.exports = function (socket) {
                                 if (!err){
                                     mongodb.collection("users").find(query).toArray(function (err, res) {
                                         if (!err){
-                                            console.log(res.username);
-                                            socket.emit('register result', {userId : res._id, username: res.username});
+                                            console.log(res[0].username);
+                                            socket.emit('register result', {userId : res[0]._id, username: res[0].username});
                                         } else{
                                             console.log("Error select user: "+err);
                                         }
@@ -51,10 +51,10 @@ module.exports = function (socket) {
 
     socket.on('login', function (data) {
         var query = {username: data.username, password: md5(data.password)};
-        mongodb.collection("users").find(query, function (err, res) {
+        mongodb.collection("users").find(query).toArray(function (err, res) {
             if (!err){
-                if (res){
-                    socket.emit('login result', {userId : res._id, username: res.username});
+                if (res.length !== 0 ){
+                    socket.emit('login result', {userId : res[0]._id, username: res[0].username});
                 }else {
                     socket.emit('login result', 'failed');
                 }
@@ -67,9 +67,9 @@ module.exports = function (socket) {
     socket.on('check user', function (data) {
         if(data !== null){
             var query = {username: data};
-            mongodb.collection("users").find(query, function (err, res) {
+            mongodb.collection("users").find(query).toArray(function (err, res) {
                 if (!err) {
-                    if (res.length){
+                    if (res.length !== 0){
                         console.log(socket.id);
                         console.log("yes");
                         socket.emit('verify user', 'user verified');

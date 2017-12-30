@@ -10,19 +10,19 @@ var host = [];
 
 module.exports = function (socket, io) {
     socket.on('request game', function (data) {
-        mongodb.collection("game_material").aggregate({ $sample: { size: 1 } }, function (err, res) {
+        mongodb.collection("game_material").aggregate({ $sample: { size: 1 } }).toArray(function (err, res) {
             if(!err){
-                console.log('Answer number one = '+res.answer1);
-                var grid = gen.createGrid(11, [res.answer1, res.answer2, res.answer3]);
+                console.log('Answer number one = '+res[0].answer1);
+                var grid = gen.createGrid(11, [res[0].answer1, res[0].answer2, res[0].answer3]);
                 socket.emit('game material', {
                     game_board : grid,
-                    sentence : res.sentences,
-                    question1 : res.question1,
-                    answer1 : res.answer1,
-                    question2 : res.question2,
-                    answer2 : res.answer2,
-                    question3 : res.question3,
-                    answer3 : res.answer3,
+                    sentence : res[0].sentences,
+                    question1 : res[0].question1,
+                    answer1 : res[0].answer1,
+                    question2 : res[0].question2,
+                    answer2 : res[0].answer2,
+                    question3 : res[0].question3,
+                    answer3 : res[0].answer3,
                     WPM : data.WPM
                 });
             }else {
