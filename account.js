@@ -69,6 +69,7 @@ module.exports = function (socket) {
             var query = {username: data.username};
             mongodb.collection("users").find(query).toArray(function (err, res) {
                 if (!err) {
+                    console.log(res);
                     if (res.length !== 0){
                         console.log(socket.id);
                         console.log("yes");
