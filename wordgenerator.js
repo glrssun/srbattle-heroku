@@ -63,6 +63,9 @@ function findWord(gridsize, word, grid){
                 }
             }
         }
+        if (word === wordToFind){
+            count++;
+        }
     }
     return count;
 }
