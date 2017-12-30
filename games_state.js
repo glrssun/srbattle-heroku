@@ -10,7 +10,7 @@ var host = [];
 
 module.exports = function (socket, io) {
     socket.on('request game', function (data) {
-        mongodb.collection("game_material").aggregate( [{$sample: {size: 1}}] , function (err, res) {
+        mongodb.collection("game_material").findOne(function (err, res) {
             if(!err){
                 console.log('Answer number one = '+res[0].answer1);
                 var grid = gen.createGrid(11, [res[0].answer1, res[0].answer2, res[0].answer3]);
@@ -21,7 +21,7 @@ module.exports = function (socket, io) {
                     answer1 : res[0].answer1,
                     question2 : res[0].question2,
                     answer2 : res[0].answer2,
-                    question3 : res.question3,
+                    question3 : res[0].question3,
                     answer3 : res[0].answer3,
                     WPM : data.WPM
                 });
