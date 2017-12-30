@@ -92,37 +92,37 @@ function placeWord(gridSize, word, grid) {
             for (var i = 0; i < word.length; i++) {
                 if (grid[x][y + i] === '' || grid[x][y + i] === word[i]) {
                     grid[x][y + i] = word[i];
-                    if(i === word.length){
-                        complete = true;
-                    }
-                } else placeWord(gridSize, word, grid);
+                } else {
+                    placeWord(gridSize, word, grid);
+                    break;
+                }
             }
         } else if (orientation === 'vertical' && !( x + word.length > gridSize)) {
             for (i = 0; i < word.length; i++) {
                 if (grid[x + i][y] === '' || grid[x + i][y] === word[i]) {
                     grid[x + i][y] = word[i];
-                    if(i === word.length){
-                        complete = true;
-                    }
-                } else placeWord(gridSize, word, grid);
+                } else {
+                    placeWord(gridSize, word, grid);
+                    break;
+                }
             }
         } else if (orientation === 'diagonal' && !((x + word.length > gridSize) || (y + word.length > gridSize))) {
             for (i = 0; i < word.length; i++) {
                 if (grid[x + i][y + i] === '' || grid[x + i][y + i] === word[i]) {
                     grid[x + i][y + i] = word[i];
-                    if(i === word.length){
-                        complete = true;
-                    }
-                } else placeWord(gridSize, word, grid);
+                } else {
+                    placeWord(gridSize, word, grid);
+                    break;
+                }
             }
         } else if (orientation === 'diagonalUp' && !((x - word.length < 0) || (y + word.length > gridSize))) {
             for (i = 0; i < word.length; i++) {
                 if (grid[x - i][y + i] === '' || grid[x - i][y + i] === word[i]) {
                     grid[x - i][y + i] = word[i];
-                    if(i === word.length){
-                        complete = true;
-                    }
-                } else placeWord(gridSize, word, grid);
+                } else {
+                    placeWord(gridSize, word, grid);
+                    break;
+                }
             }
         }else{
             placeWord(gridSize, word, grid);
