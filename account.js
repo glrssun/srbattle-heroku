@@ -65,9 +65,8 @@ module.exports = function (socket) {
     });
 
     socket.on('check user', function (data) {
-        if(data.username !== null){
-            console.log('username: '+data.username);
-            var query = {username: data.username};
+        if(data !== null){
+            var query = {username: data};
             mongodb.collection("users").find(query).toArray(function (err, res) {
                 if (!err) {
                     console.log(res[0].username);
