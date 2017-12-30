@@ -1,6 +1,7 @@
 
 var orientations = ['horizontal', 'vertical', 'diagonal', 'diagonalUp'];
 var letters = 'QWERTYUIOPASDFGHJKLZXCVBNM';
+var complete = false;
 
 var createGrid = function (gridSize, words) {
     var grid = [];
@@ -40,30 +41,30 @@ function findWord(gridsize, word, grid){
     for (var x = 0; x < gridsize; x++){
         for (var y = 0; y < gridsize; y++){
             for (var i = 0; i < wordSplit.length; i++){
-                console.log(" x & y "+x+y+word+" grid : "+grid[x][y]+" word split"+wordSplit[0]+i );
-                while ((x + i < gridsize) && (y + i < gridsize) &&(x - i > 0) && (y - i > 0)){
-                    if ((grid[x + i][y]) === (wordSplit[0] + i)){
+                console.log(" x & y "+x+y+word+" grid : "+grid[x][y]+" word split"+wordSplit[i] );
+                while ((x + i < gridsize) || (y + i < gridsize) || (x - i > 0) || (y - i > 0)){
+                    if ((grid[x + i][y]) === (wordSlit[i])){
                         console.log(grid[x + i][y]);
                         count++;
-                    }else if ((grid[x - i][y]) === (wordSplit[0] + i)){
+                    }else if ((grid[x - i][y]) === (wordSlit[i])){
                         console.log(grid[x - i][y]);
                         count++;
-                    }else if ((grid[x][y + i]) === (wordSplit[0] + i)){
+                    }else if ((grid[x][y + i]) === (wordSlit[i])){
                         console.log(grid[x][y + i]);
                         count++;
-                    }else if ((grid[x][y - i]) === (wordSplit[0] + i)) {
+                    }else if ((grid[x][y - i]) === (wordSlit[i])) {
                         console.log(grid[x][y - i]);
                         count++;
-                    }else if ((grid[x + i][y + i]) === (wordSplit[0] + i)) {
+                    }else if ((grid[x + i][y + i]) === (wordSlit[i])) {
                         console.log(grid[x + i][y + i]);
                         count++;
-                    }else if ((grid[x + i][y - i]) === (wordSplit[0] + i)) {
+                    }else if ((grid[x + i][y - i]) === (wordSlit[i])) {
                         console.log(grid[x + i][y - i]);
                         count++;
-                    }else if ((grid[x - i][y - i]) === (wordSplit[0] + i)) {
+                    }else if ((grid[x - i][y - i]) === (wordSlit[i])) {
                         console.log(grid[x - i][y - i]);
                         count++;
-                    }else if ((grid[x - i][y + i]) === (wordSplit[0] + i)) {
+                    }else if ((grid[x - i][y + i]) === (wordSlit[i])) {
                         console.log(grid[x - i][y + i]);
                         count++;
                     }
@@ -77,6 +78,7 @@ function findWord(gridsize, word, grid){
 function placeWord(gridSize, word, grid) {
     var x = Math.floor(Math.random() * gridSize);
     var y = Math.floor(Math.random() * gridSize);
+    complete = false;
 
     if (Math.random() >= 0.5)
         word = word.split('').reverse().join('');
@@ -84,36 +86,52 @@ function placeWord(gridSize, word, grid) {
     word.split('');
     orientation = orientations[Math.floor(Math.random() * orientations.length)];
 
-    if (word.length !== 0){
+    while(!isComplete()){
         console.log('Word is '+word+' Position y is '+x+' and x is'+y+' while the orientation is +'+orientation);
         if (orientation === 'horizontal' && !( y + word.length > gridSize)) {
             for (var i = 0; i < word.length; i++) {
                 if (grid[x][y + i] === '' || grid[x][y + i] === word[i]) {
                     grid[x][y + i] = word[i];
+                    if(i === word.length){
+                        complete = true;
+                    }
                 } else placeWord(gridSize, word, grid);
             }
         } else if (orientation === 'vertical' && !( x + word.length > gridSize)) {
             for (i = 0; i < word.length; i++) {
                 if (grid[x + i][y] === '' || grid[x + i][y] === word[i]) {
                     grid[x + i][y] = word[i];
+                    if(i === word.length){
+                        complete = true;
+                    }
                 } else placeWord(gridSize, word, grid);
             }
         } else if (orientation === 'diagonal' && !((x + word.length > gridSize) || (y + word.length > gridSize))) {
             for (i = 0; i < word.length; i++) {
                 if (grid[x + i][y + i] === '' || grid[x + i][y + i] === word[i]) {
                     grid[x + i][y + i] = word[i];
+                    if(i === word.length){
+                        complete = true;
+                    }
                 } else placeWord(gridSize, word, grid);
             }
         } else if (orientation === 'diagonalUp' && !((x - word.length < 0) || (y + word.length > gridSize))) {
             for (i = 0; i < word.length; i++) {
                 if (grid[x - i][y + i] === '' || grid[x - i][y + i] === word[i]) {
                     grid[x - i][y + i] = word[i];
+                    if(i === word.length){
+                        complete = true;
+                    }
                 } else placeWord(gridSize, word, grid);
             }
         }else{
             placeWord(gridSize, word, grid);
         }
     }
+}
+
+function isComplete() {
+    return complete;
 }
 
 exports.createGrid = createGrid ;
