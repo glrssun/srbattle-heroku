@@ -74,6 +74,7 @@ module.exports = function (socket) {
                         console.log("yes");
                         socket.emit('verify user', 'user verified');
                     } else {
+                        res[0].username;
                         console.log("no");
                         socket.emit('verify user', 'not exist');
                     }
