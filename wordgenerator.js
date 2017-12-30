@@ -34,26 +34,27 @@ var createGrid = function (gridSize, words) {
 function findWord(gridsize, word, grid){
     var count = 0;
     var wordSplit = word.split('');
+    var i = 0;
     for (var x = 0; x < gridsize; x++){
         for (var y = 0; y < gridsize; y++){
             for (var i = 0; i < wordSplit.length; i++){
                 console.log(" x & y "+x+y+word);
                 if ((x + i < gridsize) && (y + i < gridsize) &&(x - i > 0) && (y - i > 0)){
-                    if ((grid[x + i][y]) === (wordSplit[i] + i)){
+                    if ((grid[x + i][y]) === (wordSplit[0] + i)){
                         count++;
-                    }else if ((grid[x - i][y]) === (wordSplit[i] + i)){
+                    }else if ((grid[x - i][y]) === (wordSplit[0] + i)){
                         count++;
-                    }else if ((grid[x][y + i]) === (wordSplit[i] + i)){
+                    }else if ((grid[x][y + i]) === (wordSplit[0] + i)){
                         count++;
-                    }else if ((grid[x][y - i]) === (wordSplit[i] + i)) {
+                    }else if ((grid[x][y - i]) === (wordSplit[0] + i)) {
                         count++;
-                    }else if ((grid[x + i][y + i]) === (wordSplit[i] + i)) {
+                    }else if ((grid[x + i][y + i]) === (wordSplit[0] + i)) {
                         count++;
-                    }else if ((grid[x + i][y - i]) === (wordSplit[i] + i)) {
+                    }else if ((grid[x + i][y - i]) === (wordSplit[0] + i)) {
                         count++;
-                    }else if ((grid[x - i][y - i]) === (wordSplit[i] + i)) {
+                    }else if ((grid[x - i][y - i]) === (wordSplit[0] + i)) {
                         count++;
-                    }else if ((grid[x - i][y + i]) === (wordSplit[i] + i)) {
+                    }else if ((grid[x - i][y + i]) === (wordSplit[0] + i)) {
                         count++;
                     }
                 }
