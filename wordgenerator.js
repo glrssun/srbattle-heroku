@@ -58,6 +58,7 @@ function findWord(gridsize, word, grid){
                         wordToFind = wordToFind + grid[x - i][y + i];
                     }else {
                         findWord(gridsize, word, grid);
+                        break;
                     }
                 }
             }
