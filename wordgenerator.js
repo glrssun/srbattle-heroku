@@ -32,6 +32,7 @@ var createGrid = function (gridSize, words) {
 };
 
 function findWord(gridsize, word, grid){
+    console.log('tis grid'+grid[0][0]);
     var count = 0;
     var wordToFind = '';
     wordSplit = word.split('');
