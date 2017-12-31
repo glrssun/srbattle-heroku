@@ -32,7 +32,9 @@ var createGrid = function (gridSize, words) {
 };
 
 function findWord(gridsize, word, grid){
-    console.log('tis grid'+grid[0].join(''));
+    for (i =0; i < grid[0].length; i++){
+        console.log('tis grid'+grid[i].join(''));
+    }
     var count = 0;
     wordSplit = word.split('');
     for (var x1 = 0; x1 < gridsize; x1++){
@@ -52,7 +54,7 @@ function findWord(gridsize, word, grid){
 }
 
 function searchWord(x1, x2, y1, y2, grid, wordSplit) {
-    wordToFind = '';
+    var wordToFind = '';
     if (x1 === x2 && y1 < y2 ){
         for (i = 0; i <= y2-y1; i++){
             if (grid[x1][y1+i] === wordSplit[i]) {
