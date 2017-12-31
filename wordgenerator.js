@@ -40,12 +40,11 @@ function findWord(gridsize, word, grid){
         for (var y1 = 0; y1 < gridsize; y1++){
             for (var x2 = 0; x2 < gridsize; x2++){
                 for (var y2 = 0; y2 < gridsize; y2++){
-                    console.log('is grid'+grid[x1][y1]);
                     if (x1 === x2 && y1 < y2 ){
                         for (i = y1; i <= y2; i++){
                             if (grid[x1][y1+i] === wordSplit[i]){
                                 wordToFind += grid[x1][y1+i];
-                                //console.log(grid[x1][y1+i]);
+                                console.log('is grid'+grid[x1][y1+i]+' word to find '+wordToFind);
                             } else wordToFind = '';
                         }
                     }else if (x1 === x2 && y1 > y2){
