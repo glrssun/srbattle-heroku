@@ -128,7 +128,7 @@ function findWord(gridsize, word, grid){
                             }
                         }
                     }
-                    //console.log('wordtofind = '+wordToFind+' word = '+word);
+                    console.log('wordtofind = '+wordToFind+' word = '+word);
                     if (word === wordToFind){
                         count++;
                     }
