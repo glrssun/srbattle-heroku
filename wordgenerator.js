@@ -5,6 +5,8 @@ var letters = 'QWERTYUIOPASDFGHJKLZXCVBNM';
 var createGrid = function (gridSize, words) {
     var grid = [];
     var wordList = words;
+    var yes = 0;
+
     for(var i = 0; i < gridSize; i++){
         grid.push([]);
         for(var j = 0; j < gridSize; j++) {
@@ -23,16 +25,17 @@ var createGrid = function (gridSize, words) {
     }
 
     for(i = 0; i < wordList.length; i++){
-        var yes = 0;
         console.log("WORD "+wordList[i]);
         if (!checkWord(gridSize, wordList[i], grid) > 1){
             yes++;
         }
+    }
 
-        if (yes === 3){
-            return grid;
-        }
-        else createGrid(gridSize, wordList);
+    if (yes === 3){
+        return grid;
+    }
+    else if (yes > 3){
+        createGrid(gridSize, wordList);
     }
 };
 
