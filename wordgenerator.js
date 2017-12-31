@@ -46,7 +46,7 @@ function findWord(gridsize, word, grid){
                         }
                     }else if (x1 === x2 && y1 > y2){
                         for (i = y1; i >= y2; i++){
-                            if (grid[x1][y1-i] === gwordSplit[i]) wordToFind += grid[x1][y1-i];
+                            if (grid[x1][y1-i] === wordSplit[i]) wordToFind += grid[x1][y1-i];
                             else wordToFind = '';
                         }
                     }else if (x1 < x2 && y1 === y2){
