@@ -40,6 +40,7 @@ function findWord(gridsize, word, grid){
             for (var x2 = 0; x2 < gridsize; x2++){
                 for (var y2 = 0; y2 < gridsize; y2++){
                     if (searchWord(x1, x2, y1, y2, grid, wordSplit) === word){
+                        console.log("WORD: "+(searchWord(x1, x2, y1, y2, grid, wordSplit)+' word: '+word);
                         count++;
                     }
                 }
