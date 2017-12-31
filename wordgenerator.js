@@ -103,6 +103,8 @@ function searchWord(x1, x2, y1, y2, grid, wordSplit) {
                 wordToFind += grid[x1-i][y1-i];
             }
         }
+    }else {
+        wordToFind = '';
     }
     return wordToFind;
 }
