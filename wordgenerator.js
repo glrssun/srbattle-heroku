@@ -47,6 +47,7 @@ function findWord(gridsize, word, grid){
             }
         }
     }
+    console.log("Count "+count);
     return count;
 }
 
