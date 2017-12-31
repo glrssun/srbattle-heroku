@@ -45,7 +45,10 @@ function findWord(gridsize, word, grid){
                             if (grid[x1][y1+i] === wordSplit[i]){
                                 wordToFind += grid[x1][y1+i];
                                 console.log('is grid'+grid[x1][y1+i]+' word to find '+wordToFind);
-                            } else wordToFind = '';
+                            } else {
+                                wordToFind = '';
+                                break;
+                            }
                         }
                     }else if (x1 === x2 && y1 > y2){
                         for (i = y1; i >= y2; i++){
@@ -53,7 +56,10 @@ function findWord(gridsize, word, grid){
                                 wordToFind += grid[x1][y1-i];
                                 //console.log(grid[x1][y1-i])
                             }
-                            else wordToFind = '';
+                            else {
+                                wordToFind = '';
+                                break;
+                            }
                         }
                     }else if (x1 < x2 && y1 === y2){
                         for (i = x1; i <= x2; i++){
@@ -61,7 +67,10 @@ function findWord(gridsize, word, grid){
                                 wordToFind += grid[x1+i][y1];
                                 //console.log(grid[x1+i][y1]);
                             }
-                            else wordToFind = '';
+                            else {
+                                wordToFind = '';
+                                break;
+                            }
                         }
                     }else if (x1 > x2 && y1 === y2){
                         for (i = x1; i >= x2; i++){
@@ -69,7 +78,10 @@ function findWord(gridsize, word, grid){
                                 wordToFind += grid[x1-i][y1];
                                 //console.log(grid[x1-i][y1]);
                             }
-                            else wordToFind = '';
+                            else {
+                                wordToFind = '';
+                                break;
+                            }
                         }
                     }else if (x1 < x2 && y1 < y2){
                         for (i = x1; i <= x2; i++){
@@ -77,7 +89,10 @@ function findWord(gridsize, word, grid){
                                 wordToFind += grid[x1+i][y1+i];
                                 //console.log(grid[x1+i][y1+i]);
                             }
-                            else wordToFind = '';
+                            else {
+                                wordToFind = '';
+                                break;
+                            }
                         }
                     }else if (x1 < x2 && y1 > y2){
                         for (i = x1; i <= x2; i++){
@@ -85,7 +100,10 @@ function findWord(gridsize, word, grid){
                                 wordToFind += grid[x1+i][y1-i];
                                 //console.log(grid[x1+i][y1-i]);
                             }
-                            else wordToFind = '';
+                            else {
+                                wordToFind = '';
+                                break;
+                            }
                         }
                     }else if (x1 > x2 && y1 < y2){
                         for (i = x1; i >= x2; i++){
@@ -93,7 +111,10 @@ function findWord(gridsize, word, grid){
                                 wordToFind += grid[x1-i][y1+i];
                                 //console.log(grid[x1-i][y1+i]);
                             }
-                            else wordToFind = '';
+                            else {
+                                wordToFind = '';
+                                break;
+                            }
                         }
                     }else if (x1 > x2 && y1 > y2){
                         for (i = x1; i >= x2; i++){
@@ -101,7 +122,10 @@ function findWord(gridsize, word, grid){
                                 wordToFind += grid[x1-i][y1-i];
                                 //console.log(grid[x1-i][y1-i]);
                             }
-                            else wordToFind = '';
+                            else {
+                                wordToFind = '';
+                                break;
+                            }
                         }
                     }
                     //console.log('wordtofind = '+wordToFind+' word = '+word);
