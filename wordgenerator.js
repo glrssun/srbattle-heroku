@@ -26,10 +26,10 @@ var createGrid = function (gridSize, words) {
         console.log("WORD "+wordList[i]);
         if (findWord(gridSize, wordList[i], grid) > 1){
             createGrid(gridSize, wordList);
-        }else {
-            return grid;
         }
     }
+
+    return grid;
 };
 
 function findWord(gridsize, word, grid){
