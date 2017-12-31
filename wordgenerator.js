@@ -44,7 +44,7 @@ function findWord(gridsize, word, grid){
                         for (i = 0; i <= y2-y1; i++){
                             if (grid[x1][y1+i] === wordSplit[i]){
                                 wordToFind += grid[x1][y1+i];
-                                console.log('word to find '+wordToFind);
+                                console.log('word to find horizontal '+wordToFind);
                                 if (word === wordToFind){
                                     count++;
                                 }
@@ -57,7 +57,7 @@ function findWord(gridsize, word, grid){
                         for (i = 0; i <= y1-y2; i++){
                             if (grid[x1][y1-i] === wordSplit[i]){
                                 wordToFind += grid[x1][y1-i];
-                                console.log('word to find '+wordToFind);
+                                console.log('word to find horizontalback '+wordToFind);
                                 if (word === wordToFind){
                                     count++;
                                 }
@@ -70,7 +70,7 @@ function findWord(gridsize, word, grid){
                         for (i = 0; i <= x2-x1; i++){
                             if (grid[x1+i][y1] === wordSplit[i]){
                                 wordToFind += grid[x1+i][y1];
-                                console.log('word to find '+wordToFind);
+                                console.log('word to find vertical'+wordToFind);
                                 if (word === wordToFind){
                                     count++;
                                 }
@@ -83,7 +83,7 @@ function findWord(gridsize, word, grid){
                         for (i = 0; i <= x1-x2; i++){
                             if (grid[x1-i][y1] === wordSplit[i]){
                                 wordToFind += grid[x1-i][y1];
-                                console.log('word to find '+wordToFind);
+                                console.log('word to find vertical back'+wordToFind);
                                 if (word === wordToFind){
                                     count++;
                                 }
@@ -96,7 +96,7 @@ function findWord(gridsize, word, grid){
                         for (i = 0; i <= x2-x1; i++){
                             if (grid[x1+i][y1+i] === wordSplit[i]){
                                 wordToFind += grid[x1+i][y1+i];
-                                console.log('word to find '+wordToFind);
+                                console.log('word to find diagonal to right down'+wordToFind);
                                 if (word === wordToFind){
                                     count++;
                                 }
@@ -109,7 +109,7 @@ function findWord(gridsize, word, grid){
                         for (i = 0; i <= x2-x1; i++){
                             if (grid[x1+i][y1-i] === wordSplit[i]){
                                 wordToFind += grid[x1+i][y1-i];
-                                console.log('word to find '+wordToFind);
+                                console.log('word to find diagonal to left down'+wordToFind);
                                 if (word === wordToFind){
                                     count++;
                                 }
@@ -122,7 +122,7 @@ function findWord(gridsize, word, grid){
                         for (i = 0; i <= x1-x2; i++){
                             if (grid[x1-i][y1+i] === wordSplit[i]){
                                 wordToFind += grid[x1-i][y1+i];
-                                console.log('word to find '+wordToFind);
+                                console.log('word to find diagonal to right up '+wordToFind);
                                 if (word === wordToFind){
                                     count++;
                                 }
@@ -135,7 +135,10 @@ function findWord(gridsize, word, grid){
                         for (i = 0; i <= x1-x2; i++){
                             if (grid[x1-i][y1-i] === wordSplit[i]){
                                 wordToFind += grid[x1-i][y1-i];
-                                console.log('word to find '+wordToFind);
+                                console.log('word to find diagonal to left down'+wordToFind);
+                            }else {
+                                wordToFind = '';
+                                break;
                             }
                         }
                     }
