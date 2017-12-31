@@ -80,10 +80,10 @@ function findWord(gridsize, word, grid){
                             else wordToFind = '';
                         }
                     }
-                }
-                console.log('wordtofind = '+wordToFind+' word = '+word);
-                if (word === wordToFind){
-                    count++;
+                    console.log('wordtofind = '+wordToFind+' word = '+word);
+                    if (word === wordToFind){
+                        count++;
+                    }
                 }
             }
         }
