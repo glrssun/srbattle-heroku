@@ -36,13 +36,11 @@ function findWord(gridsize, word, grid){
         console.log('tis grid'+grid[i].join(''));
     }
     var count = 0;
-    wordSplit = word.split('');
     for (var x1 = 0; x1 < gridsize; x1++){
         for (var y1 = 0; y1 < gridsize; y1++){
             for (var x2 = 0; x2 < gridsize; x2++){
                 for (var y2 = 0; y2 < gridsize; y2++){
-                    if (searchWord(x1, x2, y1, y2, grid, wordSplit) === word){
-                        console.log('WORD: '+searchWord(x1, x2, y1, y2, grid, wordSplit)+' word: '+word);
+                    if (searchWord(x1, x2, y1, y2, grid, word)){
                         count++;
                     }
                 }
@@ -53,60 +51,46 @@ function findWord(gridsize, word, grid){
     return count;
 }
 
-function searchWord(x1, x2, y1, y2, grid, wordSplit) {
+function searchWord(x1, x2, y1, y2, grid, word) {
     var wordToFind = '';
+    var found = false;
     if (x1 === x2 && y1 < y2 ){
         for (i = 0; i <= y2-y1; i++){
-            if (grid[x1][y1+i] === wordSplit[i]) {
-                wordToFind += grid[x1][y1 + i];
-            }
+            wordToFind += grid[x1][y1 + i];
         }
     }else if (x1 === x2 && y1 > y2){
         for (i = 0; i <= y1-y2; i++){
-            if (grid[x1][y1-i] === wordSplit[i]){
-                wordToFind += grid[x1][y1-i];
-            }
+            wordToFind += grid[x1][y1-i];
         }
     }else if (x1 < x2 && y1 === y2){
         for (i = 0; i <= x2-x1; i++){
-            if (grid[x1+i][y1] === wordSplit[i]){
-                wordToFind += grid[x1+i][y1];
-            }
+            wordToFind += grid[x1+i][y1];
         }
     }else if (x1 > x2 && y1 === y2){
         for (i = 0; i <= x1-x2; i++){
-            if (grid[x1-i][y1] === wordSplit[i]){
-                wordToFind += grid[x1-i][y1];
-            }
+            wordToFind += grid[x1-i][y1];
         }
     }else if (x1 < x2 && y1 < y2){
         for (i = 0; i <= x2-x1; i++){
-            if (grid[x1+i][y1+i] === wordSplit[i]){
-                wordToFind += grid[x1+i][y1+i];
-            }
+            wordToFind += grid[x1+i][y1+i];
         }
     }else if (x1 < x2 && y1 > y2){
         for (i = 0; i <= x2-x1; i++){
-            if (grid[x1+i][y1-i] === wordSplit[i]){
-                wordToFind += grid[x1+i][y1-i];
-            }
+            wordToFind += grid[x1+i][y1-i];
         }
     }else if (x1 > x2 && y1 < y2){
         for (i = 0; i <= x1-x2; i++){
-            if (grid[x1-i][y1+i] === wordSplit[i]){
-                wordToFind += grid[x1-i][y1+i];
-            }
+            wordToFind += grid[x1-i][y1+i];
         }
     }else if (x1 > x2 && y1 > y2){
         for (i = 0; i <= x1-x2; i++){
-            if (grid[x1-i][y1-i] === wordSplit[i]){
-                wordToFind += grid[x1-i][y1-i];
-            }
+            wordToFind += grid[x1-i][y1-i];
         }
-    }else {
-        wordToFind = '';
     }
-    return wordToFind;
+    if (wordToFind === word){
+        found = true;
+    }
+    return found;
 }
 
 function placeWord(gridSize, word, grid) {
