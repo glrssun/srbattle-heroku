@@ -25,7 +25,7 @@ var createGrid = function (gridSize, words) {
     for(i = 0; i < wordList.length; i++){
         if (findWord(gridSize, wordList[i], grid) > 1){
             createGrid(gridSize, wordList);
-        } else {
+        }else {
             return grid;
         }
     }
