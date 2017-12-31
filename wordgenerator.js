@@ -35,37 +35,57 @@ function findWord(gridsize, word, grid){
     var count = 0;
     var wordToFind = '';
     wordSplit = word.split('');
-    for (var x = 0; x < gridsize; x++){
-        for (var y = 0; y < gridsize; y++){
-            for (var i = 0; i < wordSplit.length; i++){
-                console.log(" x & y "+x+y+word+" grid : "+grid[x][y]+" word split"+wordSplit[i] );
-                if ((x + i < gridsize) && (y + i < gridsize) && (x - i > 0) && (y - i > 0)){
-                    if ((grid[x + i][y]) === (wordSplit[i])){
-                        wordToFind = wordToFind + grid[x + i][y];
-                    }else if ((grid[x - i][y]) === (wordSplit[i])){
-                        wordToFind = wordToFind + grid[x - i][y];
-                    }else if ((grid[x][y + i]) === (wordSplit[i])){
-                        wordToFind = wordToFind + grid[x][y+i];
-                    }else if ((grid[x][y - i]) === (wordSplit[i])) {
-                        wordToFind = wordToFind + grid[x][y - i];
-                    }else if ((grid[x + i][y + i]) === (wordSplit[i])) {
-                        wordToFind = wordToFind + grid[x + i][y + i];
-                    }else if ((grid[x + i][y - i]) === (wordSplit[i])) {
-                        wordToFind = wordToFind + grid[x + i][y - i];
-                    }else if ((grid[x - i][y - i]) === (wordSplit[i])) {
-                        wordToFind = wordToFind + grid[x - i][y - i];
-                    }else if ((grid[x - i][y + i]) === (wordSplit[i])) {
-                        wordToFind = wordToFind + grid[x - i][y + i];
-                    }else {
-                        findWord(gridsize, word, grid);
-                        break;
+    for (var x1 = 0; x1 < gridsize; x1++){
+        for (var y1 = 0; y1 < gridsize; y1++){
+            for (var x2 = 0; x2 < gridsize; x2++){
+                for (var y2 = 0; y2 < gridsize; y2++){
+                    if (x1 === x2 && y1 < y2 ){
+                        for (i = y1; i <= y2; i++){
+                            if (grid[x1][y1+i] === wordSplit[i]) wordToFind += grid[x1][y1+i];
+                            else wordToFind = '';
+                        }
+                    }else if (x1 === x2 && y1 > y2){
+                        for (i = y1; i >= y2; i++){
+                            if (grid[x1][y1-i] === gwordSplit[i]) wordToFind += grid[x1][y1-i];
+                            else wordToFind = '';
+                        }
+                    }else if (x1 < x2 && y1 === y2){
+                        for (i = x1; i <= x2; i++){
+                            if (grid[x1+i][y1] === wordSplit[i]) wordToFind += grid[x1+i][y1];
+                            else wordToFind = '';
+                        }
+                    }else if (x1 > x2 && y1 === y2){
+                        for (i = x1; i >= x2; i++){
+                            if (grid[x1-i][y1] === wordSplit[i]) wordToFind += grid[x1-i][y1];
+                            else wordToFind = '';
+                        }
+                    }else if (x1 < x2 && y1 < y2){
+                        for (i = x1; i <= x2; i++){
+                            if (grid[x1+i][y1+i] === wordSplit[i]) wordToFind += grid[x1+i][y1+i];
+                            else wordToFind = '';
+                        }
+                    }else if (x1 < x2 && y1 > y2){
+                        for (i = x1; i <= x2; i++){
+                            if (grid[x1+i][y1-i] === wordSplit[i]) wordToFind += grid[x1+i][y1-i];
+                            else wordToFind = '';
+                        }
+                    }else if (x1 > x2 && y1 < y2){
+                        for (i = x1; i >= x2; i++){
+                            if (grid[x1-i][y1+i] === wordSplit[i]) wordToFind += grid[x1-i][y1+i];
+                            else wordToFind = '';
+                        }
+                    }else if (x1 > x2 && y1 > y2){
+                        for (i = x1; i >= x2; i++){
+                            if (grid[x1-i][y1-i] === wordSplit[i]) wordToFind += grid[x1-i][y1-i];
+                            else wordToFind = '';
+                        }
                     }
                 }
+                console.log('wordtofind = '+wordToFind+' word = '+word);
+                if (word === wordToFind){
+                    count++;
+                }
             }
-        }
-        console.log('wordtofind'+wordToFind);
-        if (word === wordToFind){
-            count++;
         }
     }
     return count;
