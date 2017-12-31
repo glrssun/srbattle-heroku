@@ -21,14 +21,14 @@ var createGrid = function (gridSize, words) {
            if(grid[i][j] === '') grid[i][j] = letters[Math.floor(Math.random() * letters.length)];
         }
     }
-
+    /**
     for(i = 0; i < wordList.length; i++){
         console.log("WORD "+wordList[i]);
         if (findWord(gridSize, wordList[i], grid) > 1){
             createGrid(gridSize, wordList);
         }
     }
-
+        **/
     return grid;
 };
 
