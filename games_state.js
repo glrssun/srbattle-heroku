@@ -16,7 +16,7 @@ module.exports = function (socket, io) {
                 var grid = gen.createGrid(11, [res[0].answer1, res[0].answer2, res[0].answer3]);
                 socket.emit('game material', {
                     game_board : grid,
-                    sentence : res[0].sentences,
+                    sentence : res[0].sentence,
                     question1 : res[0].question1,
                     answer1 : res[0].answer1,
                     question2 : res[0].question2,
@@ -52,7 +52,7 @@ module.exports = function (socket, io) {
                         var grid = gen.createGrid(11, [res[0].answer1, res[0].answer2, res[0].answer3]);
                         io.in(room).emit('found match', {
                             game_board: grid,
-                            sentence: res[0].sentences,
+                            sentence: res[0].sentence,
                             question1: res[0].question1,
                             answer1: res[0].answer1,
                             question2: res[0].question2,
@@ -124,7 +124,7 @@ module.exports = function (socket, io) {
                         var grid = gen.createGrid(11, [res[0].answer1, res[0].answer2, res[0].answer3]);
                         io.in(room).emit('versus match ready', {
                             game_board: grid,
-                            sentence: res[0].sentences,
+                            sentence: res[0].sentence,
                             question1: res[0].question1,
                             answer1: res[0].answer1,
                             question2: res[0].question2,

@@ -32,7 +32,7 @@ var createGrid = function (gridSize, words) {
     return grid;
 };
 
-function findWord(gridsize, word, grid){
+function checkWord(gridsize, word, grid){
     for (i =0; i < grid[0].length; i++){
         console.log('tis grid'+grid[i].join(''));
     }
