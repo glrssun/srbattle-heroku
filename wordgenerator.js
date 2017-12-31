@@ -29,10 +29,10 @@ var createGrid = function (gridSize, words) {
             yes++;
         }
 
-        if (yes > 3){
-            createGrid(gridSize, wordList);
+        if (yes === 3){
+            return grid;
         }
-        else return grid;
+        else createGrid(gridSize, wordList);
     }
 };
 
