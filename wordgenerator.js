@@ -30,8 +30,8 @@ var createGrid = function (gridSize, words) {
             yes++;
         }
     }
-
     if (yes === 3){
+        console.log("GGGGGogogoggoog");
         return grid;
     }
     else if (yes > 3){
