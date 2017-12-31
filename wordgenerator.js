@@ -21,15 +21,19 @@ var createGrid = function (gridSize, words) {
            if(grid[i][j] === '') grid[i][j] = letters[Math.floor(Math.random() * letters.length)];
         }
     }
-    /**
+
     for(i = 0; i < wordList.length; i++){
+        var yes = 0;
         console.log("WORD "+wordList[i]);
-        if (findWord(gridSize, wordList[i], grid) > 1){
+        if (!checkWord(gridSize, wordList[i], grid) > 1){
+            yes++;
+        }
+
+        if (yes > 3){
             createGrid(gridSize, wordList);
         }
+        else return grid;
     }
-        **/
-    return grid;
 };
 
 function checkWord(gridsize, word, grid){
