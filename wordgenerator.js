@@ -23,7 +23,7 @@ var createGrid = function (gridSize, words) {
            if(grid[i][j] === '') grid[i][j] = letters[Math.floor(Math.random() * letters.length)];
         }
     }
-
+    /**
     for(i = 0; i < wordList.length; i++){
         console.log("WORD "+wordList[i]);
         if (!checkWord(gridSize, wordList[i], grid) > 1){
@@ -36,6 +36,8 @@ var createGrid = function (gridSize, words) {
     }else {
         return grid;
     }
+    **/
+    return grid;
 };
 
 function checkWord(gridsize, word, grid){
