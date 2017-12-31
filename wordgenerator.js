@@ -23,6 +23,7 @@ var createGrid = function (gridSize, words) {
     }
 
     for(i = 0; i < wordList.length; i++){
+        console.log("WORD "+wordList[i]);
         if (findWord(gridSize, wordList[i], grid) > 1){
             createGrid(gridSize, wordList);
         }else {
