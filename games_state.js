@@ -50,7 +50,7 @@ module.exports = function (socket, io) {
                     if(!err){
                         console.log('Answer number one = '+res[0].answer1);
                         var grid = gen.createGrid(11, [res[0].answer1, res[0].answer2, res[0].answer3]);
-                        socket.emit('game material', {
+                        io.in(room).emit('found match', {
                             game_board: grid,
                             sentence: res[0].sentence,
                             question1: res[0].question1,
@@ -66,6 +66,7 @@ module.exports = function (socket, io) {
                         console.log("Error : "+err);
                     }
                 });
+
             } else {
                 queue.push(socket);
             }
@@ -73,6 +74,7 @@ module.exports = function (socket, io) {
             queue.push(socket);
         }
     }
+
     socket.on('match making', function (data) {
         console.log('user '+socket.id+' want a match '+data.WPM);
         socket.WPM = data.WPM;
