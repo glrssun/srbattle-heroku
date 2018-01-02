@@ -118,11 +118,11 @@ module.exports = function (socket, io) {
                 rooms[peer.id] = room;
                 rooms[socket.id] = room;
                 console.log(room);
-                conn.query("SELECT * FROM game_material OFFSET floor(random()*(select COUNT(*) from game_material)) LIMIT 1", function (err, res) {
+                mongodb.collection("game_material").aggregate( { $sample: { size: 1 } }, function (err, res) {
                     if (!err) {
                         console.log('Answer number one = ' + res[0].answer1);
                         var grid = gen.createGrid(11, [res[0].answer1, res[0].answer2, res[0].answer3]);
-                        io.in(room).emit('versus match ready', {
+                        io.in(room).emit('found match', {
                             game_board: grid,
                             sentence: res[0].sentence,
                             question1: res[0].question1,
@@ -131,10 +131,9 @@ module.exports = function (socket, io) {
                             answer2: res[0].answer2,
                             question3: res[0].question3,
                             answer3: res[0].answer3,
-                            WPM: peer.WPM,
+                            WPM: socket.WPM,
                             player: [socket.username, peer.username]
                         });
-                        console.log("emmiting");
                     } else {
                         console.log("Error : " + err);
                     }
@@ -187,7 +186,12 @@ module.exports = function (socket, io) {
         }
     });
 
-    socket.on('games session', function (data) {
+    socket.on('player answer', function (data) {
+        var room = rooms[socket.id];
+        socket.broadcast.to(room).emit('enemy answer', {pos1 : data.pos1, pos2 : data.pos2});
+    });
+
+    socket.on('player searching', function (data) {
         var room = rooms[socket.id];
         socket.broadcast.to(room).emit('enemy answer', {pos1 : data.pos1, pos2 : data.pos2});
     });
