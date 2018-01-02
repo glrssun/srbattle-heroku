@@ -188,11 +188,13 @@ module.exports = function (socket, io) {
     });
 
     socket.on('player answer', function (data) {
+        console.log('someone answer');
         var room = rooms[socket.id];
         socket.broadcast.to(room).emit('enemy answer', {pos1 : data.pos1, pos2 : data.pos2});
     });
 
     socket.on('player searching', function (data) {
+        console.log('someone searching');
         var room = rooms[socket.id];
         socket.broadcast.to(room).emit('enemy searching', {pos1 : data.pos1, pos2 : data.pos2});
     });
