@@ -72,8 +72,7 @@ module.exports = function (socket, io) {
         } else {
             queue.push(socket);
         }
-    };
-
+    }
     socket.on('match making', function (data) {
         console.log('user '+socket.id+' want a match '+data.WPM);
         socket.WPM = data.WPM;
