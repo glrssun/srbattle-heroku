@@ -194,7 +194,7 @@ module.exports = function (socket, io) {
     });
 
     socket.on('player searching', function (data) {
-        console.log('someone searching');
+        console.log('someone searching'+data.pos1);
         var room = rooms[socket.id];
         socket.broadcast.to(room).emit('enemy searching', {pos1 : data.pos1, pos2 : data.pos2});
     });
