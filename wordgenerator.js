@@ -14,7 +14,7 @@ var createGrid = function (gridSize, words) {
         }
     }
     for(i = 0; i < wordList.length; i++){
-        console.log("try placing word: "+i+" word : "+wordList[i]);
+        //console.log("try placing word: "+i+" word : "+wordList[i]);
         placeWord(gridSize, wordList[i], grid);
     }
 
@@ -42,7 +42,7 @@ var createGrid = function (gridSize, words) {
 
 function checkWord(gridsize, word, grid){
     for (i =0; i < grid[0].length; i++){
-        console.log('tis grid'+grid[i].join(''));
+        //console.log('tis grid'+grid[i].join(''));
     }
     var count = 0;
     for (var x1 = 0; x1 < gridsize; x1++){
@@ -114,7 +114,7 @@ function placeWord(gridSize, word, grid) {
     orientation = orientations[Math.floor(Math.random() * orientations.length)];
 
     if(word.length !== 0){
-        console.log('Word is '+word+' Position y is '+x+' and x is'+y+' while the orientation is +'+orientation);
+        //console.log('Word is '+word+' Position y is '+x+' and x is'+y+' while the orientation is +'+orientation);
         if (orientation === 'horizontal' && !( y + word.length > gridSize)) {
             for (var i = 0; i < word.length; i++) {
                 if (grid[x][y + i] === '' || grid[x][y + i] === word[i]) {
