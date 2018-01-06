@@ -132,7 +132,7 @@ module.exports = function (socket, io) {
                             answer2: res[0].answer2,
                             question3: res[0].question3,
                             answer3: res[0].answer3,
-                            WPM: socket.WPM,
+                            WPM: peer.WPM,
                             player: [socket.username, peer.username]
                         });
                     } else {
