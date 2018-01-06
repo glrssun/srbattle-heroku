@@ -2,7 +2,6 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="3aaaa39a-34ec-4d70-9f12-5bc3012d2a6f" name="Default" comment="&quot;Update server&quot;">
-      <change beforePath="$PROJECT_DIR$/account.js" afterPath="$PROJECT_DIR$/account.js" />
       <change beforePath="$PROJECT_DIR$/games_state.js" afterPath="$PROJECT_DIR$/games_state.js" />
     </list>
     <ignored path="$PROJECT_DIR$/.tmp/" />
@@ -57,21 +56,21 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="games_state.js" pinned="false" current-in-tab="false">
+      <file leaf-file-name="games_state.js" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/games_state.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-1382">
-              <caret line="121" column="51" lean-forward="false" selection-start-line="121" selection-start-column="51" selection-end-line="121" selection-end-column="51" />
+            <state relative-caret-position="170">
+              <caret line="109" column="17" lean-forward="true" selection-start-line="109" selection-start-column="17" selection-end-line="109" selection-end-column="17" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="account.js" pinned="false" current-in-tab="true">
+      <file leaf-file-name="account.js" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/account.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="203">
-              <caret line="69" column="37" lean-forward="false" selection-start-line="69" selection-start-column="32" selection-end-line="69" selection-end-column="37" />
+            <state relative-caret-position="1125">
+              <caret line="67" column="26" lean-forward="true" selection-start-line="67" selection-start-column="26" selection-end-line="67" selection-end-column="26" />
               <folding>
                 <element signature="n#!!doc" expanded="true" />
               </folding>
@@ -136,8 +135,8 @@
         <option value="$PROJECT_DIR$/mongo_connect.js" />
         <option value="$PROJECT_DIR$/package.json" />
         <option value="$PROJECT_DIR$/wordgenerator.js" />
-        <option value="$PROJECT_DIR$/games_state.js" />
         <option value="$PROJECT_DIR$/account.js" />
+        <option value="$PROJECT_DIR$/games_state.js" />
       </list>
     </option>
   </component>
@@ -230,12 +229,12 @@
       <workItem from="1514613464160" duration="10161000" />
       <workItem from="1514633927628" duration="33045000" />
       <workItem from="1514901232171" duration="3131000" />
-      <workItem from="1515209389331" duration="801000" />
+      <workItem from="1515209389331" duration="966000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="82199000" />
+    <option name="totallyTimeSpent" value="82364000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1382" height="784" extended-state="6" />
@@ -693,21 +692,21 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/games_state.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-1382">
-          <caret line="121" column="51" lean-forward="false" selection-start-line="121" selection-start-column="51" selection-end-line="121" selection-end-column="51" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/account.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="203">
-          <caret line="69" column="37" lean-forward="false" selection-start-line="69" selection-start-column="32" selection-end-line="69" selection-end-column="37" />
+        <state relative-caret-position="1125">
+          <caret line="67" column="26" lean-forward="true" selection-start-line="67" selection-start-column="26" selection-end-line="67" selection-end-column="26" />
           <folding>
             <element signature="n#!!doc" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/games_state.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="170">
+          <caret line="109" column="17" lean-forward="true" selection-start-line="109" selection-start-column="17" selection-end-line="109" selection-end-column="17" />
+          <folding />
         </state>
       </provider>
     </entry>
