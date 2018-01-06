@@ -10,10 +10,10 @@ var host = [];
 
 var n = mongodb.collection('game_material').count({});
 var r = Math.floor(Math.random() * n);
-
+console.log(n + r);
 module.exports = function (socket, io) {
     socket.on('request game', function (data) {
-        var result = mongodb.collection('game_material').find({}).limit(1).skip(r);
+        var result = mongodb.collection('game_material').find({}).limit(1).skip(Math.floor((Math.random() * mongodb.collection.count())));
         console.log(result);
         result.toArray(function (err, res) {
             if(!err){
