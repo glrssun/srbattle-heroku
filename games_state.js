@@ -13,7 +13,8 @@ var r = Math.floor(Math.random() * n);
 
 module.exports = function (socket, io) {
     socket.on('request game', function (data) {
-        mongodb.collection('game_material').find({}).limit(1).skip(r).toArray(function (err, res) {
+        var result = mongodb.collection('game_material').find({}).limit(1).skip(r);
+        result.toArray(function (err, res) {
             if(!err){
                 console.log(res);
                 var grid = gen.createGrid(11, [res[0].answer1, res[0].answer2, res[0].answer3]);
