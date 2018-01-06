@@ -24,6 +24,10 @@ mongoConnect.connectToServer( function( err ) {
             console.log('listening on port :'+port);
         });
 
+        setInterval(function() {
+        	http.get("http://srbattle.herokuapp.com");
+        }, 300000);
+
     }
 });
 
