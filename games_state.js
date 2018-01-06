@@ -10,8 +10,7 @@ var host = [];
 
 module.exports = function (socket, io) {
     socket.on('request game', function (data) {
-        collection = mongodb.collection('game_material');
-        mongodb.collection.find().limit(1).skip(Math.floor(Math.random()* db.collection.count())).toArray(function (err, res) {
+        mongodb.collection('game_material').find().limit(1).skip(Math.floor(Math.random()* collection('game_material').myCollection.count())).toArray(function (err, res) {
             if(!err){
                 console.log(res);
                 var grid = gen.createGrid(11, [res[0].answer1, res[0].answer2, res[0].answer3]);
@@ -47,8 +46,7 @@ module.exports = function (socket, io) {
                 //foundmatch
                 //peer.emit('found match', names[socket.id]);
                 //socket.emit('found match', names[peer.id]);
-                collection = mongodb.collection('game_material');
-                mongodb.collection.find().limit(1).skip(Math.floor(Math.random()* db.collection.count())).toArray(function (err, res) {
+                mongodb.collection('game_material').find().limit(1).skip(Math.floor(Math.random()* collection('game_material').myCollection.count())).toArray(function (err, res) {
                     if(!err){
                         console.log('Answer number one = '+res[0].answer1);
                         var grid = gen.createGrid(11, [res[0].answer1, res[0].answer2, res[0].answer3]);
@@ -120,8 +118,7 @@ module.exports = function (socket, io) {
                 rooms[peer.id] = room;
                 rooms[socket.id] = room;
                 console.log(room);
-                collection = mongodb.collection('game_material');
-                mongodb.collection.find().limit(1).skip(Math.floor(Math.random()* db.collection.count())).toArray(function (err, res) {
+                mongodb.collection('game_material').find().limit(1).skip(Math.floor(Math.random()* collection('game_material').myCollection.count())).toArray(function (err, res) {r(Math.random()* db.collection.count())).toArray(function (err, res) {
                     if (!err) {
                         console.log('Answer number one = ' + res[0].answer1);
                         var grid = gen.createGrid(11, [res[0].answer1, res[0].answer2, res[0].answer3]);
