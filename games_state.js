@@ -8,14 +8,11 @@ var queue = [];
 var rooms = {};
 var host = [];
 
-var n = mongodb.collection('game_material').count({});
-var r = Math.floor(Math.random() * n);
-console.log(n + r);
+var col = mongodb.collection('game_material');
+
 module.exports = function (socket, io) {
     socket.on('request game', function (data) {
-        var result = mongodb.collection('game_material').find({}).limit(1).skip(Math.floor((Math.random() * mongodb.collection('game_material').count())));
-        console.log(result);
-        result.toArray(function (err, res) {
+        col.aggregate( [{ $sample: { size: 1 } }], function (err, res) {
             if(!err){
                 var grid = gen.createGrid(11, [res[0].answer1, res[0].answer2, res[0].answer3]);
                 socket.emit('game material', {
@@ -32,6 +29,7 @@ module.exports = function (socket, io) {
             }else {
                 console.log("Error : "+err);
             }
+            mongodb.close();
         });
     });
 
