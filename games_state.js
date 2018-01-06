@@ -29,7 +29,6 @@ module.exports = function (socket, io) {
             }else {
                 console.log("Error : "+err);
             }
-            mongodb.close();
         });
     });
 
