@@ -12,7 +12,7 @@ var col = mongodb.collection('game_material');
 
 module.exports = function (socket, io) {
     socket.on('request game', function (data) {
-        col.aggregate( [{ $sample: { size: 1 } }]).toArray(function (err, res) {
+        col.aggregate([{$sample: { size: 1 }}]).toArray(function (err, res) {
             if(!err){
                 var grid = gen.createGrid(11, [res[0].answer1, res[0].answer2, res[0].answer3]);
                 socket.emit('game material', {
@@ -47,7 +47,7 @@ module.exports = function (socket, io) {
                 //foundmatch
                 //peer.emit('found match', names[socket.id]);
                 //socket.emit('found match', names[peer.id]);
-                mongodb.collection('game_material').find({}).limit(1).skip(r).toArray(function (err, res) {
+                col.aggregate([{$sample: { size: 1 }}]).toArray(function (err, res) {
                     if(!err){
                         console.log('Answer number one = '+res[0].answer1);
                         var grid = gen.createGrid(11, [res[0].answer1, res[0].answer2, res[0].answer3]);
@@ -119,7 +119,7 @@ module.exports = function (socket, io) {
                 rooms[peer.id] = room;
                 rooms[socket.id] = room;
                 console.log(room);
-                mongodb.collection('game_material').find({}).limit(1).skip(r).toArray(function (err, res) {
+                col.aggregate([{$sample: { size: 1 }}]).toArray(function (err, res) {
                     if (!err) {
                         console.log('Answer number one = ' + res[0].answer1);
                         var grid = gen.createGrid(11, [res[0].answer1, res[0].answer2, res[0].answer3]);
