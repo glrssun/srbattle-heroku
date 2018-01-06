@@ -10,7 +10,7 @@ var md5 = require('md5');
 module.exports = function (socket) {
     socket.on('register', function (data) {
         var query = {username: data.username};
-        mongodb.collection("users").find(query).toArray(function (err, res) {
+        mongodb.users.find([query], function (err, res) {
         	if (!err){
                 if (res.length !== 0){
                     console.log(socket.id);
@@ -26,7 +26,7 @@ module.exports = function (socket) {
                                 modified: today
                             },function (err) {
                                 if (!err){
-                                    mongodb.collection("users").find(query).toArray(function (err, res) {
+                                    mongodb.users.find([query], function (err, res) {
                                         if (!err){
                                             console.log(res[0].username);
                                             socket.emit('register result', {userId : res[0]._id, username: res[0].username});
@@ -51,7 +51,7 @@ module.exports = function (socket) {
 
     socket.on('login', function (data) {
         var query = {username: data.username, password: md5(data.password)};
-        mongodb.collection("users").find(query).toArray(function (err, res) {
+        mongodb.users.find([query], function (err, res) {
             if (!err){
                 if (res.length !== 0 ){
                     socket.emit('login result', {userId : res[0]._id, username: res[0].username});
@@ -67,7 +67,7 @@ module.exports = function (socket) {
     socket.on('check user', function (data) {
         if(data !== null){
             var query = {username: data};
-            mongodb.collection("users").find(query).toArray(function (err, res) {
+            mongodb.users.find([query], function (err, res) {
                 if (!err) {
                     if (res.length !== 0){
                         console.log(socket.id);
