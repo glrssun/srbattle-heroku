@@ -9,7 +9,7 @@ var rooms = {};
 var host = [];
 
 var query = { state: 'OK' };
-var n = db.collection('game_material').count(query);
+var n = mongodb.collection('game_material').count(query);
 var r = Math.floor(Math.random() * n);
 
 module.exports = function (socket, io) {
