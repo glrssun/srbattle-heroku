@@ -12,7 +12,7 @@ module.exports = function (socket, io) {
     socket.on('request game', function (data) {
         mongodb.collection('game_material').aggregate({ $sample: { size: 1 } }).toArray(function (err, res) {
             if(!err){
-                console.log('Answer number one = '+res[0].answer1);
+                console.log(res);
                 var grid = gen.createGrid(11, [res[0].answer1, res[0].answer2, res[0].answer3]);
                 socket.emit('game material', {
                     game_board : grid,
