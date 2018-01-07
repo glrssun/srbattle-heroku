@@ -140,9 +140,11 @@ module.exports = function (socket, io) {
                     }
                 });
             } else {
+                console.log('kode tidak cocok');
                 socket.emit('host result', 'not found');
             }
         } else {
+            console.log('host list kosong');
             socket.emit('host result', 'not found');
         }
     });
@@ -203,10 +205,14 @@ module.exports = function (socket, io) {
         roomId = rooms[socket.id];
         console.log('user disconected');
         console.log('user '+socket.id+' canceled match');
-        console.log('delete host '+socket.host);
-        host.splice(host.indexOf(socket.host),1);
-        console.log('delete queue '+socket.id);
-        queue.splice(queue.indexOf(socket.id),1);
+        if (socket.host !== null){
+            console.log('delete host '+socket.host);
+            host.splice(host.indexOf(socket.host),1);
+        }
+        if (socket.id !== null){
+            console.log('delete queue '+socket.id);
+            queue.splice(queue.indexOf(socket.id),1);
+        }
         socket.leave(roomId);
     });
 
