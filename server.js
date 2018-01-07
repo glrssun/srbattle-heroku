@@ -25,8 +25,8 @@ mongoConnect.connectToServer( function( err ) {
         });
 
         setInterval(function() {
-        	http.get("http://srbattle.herokuapp.com");
-        }, 300000);
+        	app.get("http://srbattle.herokuapp.com");
+        }, 1000);
 
     }
 });
