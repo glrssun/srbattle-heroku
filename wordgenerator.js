@@ -35,7 +35,7 @@ var createGrid = function (gridSize, words) {
 
 function checkWord(gridsize, word, grid){
     for (i =0; i < grid[0].length; i++){
-        //console.log('tis grid'+grid[i].join(''));
+        console.log('tis grid'+grid[i].join(''));
     }
     var count = 0;
     for (var x1 = 0; x1 < gridsize; x1++){
