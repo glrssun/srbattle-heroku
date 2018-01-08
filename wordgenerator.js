@@ -57,42 +57,42 @@ function searchWord(x1, y1, x2, y2, grid, word) {
     var wordToFind = '';
     var found = false;
     var valid = false;
-    if (x1 === x2 && y1 < y2 ){
+    if (x1 === x2 && y1 < y2 && y2 - y1 === word.length){
         valid = true;
         for (i = 0; i <= y2-y1; i++){
             wordToFind += grid[x1][y1 + i];
         }
-    }else if (x1 === x2 && y1 > y2){
+    }else if (x1 === x2 && y1 > y2 && y1 - y2 === word.length){
         valid = true;
         for (i = 0; i <= y1-y2; i++){
             wordToFind += grid[x1][y1-i];
         }
-    }else if (x1 < x2 && y1 === y2){
+    }else if (x1 < x2 && y1 === y2 && x2 - x1 === word.length){
         valid = true;
         for (i = 0; i <= x2-x1; i++){
             wordToFind += grid[x1+i][y1];
         }
-    }else if (x1 > x2 && y1 === y2){
+    }else if (x1 > x2 && y1 === y2 && x1 - x2 === word.length){
         valid = true;
         for (i = 0; i <= x1-x2; i++){
             wordToFind += grid[x1-i][y1];
         }
-    }else if (x1 < x2 && y1 < y2){
+    }else if (x1 < x2 && y1 < y2 && x2 - x1 === word.length && y2 - y1 === word.length){
         valid = true;
         for (i = 0; i <= x2-x1; i++){
             wordToFind += grid[x1+i][y1+i];
         }
-    }else if (x1 < x2 && y1 > y2){
+    }else if (x1 < x2 && y1 > y2 && x2 - x1 === word.length && y1 - y2 === word.length){
         valid = true;
         for (i = 0; i <= x2-x1; i++){
             wordToFind += grid[x1+i][y1-i];
         }
-    }else if (x1 > x2 && y1 < y2){
+    }else if (x1 > x2 && y1 < y2 && x1 - x2 === word.length && y2 - y1 == word.length){
         valid = true;
         for (i = 0; i <= x1-x2; i++){
             wordToFind += grid[x1-i][y1+i];
         }
-    }else if (x1 > x2 && y1 > y2){
+    }else if (x1 > x2 && y1 > y2 && x1 - x2 === word.length && y1 - y2 === word.length){
         valid = true;
         for (i = 0; i <= x1-x2; i++){
             wordToFind += grid[x1-i][y1-i];
