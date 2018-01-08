@@ -42,7 +42,7 @@ function checkWord(gridsize, word, grid){
         for (var y1 = 0; y1 < gridsize; y1++){
             for (var x2 = 0; x2 < gridsize; x2++){
                 for (var y2 = 0; y2 < gridsize; y2++){
-                    if (searchWord(x1, x2, y1, y2, grid, word)){
+                    if (searchWord(x1, y1, x2, y2, grid, word)){
                         count++;
                     }
                 }
@@ -53,7 +53,7 @@ function checkWord(gridsize, word, grid){
     return count;
 }
 
-function searchWord(x1, x2, y1, y2, grid, word) {
+function searchWord(x1, y1, x2, y2, grid, word) {
     var wordToFind = '';
     var found = false;
     var valid = false;
@@ -102,7 +102,7 @@ function searchWord(x1, x2, y1, y2, grid, word) {
     if (!valid) return;
 
     if (wordToFind === word){
-        console.log(wordToFind+'------------'+x1+x2+'   '+y1+y2);
+        console.log(wordToFind+'------------'+x1+y1+'   '+x2+y2);
         found = true;
     }
     return found;
