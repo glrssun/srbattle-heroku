@@ -205,11 +205,11 @@ module.exports = function (socket, io) {
         roomId = rooms[socket.id];
         console.log('user disconected');
         console.log('user '+socket.id+' canceled match');
-        if (socket.host !== null){
+        if (socket.host){
             console.log('delete host '+socket.host);
             host.splice(host.indexOf(socket.host),1);
         }
-        if (socket.id !== null){
+        if (socket.id){
             console.log('delete queue '+socket.id);
             queue.splice(queue.indexOf(socket.id),1);
         }
