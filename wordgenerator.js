@@ -102,6 +102,7 @@ function searchWord(x1, x2, y1, y2, grid, word) {
     if (!valid) return;
 
     if (wordToFind === word){
+        console.log(wordToFind+'------------'+x1+x2+'   '+y1+y2);
         found = true;
     }
     return found;
