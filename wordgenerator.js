@@ -5,7 +5,6 @@ var letters = 'QWERTYUIOPASDFGHJKLZXCVBNM';
 var createGrid = function (gridSize, words) {
     var grid = [];
     var wordList = words;
-    var yes = 0;
 
     for(var i = 0; i < gridSize; i++){
         grid.push([]);
@@ -23,20 +22,14 @@ var createGrid = function (gridSize, words) {
            if(grid[i][j] === '') grid[i][j] = letters[Math.floor(Math.random() * letters.length)];
         }
     }
-    /**
+
     for(i = 0; i < wordList.length; i++){
         console.log("WORD "+wordList[i]);
-        if (!checkWord(gridSize, wordList[i], grid) > 1){
-            yes++;
+        if (checkWord(gridSize, wordList[i], grid) > 1){
+            createGrid(gridSize, wordList);
         }
     }
 
-    if (yes < 3){
-        createGrid(gridSize, wordList);
-    }else {
-        return grid;
-    }
-    **/
     return grid;
 };
 
@@ -63,39 +56,51 @@ function checkWord(gridsize, word, grid){
 function searchWord(x1, x2, y1, y2, grid, word) {
     var wordToFind = '';
     var found = false;
+    var valid = false;
     if (x1 === x2 && y1 < y2 ){
+        valid = true;
         for (i = 0; i <= y2-y1; i++){
             wordToFind += grid[x1][y1 + i];
         }
     }else if (x1 === x2 && y1 > y2){
+        valid = true;
         for (i = 0; i <= y1-y2; i++){
             wordToFind += grid[x1][y1-i];
         }
     }else if (x1 < x2 && y1 === y2){
+        valid = true;
         for (i = 0; i <= x2-x1; i++){
             wordToFind += grid[x1+i][y1];
         }
     }else if (x1 > x2 && y1 === y2){
+        valid = true;
         for (i = 0; i <= x1-x2; i++){
             wordToFind += grid[x1-i][y1];
         }
     }else if (x1 < x2 && y1 < y2){
+        valid = true;
         for (i = 0; i <= x2-x1; i++){
             wordToFind += grid[x1+i][y1+i];
         }
     }else if (x1 < x2 && y1 > y2){
+        valid = true;
         for (i = 0; i <= x2-x1; i++){
             wordToFind += grid[x1+i][y1-i];
         }
     }else if (x1 > x2 && y1 < y2){
+        valid = true;
         for (i = 0; i <= x1-x2; i++){
             wordToFind += grid[x1-i][y1+i];
         }
     }else if (x1 > x2 && y1 > y2){
+        valid = true;
         for (i = 0; i <= x1-x2; i++){
             wordToFind += grid[x1-i][y1-i];
         }
     }
+
+    if (!valid) return;
+
     if (wordToFind === word){
         found = true;
     }

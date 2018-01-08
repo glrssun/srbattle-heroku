@@ -2,8 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="3aaaa39a-34ec-4d70-9f12-5bc3012d2a6f" name="Default" comment="&quot;Update server&quot;">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change beforePath="$PROJECT_DIR$/games_state.js" afterPath="$PROJECT_DIR$/games_state.js" />
+      <change beforePath="$PROJECT_DIR$/wordgenerator.js" afterPath="$PROJECT_DIR$/wordgenerator.js" />
     </list>
     <ignored path="$PROJECT_DIR$/.tmp/" />
     <ignored path="$PROJECT_DIR$/temp/" />
@@ -47,20 +46,20 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="wordgenerator.js" pinned="false" current-in-tab="false">
+      <file leaf-file-name="wordgenerator.js" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/wordgenerator.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1972">
-              <caret line="116" column="17" lean-forward="false" selection-start-line="116" selection-start-column="10" selection-end-line="116" selection-end-column="17" />
+            <state relative-caret-position="442">
+              <caret line="28" column="12" lean-forward="true" selection-start-line="28" selection-start-column="12" selection-end-line="28" selection-end-column="43" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="games_state.js" pinned="false" current-in-tab="true">
+      <file leaf-file-name="games_state.js" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/games_state.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="403">
+            <state relative-caret-position="556">
               <caret line="211" column="21" lean-forward="false" selection-start-line="211" selection-start-column="21" selection-end-line="211" selection-end-column="21" />
               <folding />
             </state>
@@ -136,9 +135,9 @@
         <option value="$PROJECT_DIR$/mongo_connect.js" />
         <option value="$PROJECT_DIR$/package.json" />
         <option value="$PROJECT_DIR$/account.js" />
-        <option value="$PROJECT_DIR$/wordgenerator.js" />
         <option value="$PROJECT_DIR$/server.js" />
         <option value="$PROJECT_DIR$/games_state.js" />
+        <option value="$PROJECT_DIR$/wordgenerator.js" />
       </list>
     </option>
   </component>
@@ -235,12 +234,12 @@
       <workItem from="1515335060482" duration="991000" />
       <workItem from="1515345789483" duration="1241000" />
       <workItem from="1515390435559" duration="496000" />
-      <workItem from="1515391300180" duration="629000" />
+      <workItem from="1515391300180" duration="1570000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="96008000" />
+    <option name="totallyTimeSpent" value="96949000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1382" height="784" extended-state="6" />
@@ -682,14 +681,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/wordgenerator.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1972">
-          <caret line="116" column="17" lean-forward="false" selection-start-line="116" selection-start-column="10" selection-end-line="116" selection-end-column="17" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/server.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="493">
@@ -700,7 +691,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/games_state.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="403">
+        <state relative-caret-position="556">
           <caret line="211" column="21" lean-forward="false" selection-start-line="211" selection-start-column="21" selection-end-line="211" selection-end-column="21" />
           <folding />
         </state>
@@ -713,6 +704,14 @@
           <folding>
             <element signature="n#!!doc" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/wordgenerator.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="442">
+          <caret line="28" column="12" lean-forward="true" selection-start-line="28" selection-start-column="12" selection-end-line="28" selection-end-column="43" />
+          <folding />
         </state>
       </provider>
     </entry>
