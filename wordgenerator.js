@@ -17,17 +17,7 @@ var createGrid = function (gridSize, words) {
         //console.log("try placing word: "+i+" word : "+wordList[i]);
         placeWord(gridSize, wordList[i], grid);
     }
-
-    if (!isOverlapWordExist(grid)){
-        for(i = 0; i < gridSize; i++){
-            for(j = 0; j < gridSize; j++) {
-                if(grid[i][j] === '') grid[i][j] = letters[Math.floor(Math.random() * letters.length)];
-            }
-        }
-    } else {
-        createGrid(gridSize, wordList);
-    }
-
+    
     for(i = 0; i < wordList.length; i++){
         console.log("WORD "+wordList[i]);
         if (checkNoDuplicateWord(gridSize, wordList[i], grid) > 1){
@@ -135,25 +125,6 @@ function checkNoDuplicateWord(gridsize, word, grid){
 
     console.log("Count "+count);
     return count;
-}
-
-function isOverlapWordExist(grid) {
-    var count = 0;
-    for (var x = 0; x < grid.length; x++){
-        for (var y = 0; y < grid.length; y++){
-            if (grid[x][y] !== ''){
-                if (grid[x][y + 1] !== '' && grid[x][y - 1] === '')
-                    count++;
-                if (grid[x + 1][y] !== '' && grid[x -1 ][y] === '')
-                    count++;
-                if (grid[x + 1][y + 1] !== '' && grid[x - 1][y - 1] === '')
-                    count++;
-                if (grid[x + 1][y - 1] !== '' && grid[x - 1][y + 1] === '')
-                    count++;
-            }
-        }
-    }
-    return (count < 3)
 }
 
 /** Bruteforece Method
