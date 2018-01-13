@@ -258,6 +258,7 @@ function placeWord(gridSize, word, grid) {
                 okPosX.push(x);
                 okPosY.push(y + i);
             } else {
+                console.log('not ok');
                 placeWord(gridSize, word, grid);
                 break;
             }
@@ -268,6 +269,7 @@ function placeWord(gridSize, word, grid) {
                 okPosX.push(x + i);
                 okPosY.push(y);
             } else {
+                console.log('not ok');
                 placeWord(gridSize, word, grid);
                 break;
             }
@@ -278,6 +280,7 @@ function placeWord(gridSize, word, grid) {
                 okPosX.push(x + i);
                 okPosY.push(y + i);
             } else {
+                console.log('not ok');
                 placeWord(gridSize, word, grid);
                 break;
             }
@@ -288,6 +291,7 @@ function placeWord(gridSize, word, grid) {
                 okPosX.push(x - i);
                 okPosY.push(y + i);
             } else {
+                console.log('not ok');
                 placeWord(gridSize, word, grid);
                 break;
             }
