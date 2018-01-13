@@ -253,7 +253,7 @@ function placeWord(gridSize, word, grid) {
     var okPosX = [];
     var okPosY = [];
 
-    if (orientation === 'vertical' && !( y + word.length > gridSize)) {
+    if (orientation === 'horizontal' && !( y + word.length > gridSize)) {
         for (var i = 0; i < word.length; i++) {
             if (grid[x][y + i] === '' || grid[x][y + i] === wordtoPlace[i]) {
                 okPosX.push(x); okPosY.push(y + i);
@@ -264,7 +264,7 @@ function placeWord(gridSize, word, grid) {
                 break;
             }
         }
-    } else if (orientation === 'horizontal' && !( x + word.length > gridSize)) {
+    } else if (orientation === 'vertical' && !( x + word.length > gridSize)) {
         for (i = 0; i < word.length; i++) {
             if (grid[x + i][y] === '' || grid[x + i][y] === wordtoPlace[i]) {
                 okPosX.push(x + i); okPosY.push(y);
