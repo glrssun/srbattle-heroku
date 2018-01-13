@@ -1,6 +1,5 @@
 
-//var orientations = ['horizontal', 'vertical', 'diagonal', 'diagonalUp'];
-var orientations = ['horizontal'];
+var orientations = ['horizontal', 'vertical', 'diagonal', 'diagonalUp'];
 var letters = 'QWERTYUIOPASDFGHJKLZXCVBNM';
 
 var createGrid = function (gridSize, words) {
@@ -18,10 +17,14 @@ var createGrid = function (gridSize, words) {
         placeWord(gridSize, wordList[i], grid);
     }
 
-    for(i = 0; i < gridSize; i++){
-        for(j = 0; j < gridSize; j++) {
-            //if(grid[i][j] === '') grid[i][j] = letters[Math.floor(Math.random() * letters.length)];
+    if (!isOverlapWordExist(grid, gridSize)){
+        for(i = 0; i < gridSize; i++){
+            for(j = 0; j < gridSize; j++) {
+                if(grid[i][j] === '') grid[i][j] = letters[Math.floor(Math.random() * letters.length)];
+            }
         }
+    }else {
+        createGrid(gridSize, wordList);
     }
 
     for(i = 0; i < wordList.length; i++){
