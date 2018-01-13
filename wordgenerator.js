@@ -4,8 +4,9 @@ var letters = 'QWERTYUIOPASDFGHJKLZXCVBNM';
 
 var createGrid = function (gridSize, words) {
     grid =  generateGrid(gridSize, words);
-    for (var i = 0; i < gridSize; i++){
-        console.log(grid[i].join());
+    if (grid == null){
+        generateGrid(gridSize, words);
+        return;
     }
     return grid;
 };
