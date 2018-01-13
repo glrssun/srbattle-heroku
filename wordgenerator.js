@@ -1,5 +1,6 @@
 
-var orientations = ['horizontal', 'vertical', 'diagonal', 'diagonalUp'];
+//var orientations = ['horizontal', 'vertical', 'diagonal', 'diagonalUp'];
+var orientations = ['horizontal'];
 var letters = 'QWERTYUIOPASDFGHJKLZXCVBNM';
 
 var createGrid = function (gridSize, words) {
