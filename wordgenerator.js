@@ -35,7 +35,7 @@ var createGrid = function (gridSize, words) {
 
 function isOverlapWordExist(grid, gridSize) {
     count = 0;
-    for (x = 0; x < gridSize, x++){
+    for (x = 0; x < gridSize; x++){
         for (y = 0; y < gridSize; y++){
             if (grid[x][y] !== ''){
                 if (x - 1 >= 0 && x + 1 < gridSize){
