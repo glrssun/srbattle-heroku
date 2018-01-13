@@ -14,8 +14,8 @@ module.exports = function (socket, io) {
     socket.on('request game', function (data) {
         col.aggregate([{$sample: { size: 1 }}]).toArray(function (err, res) {
             if(!err){
-                //var grid = gen.createGrid(11, [res[0].answer1, res[0].answer2, res[0].answer3]);
-                var grid = gen.createGrid(11, ["HUTANAH", "TANAHUN", "HANTUTAN"]);
+                var grid = gen.createGrid(11, [res[0].answer1, res[0].answer2, res[0].answer3]);
+                //var grid = gen.createGrid(11, ["HUTANAH", "TANAHUN", "HANTUTAN"]);
                 socket.emit('game material', {
                     game_board : grid,
                     sentence : res[0].sentence,
