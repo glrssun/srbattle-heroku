@@ -294,10 +294,10 @@ function placeWord(gridSize, word, grid) {
         }else{
             placeWord(gridSize, word, grid);
         }
-        for (i = 0; i < word.length; i++){
-            console.log('word '+word+' orientation '+orientation+' pos x = '+okPosX[i]+' pos y = '+okPosY[i]);
-            grid[okPosX[i]][okPosY[i]] = word[i];
-        }
+    }
+    for (i = 0; i < word.length; i++){
+        console.log('word '+word+' orientation '+orientation+' pos x = '+okPosX[i]+' pos y = '+okPosY[i]);
+        grid[okPosX[i]][okPosY[i]] = word[i];
     }
 }
 
