@@ -241,6 +241,7 @@ function searchWord(x1, y1, x2, y2, grid, word) {
 function placeWord(gridSize, word, grid) {
     var okPosX = [];
     var okPosY = [];
+
     var x = Math.floor(Math.random() * gridSize);
     var y = Math.floor(Math.random() * gridSize);
     if (Math.random() >= 0.5)
@@ -294,11 +295,13 @@ function placeWord(gridSize, word, grid) {
         }else{
             placeWord(gridSize, word, grid);
         }
+        for (i = 0; i < word.length; i++){
+            console.log('word '+word+' orientation '+orientation+' pos x = '+okPosX[i]+' pos y = '+okPosY[i]);
+            grid[okPosX[i]][okPosY[i]] = word[i];
+        }
+        console.log('------------------');
     }
-    for (i = 0; i < word.length; i++){
-        console.log('word '+word+' orientation '+orientation+' pos x = '+okPosX[i]+' pos y = '+okPosY[i]);
-        grid[okPosX[i]][okPosY[i]] = word[i];
-    }
+
 }
 
 
