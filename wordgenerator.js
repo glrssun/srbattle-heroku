@@ -24,21 +24,16 @@ var createGrid = function (gridSize, words) {
         }
     }
 
-
     for(i = 0; i < wordList.length; i++){
         console.log("WORD "+wordList[i]);
         if (checkNoDuplicateWord(gridSize, wordList[i], grid) > 1){
             createGrid(gridSize, wordList);
         }
     }
-
     return grid;
 };
 
-function checkNoDuplicateWord(gridsize, word, grid){
-    for (i =0; i < grid[0].length; i++){
-        console.log('tis grid'+grid[i].join(''));
-    }
+function checkNoDuplicateWord(gridSize, word, grid){
     wordToFind = '';
     word.split('');
     var count = 0;
@@ -56,7 +51,7 @@ function checkNoDuplicateWord(gridsize, word, grid){
     }
      **/
     x = 0; y = 0;
-    while (x < gridsize && y < gridsize){
+    while (x < gridSize && y < gridSize){
         if (grid[x][y] === wordToFind[0]){
             for (i = 0; i < word.length; i++){
                 if (grid[x][y + i] === word[i] && y + i < gridsize){
@@ -195,8 +190,6 @@ function searchWord(x1, y1, x2, y2, grid, word) {
 function placeWord(gridSize, word, grid) {
     var x = Math.floor(Math.random() * gridSize);
     var y = Math.floor(Math.random() * gridSize);
-    complete = false;
-
     if (Math.random() >= 0.5)
         word = word.split('').reverse().join('');
 
