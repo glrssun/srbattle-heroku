@@ -241,9 +241,6 @@ function searchWord(x1, y1, x2, y2, grid, word) {
  **/
 
 function placeWord(gridSize, word, grid) {
-    var okPosX = [];
-    var okPosY = [];
-
     var x = Math.floor(Math.random() * gridSize);
     var y = Math.floor(Math.random() * gridSize);
     if (Math.random() >= 0.5)
@@ -251,6 +248,9 @@ function placeWord(gridSize, word, grid) {
 
     wordtoPlace = word.split('');
     orientation = orientations[Math.floor(Math.random() * orientations.length)];
+
+    var okPosX = [];
+    var okPosY = [];
 
     if (orientation === 'vertical' && !( y + word.length > gridSize)) {
         for (var i = 0; i < word.length; i++) {
@@ -262,7 +262,6 @@ function placeWord(gridSize, word, grid) {
                 break;
             }
         }
-
     } else if (orientation === 'horizontal' && !( x + word.length > gridSize)) {
         for (i = 0; i < word.length; i++) {
             if (grid[x + i][y] === '' || grid[x + i][y] === wordtoPlace[i]) {
