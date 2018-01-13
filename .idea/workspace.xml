@@ -1,9 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="3aaaa39a-34ec-4d70-9f12-5bc3012d2a6f" name="Default" comment="&quot;Update server&quot;">
-      <change beforePath="$PROJECT_DIR$/wordgenerator.js" afterPath="$PROJECT_DIR$/wordgenerator.js" />
-    </list>
+    <list default="true" id="3aaaa39a-34ec-4d70-9f12-5bc3012d2a6f" name="Default" comment="&quot;Update server&quot;" />
     <ignored path="$PROJECT_DIR$/.tmp/" />
     <ignored path="$PROJECT_DIR$/temp/" />
     <ignored path="$PROJECT_DIR$/tmp/" />
@@ -49,8 +47,8 @@
       <file leaf-file-name="wordgenerator.js" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/wordgenerator.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="51">
-              <caret line="105" column="29" lean-forward="true" selection-start-line="105" selection-start-column="29" selection-end-line="105" selection-end-column="29" />
+            <state relative-caret-position="221">
+              <caret line="82" column="26" lean-forward="false" selection-start-line="82" selection-start-column="25" selection-end-line="82" selection-end-column="26" />
               <folding />
             </state>
           </provider>
@@ -261,12 +259,12 @@
       <workItem from="1515391300180" duration="4279000" />
       <workItem from="1515458747669" duration="131000" />
       <workItem from="1515735982168" duration="195000" />
-      <workItem from="1515814794530" duration="9801000" />
+      <workItem from="1515814794530" duration="10423000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="109785000" />
+    <option name="totallyTimeSpent" value="110407000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1382" height="784" extended-state="6" />
@@ -736,8 +734,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/wordgenerator.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="51">
-          <caret line="105" column="29" lean-forward="true" selection-start-line="105" selection-start-column="29" selection-end-line="105" selection-end-column="29" />
+        <state relative-caret-position="221">
+          <caret line="82" column="26" lean-forward="false" selection-start-line="82" selection-start-column="25" selection-end-line="82" selection-end-column="26" />
           <folding />
         </state>
       </provider>
