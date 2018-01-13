@@ -52,6 +52,7 @@ function isOverlapWordExist(grid, gridSize) {
     for (x = 0; x < gridSize; x++){
         for (y = 0; y < gridSize; y++){
             if (grid[x][y] !== ''){
+                console.log(grid[x][y]);
                 if (x - 1 >= 0 && x + 1 < gridSize){
                     if (grid[x + 1][y] !== '' && grid[x - 1][y] === '')
                         count++;
