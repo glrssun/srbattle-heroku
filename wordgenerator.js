@@ -21,7 +21,7 @@ var createGrid = function (gridSize, words) {
     if (!isOverlapWordExist(grid)){
         for(i = 0; i < gridSize; i++){
             for(j = 0; j < gridSize; j++) {
-                if(grid[i][j] === '') grid[i][j] = letters[Math.floor(Math.random() * letters.length)];
+                //if(grid[i][j] === '') grid[i][j] = letters[Math.floor(Math.random() * letters.length)];
             }
         }
     } else {
@@ -142,14 +142,20 @@ function isOverlapWordExist(grid) {
     for (var x = 0; x < grid.length; x++){
         for (var y = 0; y < grid.length; y++){
             if (grid[x][y] !== ''){
-                if (grid[x][y + 1] !== '' && grid[x][y - 1] === '')
-                    count++;
-                if (grid[x + 1][y] !== '' && grid[x -1 ][y] === '')
-                    count++;
-                if (grid[x + 1][y + 1] !== '' && grid[x - 1][y - 1] === '')
-                    count++;
-                if (grid[x + 1][y - 1] !== '' && grid[x - 1][y + 1] === '')
-                    count++;
+                if (y + 1 < grid.size && y - 1 >= 0){
+                    if (grid[x][y + 1] !== '' && grid[x][y - 1] === '')
+                        count++;
+                }
+                if (x + 1 < grid.size && x - 1 >= 0){
+                    if (grid[x + 1][y] !== '' && grid[x - 1][y] === '')
+                        count++;
+                }
+                if (x + 1 < grid.size && x - 1 >= 0 && y + 1 < grid.size && y - 1 >= 0){
+                    if (grid[x + 1][y + 1] !== '' && grid[x - 1][y - 1] === '')
+                        count++;
+                    if (grid[x + 1][y - 1] !== '' && grid[x - 1][y + 1] === '')
+                        count++;
+                }
             }
         }
     }
