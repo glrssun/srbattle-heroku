@@ -296,6 +296,9 @@ function placeWord(gridSize, word, grid) {
                 break;
             }
         }
+    } else {
+        console.log('not ok');
+        placeWord(gridSize, word, grid);
     }
 
     for (i = 0; i < wordtoPlace.length; i++){
