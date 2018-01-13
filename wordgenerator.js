@@ -22,7 +22,7 @@ var createGrid = function (gridSize, words) {
         console.log('check overlapping');
         for(i = 0; i < gridSize; i++){
             for(j = 0; j < gridSize; j++) {
-                if(grid[i][j] === '') grid[i][j] = letters[Math.floor(Math.random() * letters.length)];
+                //if(grid[i][j] === '') grid[i][j] = letters[Math.floor(Math.random() * letters.length)];
             }
         }
     }else {
