@@ -3,6 +3,7 @@ var orientations = ['horizontal', 'vertical', 'diagonal', 'diagonalUp'];
 var letters = 'QWERTYUIOPASDFGHJKLZXCVBNM';
 
 var createGrid = function (gridSize, words) {
+    console.log('creating grid');
     var grid = [];
     var wordList = words;
 
@@ -21,7 +22,6 @@ var createGrid = function (gridSize, words) {
     if (isOverlapWordExist(grid, gridSize)){
         createGrid(gridSize, wordList);
     }else {
-        console.log('check overlapping');
         for(i = 0; i < gridSize; i++){
             for(j = 0; j < gridSize; j++) {
                 if(grid[i][j] === '') grid[i][j] = letters[Math.floor(Math.random() * letters.length)];
@@ -36,10 +36,10 @@ var createGrid = function (gridSize, words) {
         }
         return grid;
     }
-
 };
 
 function isOverlapWordExist(grid, gridSize) {
+    console.log('check overlapping');
     count = 0;
     for (x = 0; x < gridSize; x++){
         for (y = 0; y < gridSize; y++){
@@ -61,8 +61,7 @@ function isOverlapWordExist(grid, gridSize) {
             }
         }
     }
-    overlap = count < 3;
-    return overlap;
+    return count < 3;
 }
 
 function checkNoDuplicateWord(gridSize, word, grid){
