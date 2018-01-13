@@ -69,6 +69,7 @@ function isOverlapWordExist(grid, gridSize) {
             }
         }
     }
+    console.log('Count ='+count);
     return count < 3;
 }
 
