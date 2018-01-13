@@ -258,6 +258,8 @@ function placeWord(gridSize, word, grid) {
             if (grid[x][y + i] === '' || grid[x][y + i] === wordtoPlace[i]) {
                 okPosX.push(x); okPosY.push(y + i);
             } else {
+                okPosX = [];
+                okPosY = [];
                 placeWord(gridSize, word, grid);
                 break;
             }
@@ -267,6 +269,8 @@ function placeWord(gridSize, word, grid) {
             if (grid[x + i][y] === '' || grid[x + i][y] === wordtoPlace[i]) {
                 okPosX.push(x + i); okPosY.push(y);
             } else {
+                okPosX = [];
+                okPosY = [];
                 placeWord(gridSize, word, grid);
                 break;
             }
@@ -276,6 +280,8 @@ function placeWord(gridSize, word, grid) {
             if (grid[x + i][y + i] === '' || grid[x + i][y + i] === wordtoPlace[i]) {
                 okPosX.push(x + i); okPosY.push(y + i);
             } else {
+                okPosX = [];
+                okPosY = [];
                 placeWord(gridSize, word, grid);
                 break;
             }
@@ -285,11 +291,15 @@ function placeWord(gridSize, word, grid) {
             if (grid[x - i][y + i] === '' || grid[x - i][y + i] === wordtoPlace[i]) {
                 okPosX.push(x - i); okPosY.push(y + i);
             } else {
+                okPosX = [];
+                okPosY = [];
                 placeWord(gridSize, word, grid);
                 break;
             }
         }
     } else {
+        okPosX = [];
+        okPosY = [];
         placeWord(gridSize, word, grid);
     }
 
