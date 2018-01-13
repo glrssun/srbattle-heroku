@@ -14,10 +14,12 @@ var createGrid = function (gridSize, words) {
     }
 
     for(i = 0; i < wordList.length; i++){
+        console.log('place word '+wordList[i]);
         placeWord(gridSize, wordList[i], grid);
     }
 
     if (!isOverlapWordExist(grid, gridSize)){
+        console.log('check overlapping');
         for(i = 0; i < gridSize; i++){
             for(j = 0; j < gridSize; j++) {
                 if(grid[i][j] === '') grid[i][j] = letters[Math.floor(Math.random() * letters.length)];
@@ -297,8 +299,7 @@ function placeWord(gridSize, word, grid) {
 
     for (i = 0; i < word.length; i++){
         console.log('word '+word+' orientation '+orientation+' pos x = '+okPosX[i]+' pos y = '+okPosY[i]);
-        if (okPosY.length > 0 && okPosX > 0)
-            grid[okPosX[i]][okPosY[i]] = wordtoPlace[i];
+        grid[okPosX[i]][okPosY[i]] = wordtoPlace[i];
     }
     console.log('------------------');
 }
