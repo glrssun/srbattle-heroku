@@ -60,7 +60,8 @@ function isOverlapWordExist(grid, gridSize) {
             }
         }
     }
-    return (count < 3);
+    overlap = count < 3;
+    return overlap;
 }
 
 function checkNoDuplicateWord(gridSize, word, grid){
