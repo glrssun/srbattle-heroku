@@ -242,7 +242,6 @@ function searchWord(x1, y1, x2, y2, grid, word) {
  **/
 
 function placeWord(gridSize, word, grid) {
-    console.log('place again'+ word);
     var x = Math.floor(Math.random() * gridSize);
     var y = Math.floor(Math.random() * gridSize);
     if (Math.random() >= 0.5)
@@ -258,9 +257,7 @@ function placeWord(gridSize, word, grid) {
         for (var i = 0; i < word.length; i++) {
             if (grid[x][y + i] === '' || grid[x][y + i] === wordtoPlace[i]) {
                 okPosX.push(x); okPosY.push(y + i);
-                console.log('ok');
             } else {
-                console.log('not ok');
                 placeWord(gridSize, word, grid);
                 break;
             }
@@ -269,9 +266,7 @@ function placeWord(gridSize, word, grid) {
         for (i = 0; i < word.length; i++) {
             if (grid[x + i][y] === '' || grid[x + i][y] === wordtoPlace[i]) {
                 okPosX.push(x + i); okPosY.push(y);
-                console.log('ok');
             } else {
-                console.log('not ok');
                 placeWord(gridSize, word, grid);
                 break;
             }
@@ -280,9 +275,7 @@ function placeWord(gridSize, word, grid) {
         for (i = 0; i < word.length; i++) {
             if (grid[x + i][y + i] === '' || grid[x + i][y + i] === wordtoPlace[i]) {
                 okPosX.push(x + i); okPosY.push(y + i);
-                console.log('ok');
             } else {
-                console.log('not ok');
                 placeWord(gridSize, word, grid);
                 break;
             }
@@ -291,23 +284,18 @@ function placeWord(gridSize, word, grid) {
         for (i = 0; i < word.length; i++) {
             if (grid[x - i][y + i] === '' || grid[x - i][y + i] === wordtoPlace[i]) {
                 okPosX.push(x - i); okPosY.push(y + i);
-                console.log('ok');
             } else {
-                console.log('not ok');
                 placeWord(gridSize, word, grid);
                 break;
             }
         }
     } else {
-        console.log('not ok');
         placeWord(gridSize, word, grid);
     }
 
     for (i = 0; i < okPosX.length; i++){
-        console.log('word '+word+' orientation '+x+y+orientation+' pos x = '+okPosX[i]+' pos y = '+okPosY[i]);
         grid[okPosX[i]][okPosY[i]] = wordtoPlace[i];
     }
-    console.log('------------------');
 }
 
 
