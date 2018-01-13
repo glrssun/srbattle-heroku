@@ -299,7 +299,7 @@ function placeWord(gridSize, word, grid) {
     }
 
     for (i = 0; i < wordtoPlace.length; i++){
-        console.log('word '+word+' orientation '+orientation+' pos x = '+okPosX[i]+' pos y = '+okPosY[i]);
+        console.log('word '+word+' orientation '+x+y+orientation+' pos x = '+okPosX[i]+' pos y = '+okPosY[i]);
         grid[okPosX[i]][okPosY[i]] = wordtoPlace[i];
     }
     console.log('------------------');
