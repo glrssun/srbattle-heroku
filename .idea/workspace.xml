@@ -2,7 +2,6 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="3aaaa39a-34ec-4d70-9f12-5bc3012d2a6f" name="Default" comment="&quot;Update server&quot;">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change beforePath="$PROJECT_DIR$/wordgenerator.js" afterPath="$PROJECT_DIR$/wordgenerator.js" />
     </list>
     <ignored path="$PROJECT_DIR$/.tmp/" />
@@ -50,8 +49,8 @@
       <file leaf-file-name="wordgenerator.js" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/wordgenerator.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-2992">
-              <caret line="19" column="4" lean-forward="false" selection-start-line="19" selection-start-column="4" selection-end-line="19" selection-end-column="4" />
+            <state relative-caret-position="85">
+              <caret line="137" column="1" lean-forward="true" selection-start-line="137" selection-start-column="1" selection-end-line="137" selection-end-column="1" />
               <folding />
             </state>
           </provider>
@@ -261,12 +260,12 @@
       <workItem from="1515391300180" duration="4279000" />
       <workItem from="1515458747669" duration="131000" />
       <workItem from="1515735982168" duration="195000" />
-      <workItem from="1515814794530" duration="6357000" />
+      <workItem from="1515814794530" duration="7010000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="106341000" />
+    <option name="totallyTimeSpent" value="106994000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1382" height="784" extended-state="6" />
@@ -736,8 +735,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/wordgenerator.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-2992">
-          <caret line="19" column="4" lean-forward="false" selection-start-line="19" selection-start-column="4" selection-end-line="19" selection-end-column="4" />
+        <state relative-caret-position="85">
+          <caret line="137" column="1" lean-forward="true" selection-start-line="137" selection-start-column="1" selection-end-line="137" selection-end-column="1" />
           <folding />
         </state>
       </provider>
