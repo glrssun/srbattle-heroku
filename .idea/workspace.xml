@@ -50,7 +50,7 @@
         <entry file="file://$PROJECT_DIR$/wordgenerator.js">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="451">
-              <caret line="291" column="17" lean-forward="true" selection-start-line="291" selection-start-column="17" selection-end-line="291" selection-end-column="17" />
+              <caret line="297" column="67" lean-forward="false" selection-start-line="297" selection-start-column="67" selection-end-line="297" selection-end-column="67" />
               <folding />
             </state>
           </provider>
@@ -261,12 +261,12 @@
       <workItem from="1515391300180" duration="4279000" />
       <workItem from="1515458747669" duration="131000" />
       <workItem from="1515735982168" duration="195000" />
-      <workItem from="1515814794530" duration="15098000" />
+      <workItem from="1515814794530" duration="15328000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="115082000" />
+    <option name="totallyTimeSpent" value="115312000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1382" height="784" extended-state="6" />
@@ -737,7 +737,7 @@
     <entry file="file://$PROJECT_DIR$/wordgenerator.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="451">
-          <caret line="291" column="17" lean-forward="true" selection-start-line="291" selection-start-column="17" selection-end-line="291" selection-end-column="17" />
+          <caret line="297" column="67" lean-forward="false" selection-start-line="297" selection-start-column="67" selection-end-line="297" selection-end-column="67" />
           <folding />
         </state>
       </provider>
