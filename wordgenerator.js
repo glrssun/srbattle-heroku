@@ -221,7 +221,8 @@ function placeWord(gridSize, word, grid) {
 
     if(word.length !== 0){
         //console.log('Word is '+word+' Position y is '+x+' and x is'+y+' while the orientation is +'+orientation);
-        if (orientation === 'horizontal' && !( y + word.length > gridSize)) {
+        if (orientation === 'vertical' && !( y + word.length > gridSize)) {
+            var okPos = [];
             for (var i = 0; i < word.length; i++) {
                 if (grid[x][y + i] === '' || grid[x][y + i] === word[i]) {
                     grid[x][y + i] = word[i];
@@ -231,7 +232,7 @@ function placeWord(gridSize, word, grid) {
                 }
             }
 
-        } else if (orientation === 'vertical' && !( x + word.length > gridSize)) {
+        } else if (orientation === 'horizontal' && !( x + word.length > gridSize)) {
             for (i = 0; i < word.length; i++) {
                 if (grid[x + i][y] === '' || grid[x + i][y] === word[i]) {
                     grid[x + i][y] = word[i];
