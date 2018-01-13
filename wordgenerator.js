@@ -293,8 +293,6 @@ function placeWord(gridSize, word, grid) {
                 break;
             }
         }
-    }else{
-        placeWord(gridSize, word, grid);
     }
 
     for (i = 0; i < wordtoPlace.length; i++){
