@@ -213,6 +213,7 @@ function placeWord(gridSize, word, grid) {
                     break;
                 }
             }
+
         } else if (orientation === 'vertical' && !( x + word.length > gridSize)) {
             for (i = 0; i < word.length; i++) {
                 if (grid[x + i][y] === '' || grid[x + i][y] === word[i]) {
