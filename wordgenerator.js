@@ -285,7 +285,7 @@ function placeWord(gridSize, word, grid) {
             for (i = 0; i < word.length; i++) {
                 if (grid[x - i][y + i] === '' || grid[x - i][y + i] === word[i]) {
                     okPosX.push(x - i);
-                    okPosY.push(y - i);
+                    okPosY.push(y + i);
                 } else {
                     placeWord(gridSize, word, grid);
                     break;
