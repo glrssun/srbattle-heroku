@@ -27,16 +27,17 @@ var createGrid = function (gridSize, words) {
                 if(grid[i][j] === '') grid[i][j] = letters[Math.floor(Math.random() * letters.length)];
             }
         }
-    }
-
-    for(i = 0; i < wordList.length; i++){
-        console.log("WORD "+wordList[i]);
-        if (checkNoDuplicateWord(gridSize, wordList[i], grid) > 1 && checkNoDuplicateWord(gridSize, wordList[i], grid) < 1){
-            createGrid(gridSize, wordList);
-            break;
+        for(i = 0; i < wordList.length(); i++){
+            console.log("WORD "+wordList[i]);
+            if (checkNoDuplicateWord(gridSize, wordList[i], grid) > 1 && checkNoDuplicateWord(gridSize, wordList[i], grid) < 1){
+                createGrid(gridSize, wordList);
+                break;
+            } else {
+                return grid;
+            }
         }
     }
-    return grid;
+
 };
 
 function isOverlapWordExist(grid, gridSize) {
