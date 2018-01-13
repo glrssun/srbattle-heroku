@@ -15,7 +15,7 @@ module.exports = function (socket, io) {
         col.aggregate([{$sample: { size: 1 }}]).toArray(function (err, res) {
             if(!err){
                 //var grid = gen.createGrid(11, [res[0].answer1, res[0].answer2, res[0].answer3]);
-                var grid = gen.createGrid(11, ['GENTENG', 'NGETAN', 'TANDUK']);
+                var grid = gen.createGrid(11, ['TANDA', 'HUTAN', 'TANI']);
                 socket.emit('game material', {
                     game_board : grid,
                     sentence : res[0].sentence,

@@ -54,7 +54,7 @@ function checkNoDuplicateWord(gridSize, word, grid){
         if (grid[x][y] === word[0]){
             wordToFind = '';
             for (i = 0; i < word.length; i++){
-                if (grid[x][y + i] === word[i] && y + i < gridsize){
+                if (grid[x][y + i] === word[i] && y + i < gridSize){
                     wordToFind+= grid[x][y + i];
                     if (wordToFind === word){
                         count++;
@@ -72,7 +72,7 @@ function checkNoDuplicateWord(gridSize, word, grid){
             }
             wordToFind = '';
             for (i = 0; i < word.length; i++){
-                if (grid[x + i][y] === word[i] && x + i < gridsize){
+                if (grid[x + i][y] === word[i] && x + i < gridSize){
                     wordToFind+= grid[x + i][y];
                     if (wordToFind === word){
                         count++;
@@ -90,7 +90,7 @@ function checkNoDuplicateWord(gridSize, word, grid){
             }
             wordToFind = '';
             for (i = 0; i < word.length; i++){
-                if (grid[x + i][y + i] === word[i] && x + i < gridsize && y + i < gridsize){
+                if (grid[x + i][y + i] === word[i] && x + i < gridSize && y + i < gridSize){
                     wordToFind+= grid[x + i][y + i];
                     if (wordToFind === word){
                         count++;
@@ -99,7 +99,7 @@ function checkNoDuplicateWord(gridSize, word, grid){
             }
             wordToFind = '';
             for (i = 0; i < word.length; i++){
-                if (grid[x + i][y - i] === word[i] && x + i < gridsize && y - i >= 0){
+                if (grid[x + i][y - i] === word[i] && x + i < gridSize && y - i >= 0){
                     wordToFind+= grid[x + i][y - i];
                     if (wordToFind === word){
                         count++;
