@@ -49,8 +49,8 @@
       <file leaf-file-name="wordgenerator.js" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/wordgenerator.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="306">
-              <caret line="24" column="16" lean-forward="false" selection-start-line="24" selection-start-column="16" selection-end-line="24" selection-end-column="16" />
+            <state relative-caret-position="187">
+              <caret line="260" column="48" lean-forward="false" selection-start-line="260" selection-start-column="48" selection-end-line="260" selection-end-column="48" />
               <folding />
             </state>
           </provider>
@@ -262,12 +262,12 @@
       <workItem from="1515391300180" duration="4279000" />
       <workItem from="1515458747669" duration="131000" />
       <workItem from="1515735982168" duration="195000" />
-      <workItem from="1515814794530" duration="19995000" />
+      <workItem from="1515814794530" duration="20076000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="119979000" />
+    <option name="totallyTimeSpent" value="120060000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1382" height="784" extended-state="6" />
@@ -323,14 +323,6 @@
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
-      <breakpoints>
-        <line-breakpoint enabled="true" type="javascript">
-          <url>file://$PROJECT_DIR$/wordgenerator.js</url>
-          <line>50</line>
-          <properties lambdaOrdinal="-1" />
-          <option name="timeStamp" value="2" />
-        </line-breakpoint>
-      </breakpoints>
       <option name="time" value="3" />
     </breakpoint-manager>
     <watches-manager />
@@ -745,8 +737,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/wordgenerator.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="306">
-          <caret line="24" column="16" lean-forward="false" selection-start-line="24" selection-start-column="16" selection-end-line="24" selection-end-column="16" />
+        <state relative-caret-position="187">
+          <caret line="260" column="48" lean-forward="false" selection-start-line="260" selection-start-column="48" selection-end-line="260" selection-end-column="48" />
           <folding />
         </state>
       </provider>

@@ -259,7 +259,6 @@ function placeWord(gridSize, word, grid) {
                 okPosX.push(x); okPosY.push(y + i);
             } else {
                 placeWord(gridSize, word, grid);
-                break;
             }
         }
     } else if (orientation === 'vertical' && !( x + word.length > gridSize)) {
@@ -268,7 +267,6 @@ function placeWord(gridSize, word, grid) {
                 okPosX.push(x + i); okPosY.push(y);
             } else {
                 placeWord(gridSize, word, grid);
-                break;
             }
         }
     } else if (orientation === 'diagonal' && !((x + word.length > gridSize) || (y + word.length > gridSize))) {
@@ -277,7 +275,6 @@ function placeWord(gridSize, word, grid) {
                 okPosX.push(x + i); okPosY.push(y + i);
             } else {
                 placeWord(gridSize, word, grid);
-                break;
             }
         }
     } else if (orientation === 'diagonalUp' && !((x - word.length < 0) || (y + word.length > gridSize))) {
@@ -286,7 +283,6 @@ function placeWord(gridSize, word, grid) {
                 okPosX.push(x - i); okPosY.push(y + i);
             } else {
                 placeWord(gridSize, word, grid);
-                break;
             }
         }
     } else {
