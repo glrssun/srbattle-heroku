@@ -120,7 +120,7 @@ function checkNoDuplicateWord(gridSize, word, grid){
 
         }
         y++;
-        if (y >= gridsize){
+        if (y >= gridSize){
             x++; y = 0;
         }
     }
