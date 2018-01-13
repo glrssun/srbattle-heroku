@@ -32,11 +32,10 @@ var createGrid = function (gridSize, words) {
             if (checkNoDuplicateWord(gridSize, wordList[i], grid) > 1 && checkNoDuplicateWord(gridSize, wordList[i], grid) < 1){
                 createGrid(gridSize, wordList);
                 break;
-            } else {
-                return grid;
             }
         }
     }
+    return grid;
 
 };
 
