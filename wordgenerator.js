@@ -34,8 +34,8 @@ var createGrid = function (gridSize, words) {
                 break;
             }
         }
+        return grid;
     }
-    return grid;
 
 };
 
