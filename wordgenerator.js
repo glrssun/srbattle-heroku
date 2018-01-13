@@ -241,6 +241,7 @@ function searchWord(x1, y1, x2, y2, grid, word) {
  **/
 
 function placeWord(gridSize, word, grid) {
+    console.log('place again'+ word);
     var x = Math.floor(Math.random() * gridSize);
     var y = Math.floor(Math.random() * gridSize);
     if (Math.random() >= 0.5)
