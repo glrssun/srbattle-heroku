@@ -130,7 +130,7 @@ function checkNoDuplicateWord(gridSize, word, grid){
             }
             wordToFind = '';
             for (i = 0; i < word.length; i++){
-                if (x + i >= 0 && y + i >= 0){
+                if (x - i >= 0 && y - i >= 0){
                     if (grid[x - i][y - i] === word[i]){
                         wordToFind = wordToFind + grid[x - i][y - i];
                         if (wordToFind === word){
