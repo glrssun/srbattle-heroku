@@ -3,8 +3,11 @@ var orientations = ['horizontal', 'vertical', 'diagonal', 'diagonalUp'];
 var letters = 'QWERTYUIOPASDFGHJKLZXCVBNM';
 
 var createGrid = function (gridSize, words) {
-    return generateGrid(gridSize, words);
-
+    grid =  generateGrid(gridSize, words);
+    for (var i = 0; i < gridSize; i++){
+        console.log(grid[i].join());
+    }
+    return grid;
 };
 
 function generateGrid(gridSize, words) {
