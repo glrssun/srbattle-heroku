@@ -33,6 +33,31 @@ var createGrid = function (gridSize, words) {
     return grid;
 };
 
+function isOverlapWordExist(grid, gridSize) {
+    count = 0;
+    for (x = 0; x < gridSize, x++){
+        for (y = 0; y < gridSize; y++){
+            if (grid[x][y] !== ''){
+                if (x - 1 >= 0 && x + 1 < gridSize){
+                    if (grid[x + 1][y] !== '' && grid[x - 1][y] === '')
+                        count++;
+                }
+                if (y - 1 >= 0 && y + 1 < gridSize){
+                    if (grid[x][y + 1] !== '' && grid[x][y - 1] === '')
+                        count++;
+                }
+                if (x - 1 >= 0 && x + 1 < gridSize && y - 1 >= 0 && y + 1 < gridSize){
+                    if (grid[x + 1][y + 1] !== '' && grid[x - 1][y - 1] === '')
+                        count++;
+                    if (grid[x + 1][y - 1] !== '' && grid[x - 1][y + 1] === '')
+                        count++;
+                }
+            }
+        }
+    }
+    return (count < 3);
+}
+
 function checkNoDuplicateWord(gridSize, word, grid){
     word.split('');
     var count = 0;
