@@ -34,7 +34,6 @@ var createGrid = function (gridSize, words) {
 };
 
 function checkNoDuplicateWord(gridSize, word, grid){
-    wordToFind = '';
     word.split('');
     var count = 0;
     /**
@@ -52,7 +51,8 @@ function checkNoDuplicateWord(gridSize, word, grid){
      **/
     x = 0; y = 0;
     while (x < gridSize && y < gridSize){
-        if (grid[x][y] === wordToFind[0]){
+        if (grid[x][y] === word[0]){
+            wordToFind = '';
             for (i = 0; i < word.length; i++){
                 if (grid[x][y + i] === word[i] && y + i < gridsize){
                     wordToFind+= grid[x][y + i];
@@ -61,6 +61,7 @@ function checkNoDuplicateWord(gridSize, word, grid){
                     }
                 } else break;
             }
+            wordToFind = '';
             for (i = 0; i < word.length; i++){
                 if (grid[x][y - i] === word[i] && y - i >= 0){
                     wordToFind+= grid[x][y - i];
@@ -69,6 +70,7 @@ function checkNoDuplicateWord(gridSize, word, grid){
                     }
                 } else break;
             }
+            wordToFind = '';
             for (i = 0; i < word.length; i++){
                 if (grid[x + i][y] === word[i] && x + i < gridsize){
                     wordToFind+= grid[x + i][y];
@@ -77,6 +79,7 @@ function checkNoDuplicateWord(gridSize, word, grid){
                     }
                 } else break;
             }
+            wordToFind = '';
             for (i = 0; i < word.length; i++){
                 if (grid[x - i][y] === word[i] && x - i >= 0){
                     wordToFind+= grid[x - i][y];
@@ -85,6 +88,7 @@ function checkNoDuplicateWord(gridSize, word, grid){
                     }
                 } else break;
             }
+            wordToFind = '';
             for (i = 0; i < word.length; i++){
                 if (grid[x + i][y + i] === word[i] && x + i < gridsize && y + i < gridsize){
                     wordToFind+= grid[x + i][y + i];
@@ -93,6 +97,7 @@ function checkNoDuplicateWord(gridSize, word, grid){
                     }
                 } else break;
             }
+            wordToFind = '';
             for (i = 0; i < word.length; i++){
                 if (grid[x + i][y - i] === word[i] && x + i < gridsize && y - i >= 0){
                     wordToFind+= grid[x + i][y - i];
@@ -101,6 +106,7 @@ function checkNoDuplicateWord(gridSize, word, grid){
                     }
                 } else break;
             }
+            wordToFind = '';
             for (i = 0; i < word.length; i++){
                 if (grid[x - i][y + i] === word[i] && x - i >= 0 && y + i < gridsize){
                     wordToFind+= grid[x - i][y + i];
@@ -109,6 +115,7 @@ function checkNoDuplicateWord(gridSize, word, grid){
                     }
                 } else break;
             }
+            wordToFind = '';
             for (i = 0; i < word.length; i++){
                 if (grid[x - i][y - i] === word[i] && x + i >= 0 && y + i >= 0){
                     wordToFind+= grid[x - i][y - i];
