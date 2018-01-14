@@ -52,19 +52,19 @@ function isOverlapWordExist(grid, gridSize) {
     for (x = 0; x < gridSize; x++){
         for (y = 0; y < gridSize; y++){
             if (grid[x][y] !== ''){
-                if (( x + 1 < gridSize && grid[x + 1][y] !== '' ) && (x - 1 === -1 || grid[x - 1][y] === '' )){
+                if (( x + 1 < gridSize && grid[x + 1][y] !== '' ) && (x - 1 === -1 || (x - 1 >= 0 && grid[x - 1][y] === '' )){
                     console.log(grid[x][y]);
                     count++;
                 }
-                if (( y + 1 < gridSize && grid[x][y + 1] !== '' ) && (y - 1 === - 1 || grid[x][y - 1] === '')){
+                if (( y + 1 < gridSize && grid[x][y + 1] !== '' ) && (y - 1 === -1 || (y - 1 >= 0 && grid[x][y - 1] === '')){
                     console.log(grid[x][y]);
                     count++;
                 }
-                if (((x + 1 < gridSize && y + 1 < gridSize ) && grid[x + 1][y + 1] !== '' ) && ((x - 1 === -1 && y - 1 === -1) || grid[x - 1][y - 1] === '')){
+                if (((x + 1 < gridSize && y + 1 < gridSize ) && grid[x + 1][y + 1] !== '' ) && ((x - 1 === -1 && y - 1 === -1) || ((x - 1 >= 0 && y - 1 >= 0) && grid[x - 1][y - 1] === ''))){
                     console.log(grid[x][y]);
                     count++;
                 }
-                if (((x + 1 < gridSize && y - 1 >= 0 ) && grid[x + 1][y - 1] !== '' )  && (( x - 1 === -1 && y - 1 === -1) || grid[x - 1][y + 1] === '')){
+                if (((x + 1 < gridSize && y - 1 >= 0 ) && grid[x + 1][y - 1] !== '' )  && (( x - 1 === -1 && y - 1 === -1) || ((x - 1 >= 0 && y + 1 < gridSize) && grid[x - 1][y + 1] === ''))){
                     console.log(grid[x][y]);
                     count++;
                 }
