@@ -5,10 +5,10 @@ var letters = 'QWERTYUIOPASDFGHJKLZXCVBNM';
 var createGrid = function (gridSize, words) {
     grid =  generateGrid(gridSize, words);
     if (grid == null){
-        generateGrid(gridSize, words);
-        return;
+        return generateGrid(gridSize, words);
+    }else{
+        return grid;
     }
-    return grid;
 };
 
 function generateGrid(gridSize, words) {
@@ -28,7 +28,7 @@ function generateGrid(gridSize, words) {
     }
 
     if (isOverlapWordExist(grid, gridSize)){
-        generateGrid(gridSize, wordList);
+        return generateGrid(gridSize, wordList);
     }else {
         for(i = 0; i < gridSize; i++){
             for(j = 0; j < gridSize; j++) {
@@ -38,11 +38,11 @@ function generateGrid(gridSize, words) {
         for(i = 0; i < wordList.length; i++){
             console.log("WORD "+wordList[i]);
             if (checkNoDuplicateWord(gridSize, wordList[i], grid) > 1 && checkNoDuplicateWord(gridSize, wordList[i], grid) < 1){
-                generateGrid(gridSize, wordList);
-                return;
+                return generateGrid(gridSize, wordList);
+            } else {
+                return grid;
             }
         }
-        return grid;
     }
 }
 
