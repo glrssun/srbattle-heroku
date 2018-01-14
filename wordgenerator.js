@@ -61,12 +61,16 @@ function isOverlapWordExist(grid, gridSize) {
                     count++;
                 }
                 if (((x + 1 < gridSize && y + 1 < gridSize ) && grid[x + 1][y + 1] !== '' ) && ((x - 1 === -1 && y - 1 === -1) || ((x - 1 >= 0 && y - 1 >= 0) && grid[x - 1][y - 1] === ''))){
-                    console.log(grid[x][y]);
-                    count++;
+                    if (((x + 2 < gridSize && y + 2 < gridSize ) && grid[x + 2][y + 2] !== '' ) && ((x - 2 < 0 && y - 2 < 0) || ((x - 2 >= 0 && y - 2 >= 0) && grid[x - 2][y - 2] === ''))){
+                        console.log(grid[x][y]);
+                        count++;
+                    }
                 }
                 if (((x + 1 < gridSize && y - 1 >= 0 ) && grid[x + 1][y - 1] !== '' )  && (( x - 1 === -1 && y - 1 === -1) || ((x - 1 >= 0 && y + 1 < gridSize) && grid[x - 1][y + 1] === ''))){
-                    console.log(grid[x][y]);
-                    count++;
+                    if (((x + 2 < gridSize && y - 2 >= 0 ) && grid[x + 2][y - 2] !== '' )  && (( x - 2 < 0 && y - 2 < 0) || ((x - 2 >= 0 && y + 2 < gridSize) && grid[x - 2][y + 2] === ''))){
+                        console.log(grid[x][y]);
+                        count++;
+                    }
                 }
             }
         }
