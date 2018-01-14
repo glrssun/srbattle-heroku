@@ -46,19 +46,23 @@ function generateGrid(gridSize, words) {
     }
 }
 
-function isOverlapWordExist(grid, gridSize) {
+function isOverlapWordExist(grid, gridSize, words) {
     console.log('check overlapping');
     count = 0;
     for (x = 0; x < gridSize; x++){
         for (y = 0; y < gridSize; y++){
             if (grid[x][y] !== ''){
                 if (( x + 1 < gridSize && grid[x + 1][y] !== '' ) && (x - 1 === -1 || (x - 1 >= 0 && grid[x - 1][y] === '' ))){
-                    console.log(grid[x][y]);
-                    count++;
+                    if (( x + 2 < gridSize && grid[x + 2][y] !== '' ) && (x - 2 < 0 || (x - 2 >= 0 && grid[x - 2][y] === '' ))){
+                        console.log(grid[x][y]);
+                        count++;
+                    }
                 }
                 if (( y + 1 < gridSize && grid[x][y + 1] !== '' ) && (y - 1 === -1 || (y - 1 >= 0 && grid[x][y - 1] === ''))){
-                    console.log(grid[x][y]);
-                    count++;
+                    if (( y + 2 < gridSize && grid[x][y + 2] !== '' ) && (y - 2 < 0 || (y - 2 >= 0 && grid[x][y - 2] === ''))){
+                        console.log(grid[x][y]);
+                        count++;
+                    }
                 }
                 if (((x + 1 < gridSize && y + 1 < gridSize ) && grid[x + 1][y + 1] !== '' ) && ((x - 1 === -1 && y - 1 === -1) || ((x - 1 >= 0 && y - 1 >= 0) && grid[x - 1][y - 1] === ''))){
                     if (((x + 2 < gridSize && y + 2 < gridSize ) && grid[x + 2][y + 2] !== '' ) && ((x - 2 < 0 && y - 2 < 0) || ((x - 2 >= 0 && y - 2 >= 0) && grid[x - 2][y - 2] === ''))){
