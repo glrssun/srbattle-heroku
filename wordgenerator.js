@@ -39,10 +39,9 @@ function generateGrid(gridSize, words) {
             console.log("WORD "+wordList[i]);
             if (checkNoDuplicateWord(gridSize, wordList[i], grid) > 1 && checkNoDuplicateWord(gridSize, wordList[i], grid) < 1){
                 return generateGrid(gridSize, wordList);
-            } else {
-                return grid;
             }
         }
+        return grid;
     }
 }
 
