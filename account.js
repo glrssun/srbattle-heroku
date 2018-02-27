@@ -28,7 +28,7 @@ module.exports = function (socket) {
                                 if (!err){
                                     mongodb.collection('users').find(query).toArray(function (err, res) {
                                         if (!err){
-                                            console.log(res[0].username);
+                                            console.log(res[0].username+'success');
                                             socket.emit('register result', {userId : res[0]._id, username: res[0].username});
                                         } else{
                                             console.log("Error select user: "+err);
