@@ -12,7 +12,7 @@ module.exports = function (socket) {
         var query = {username: data.username};
         mongodb.collection('users').find(query, function (err, res) {
         	if (!err){
-                if (res.length !== 0){
+                if (res){
                     console.log(res);
                     socket.emit('register result', 'exist');
                 }else {
@@ -53,7 +53,7 @@ module.exports = function (socket) {
         var query = {username: data.username, password: md5(data.password)};
         mongodb.collection('users').find(query, function (err, res) {
             if (!err){
-                if (res.length !== 0 ){
+                if (res.length !== 0){
                     socket.emit('login result', {userId : res[0]._id, username: res[0].username});
                 }else {
                     socket.emit('login result', 'failed');
@@ -69,7 +69,7 @@ module.exports = function (socket) {
             var query = {username: data};
             mongodb.collection('users').find(query, function (err, res) {
                 if (!err) {
-                    if (res.length !== 0){
+                    if (res[0].username == data.username){
                         console.log(socket.id);
                         console.log("yes");
                         socket.emit('verify user', 'user verified');
