@@ -12,7 +12,7 @@ module.exports = function (socket) {
         var query = {username: data.username};
         mongodb.collection('users').find(query, function (err, res) {
         	if (!err){
-                if (res){
+                if (res[0].username == data.username){
                     console.log(res);
                     socket.emit('register result', 'exist');
                 }else {
