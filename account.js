@@ -13,7 +13,7 @@ module.exports = function (socket) {
         mongodb.collection('users').find(query, function (err, res) {
         	if (!err){
                 if (res.length !== 0){
-                    console.log(socket.id);
+                    console.log(res[0].username);
                     socket.emit('register result', 'exist');
                 }else {
                     autoIncrement.getNextSequence(mongodb, "users", function (err, seqRes) {
