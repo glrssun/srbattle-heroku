@@ -158,10 +158,10 @@ module.exports = function (socket, io) {
         socket.ready = 'yes';
         console.log('socket '+socket.id+' ready');
         Object.keys(room.sockets).forEach(function (socketId) {
+            nClient += 1;
             check = io.sockets.connected[socketId];
             if (check.ready === 'yes'){
                 readyClients += 1;
-                nClient += 1;
             }
         });
         console.log('client ready '+readyClients);
@@ -179,10 +179,10 @@ module.exports = function (socket, io) {
         socket.ready = 'yes';
         console.log('socket '+socket.id+' ready');
         Object.keys(room.sockets).forEach(function (socketId) {
+            nClient += 1;
             check = io.sockets.connected[socketId];
             if (check.ready === 'yes'){
                 readyClients += 1;
-                nClient += 1;
             }
         });
         console.log('client ready '+readyClients);
@@ -200,21 +200,20 @@ module.exports = function (socket, io) {
         console.log('socket '+socket.id+' found the word');
         socket.ready = 'yes';
         Object.keys(room.sockets).forEach(function (socketId) {
+            nClient += 1;
             check = io.sockets.connected[socketId]; //
             console.log(check.ready);
             if (check.ready === 'yes'){
                 readyClients += 1;
-                nClient += 1;
             }
         });
         console.log('client ready '+readyClients);
-        if (readyClients === 2){
+        if (readyClients === nClient){
             console.log('game state is : '+data);
             socket.ready = 'no';
             setTimeout(function(){ io.in(roomId).emit('games continue', data) }, 2000);
         }
     });
-
 
     socket.on('player answer', function (data) {
         console.log('someone answer');
