@@ -244,8 +244,8 @@ module.exports = function (socket, io) {
             queue = filtered;
         }
         console.log(activeRooms[socket.id]);
-        socket.broadcast.to(roomId).emit('player quit');
-        socket.leave(roomId);
+        socket.broadcast.to(activeRooms[socket.id]).emit('player quit');
+        socket.leave(activeRooms[socket.id]);
     });
 
     //socket.on('game finished', function(){
