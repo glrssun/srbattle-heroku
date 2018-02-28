@@ -239,6 +239,7 @@ module.exports = function (socket, io) {
             console.log('delete queue '+socket.id);
             queue.splice(queue.indexOf(socket.id),1);
         }
+        socket.broadcast.to(roomId).emit('player quit');
         socket.leave(roomId);
     });
 
