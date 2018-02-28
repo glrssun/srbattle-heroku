@@ -228,7 +228,6 @@ module.exports = function (socket, io) {
     });
 
     socket.on('disconnect', function () {
-        roomId = rooms[socket.id];
         console.log('user disconected');
         console.log('user '+socket.id+' canceled match');
         if (socket.host){
@@ -244,8 +243,12 @@ module.exports = function (socket, io) {
             });
             queue = filtered;
         }
-        socket.leave(roomId);
-        console.log(roomId);
+        if (socket.rooms.indexOf(room) >= 0){
+            console.log(socket.rooms[socket.id]);
+            socket.broadcast.to(roomId).emit('player quit');
+            socket.leave(roomId);
+        }
+        console.log(room);
     });
 
     //socket.on('game finished', function(){
