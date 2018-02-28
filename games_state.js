@@ -243,12 +243,9 @@ module.exports = function (socket, io) {
             });
             queue = filtered;
         }
-        if (socket.rooms.indexOf(room) >= 0){
-            console.log(activeRooms[socket.id]);
-            socket.broadcast.to(roomId).emit('player quit');
-            socket.leave(roomId);
-        }
-        console.log(room);
+        console.log(activeRooms[socket.id]);
+        socket.broadcast.to(roomId).emit('player quit');
+        socket.leave(roomId);
     });
 
     //socket.on('game finished', function(){
