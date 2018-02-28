@@ -151,25 +151,49 @@ module.exports = function (socket, io) {
     });
 
     socket.on('client ready', function () {
+        var nClient = 0;
         var readyClients = 0;
         var roomId = rooms[socket.id];
         var room = io.sockets.adapter.rooms[roomId];
         socket.ready = 'yes';
         console.log('socket '+socket.id+' ready');
         Object.keys(room.sockets).forEach(function (socketId) {
-            check = io.sockets.connected[socketId]; //
+            check = io.sockets.connected[socketId];
             if (check.ready === 'yes'){
                 readyClients += 1;
+                nClient += 1;
             }
         });
         console.log('client ready '+readyClients);
-        if (readyClients === 2){
+        if (readyClients === nClient){
             socket.ready = 'no';
             io.in(roomId).emit('game start', '');
         }
     });
 
+    socket.on('sync game', function () {
+        var nClient = 0;
+        var readyClients = 0;
+        var roomId = rooms[socket.id];
+        var room = io.sockets.adapter.rooms[roomId];
+        socket.ready = 'yes';
+        console.log('socket '+socket.id+' ready');
+        Object.keys(room.sockets).forEach(function (socketId) {
+            check = io.sockets.connected[socketId];
+            if (check.ready === 'yes'){
+                readyClients += 1;
+                nClient += 1;
+            }
+        });
+        console.log('client ready '+readyClients);
+        if (readyClients === nClient){
+            socket.ready = 'no';
+            io.in(roomId).emit('sync', '');
+        }
+    });
+
     socket.on('word found', function (data) {
+        var nClient = 0;
         var readyClients = 0;
         var roomId = rooms[socket.id];
         var room = io.sockets.adapter.rooms[roomId];
@@ -180,6 +204,7 @@ module.exports = function (socket, io) {
             console.log(check.ready);
             if (check.ready === 'yes'){
                 readyClients += 1;
+                nClient += 1;
             }
         });
         console.log('client ready '+readyClients);
@@ -189,6 +214,7 @@ module.exports = function (socket, io) {
             setTimeout(function(){ io.in(roomId).emit('games continue', data) }, 2000);
         }
     });
+
 
     socket.on('player answer', function (data) {
         console.log('someone answer');
