@@ -5,7 +5,7 @@ var mongoConnect = require('./mongo_connect.js');
 var mongodb = mongoConnect.getDb();
 
 var queue = [];
-var rooms = {};
+var activeRooms = {};
 var host = [];
 
 var col = mongodb.collection('game_material');
@@ -42,8 +42,8 @@ module.exports = function (socket, io) {
 
                 peer.join(room);
                 socket.join(room);
-                rooms[peer.id] = room;
-                rooms[socket.id] = room;
+                activeRooms[peer.id] = room;
+                activeRooms[socket.id] = room;
 
                 //foundmatch
                 //peer.emit('found match', names[socket.id]);
@@ -117,8 +117,8 @@ module.exports = function (socket, io) {
                 var room = socket.id + '#' + peer.id;
                 peer.join(room);
                 socket.join(room);
-                rooms[peer.id] = room;
-                rooms[socket.id] = room;
+                activeRooms[peer.id] = room;
+                activeRooms[socket.id] = room;
                 console.log(room);
                 col.aggregate([{$sample: { size: 1 }}]).toArray(function (err, res) {
                     if (!err) {
@@ -153,7 +153,7 @@ module.exports = function (socket, io) {
     socket.on('client ready', function () {
         var nClient = 0;
         var readyClients = 0;
-        var roomId = rooms[socket.id];
+        var roomId = activeRooms[socket.id];
         var room = io.sockets.adapter.rooms[roomId];
         socket.ready = 'yes';
         console.log('socket '+socket.id+' ready');
@@ -174,7 +174,7 @@ module.exports = function (socket, io) {
     socket.on('sync game', function () {
         var nClient = 0;
         var readyClients = 0;
-        var roomId = rooms[socket.id];
+        var roomId = activeRooms[socket.id];
         var room = io.sockets.adapter.rooms[roomId];
         socket.ready = 'yes';
         console.log('socket '+socket.id+' ready');
@@ -195,7 +195,7 @@ module.exports = function (socket, io) {
     socket.on('word found', function (data) {
         var nClient = 0;
         var readyClients = 0;
-        var roomId = rooms[socket.id];
+        var roomId = activeRooms[socket.id];
         var room = io.sockets.adapter.rooms[roomId];
         console.log('socket '+socket.id+' found the word');
         socket.ready = 'yes';
@@ -217,13 +217,13 @@ module.exports = function (socket, io) {
 
     socket.on('player answer', function (data) {
         console.log('someone answer');
-        var room = rooms[socket.id];
+        var room = activeRooms[socket.id];
         socket.broadcast.to(room).emit('enemy answer', {pos1 : data.pos1, pos2 : data.pos2});
     });
 
     socket.on('player searching', function (data) {
         console.log('someone searching'+data.pos1);
-        var room = rooms[socket.id];
+        var room = activeRooms[socket.id];
         socket.broadcast.to(room).emit('enemy searching', {pos1 : data.pos1, pos2 : data.pos2});
     });
 
@@ -244,7 +244,7 @@ module.exports = function (socket, io) {
             queue = filtered;
         }
         if (socket.rooms.indexOf(room) >= 0){
-            console.log(socket.rooms[socket.id]);
+            console.log(activeRooms[socket.id]);
             socket.broadcast.to(roomId).emit('player quit');
             socket.leave(roomId);
         }
