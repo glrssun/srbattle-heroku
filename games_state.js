@@ -232,14 +232,20 @@ module.exports = function (socket, io) {
         console.log('user disconected');
         console.log('user '+socket.id+' canceled match');
         if (socket.host){
-            console.log('delete host '+socket.host);
-            host.splice(host.indexOf(socket.host),1);
+            var filtered = host.filter(function(item) {
+                return item.host !== socket.host;
+            });
+            host = filtered;
         }
         if (socket.id){
             console.log('delete queue '+socket.id);
-            queue.splice(queue.indexOf(socket.id),1);
+            var filtered = queue.filter(function(item) {
+                return item.id !== socket.id;
+            });
+            queue = filtered;
         }
         socket.leave(roomId);
+        console.log(roomId);
     });
 
     //socket.on('game finished', function(){
