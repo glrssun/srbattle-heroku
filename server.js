@@ -18,6 +18,10 @@ mongoConnect.connectToServer( function( err ) {
             console.log('user ' + socket.id + ' connected');
             require('./games_state')(socket, io);
             require('./account')(socket);
+
+            socket.on('disconnect', function () {
+                console.log('user disconected');
+            });
         });
 
         http.listen(port, function () {
@@ -27,8 +31,7 @@ mongoConnect.connectToServer( function( err ) {
         setInterval(function() {
             console.log('refresh');
         	app.get("http://srbattle.herokuapp.com");
-        }, 300000);
-
+        }, 300000)
     }
 });
 

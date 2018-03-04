@@ -254,11 +254,12 @@ module.exports = function (socket, io) {
         socket.broadcast.to(room).emit('enemy searching', {pos1 : data.pos1, pos2 : data.pos2});
     });
 
-    socket.on('disconnect', function () {
-        console.log('user disconected');
+    socket.on('quit game', function () {
+        socket.broadcast.to(activeRooms[socket.id]).emit('player quit');
+        socket.leave(activeRooms[socket.id]);
+    });
 
-        console.log(activeRooms[socket.id]);
-        socket.broadcast.to(activeRooms[socket.id]).emit('player quit'); ///////////////
+    socket.on('game finished', function () {
         socket.leave(activeRooms[socket.id]);
     });
 
