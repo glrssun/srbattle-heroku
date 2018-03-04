@@ -11,7 +11,13 @@ var onQueue = 0;
 
 var col = mongodb.collection('game_material');
 
+/// ----------------- MATCH MAKING /// ---------------------------------
+
 module.exports = function (socket, io) {
+    socket.on('player on queue', function () {
+        socket.emit('on queue', onQueue);
+    });
+
     socket.on('request game', function (data) {
         col.aggregate([{$sample: { size: 1 }}]).toArray(function (err, res) {
             if(!err){
@@ -34,50 +40,6 @@ module.exports = function (socket, io) {
         });
     });
 
-    function findOpponent(socket) {
-        var peer;
-        if (queue.length > 0) {
-            if ((peer = find(queue, "WPM", socket.WPM)) && (socket.id !== peer.id)) {
-                queue.splice(queue.indexOf(peer.id), 1);
-                var room = socket.id + '#' + peer.id;
-
-                peer.join(room);
-                socket.join(room);
-                activeRooms[peer.id] = room;
-                activeRooms[socket.id] = room;
-
-                //foundmatch
-                //peer.emit('found match', names[socket.id]);
-                //socket.emit('found match', names[peer.id]);
-                col.aggregate([{$sample: { size: 1 }}]).toArray(function (err, res) {
-                    if(!err){
-                        console.log('Answer number one = '+res[0].answer1);
-                        var grid = gen.createGrid(11, [res[0].answer1, res[0].answer2, res[0].answer3]);
-                        io.in(room).emit('found match', {
-                            game_board: grid,
-                            sentence: res[0].sentence,
-                            question1: res[0].question1,
-                            answer1: res[0].answer1,
-                            question2: res[0].question2,
-                            answer2: res[0].answer2,
-                            question3: res[0].question3,
-                            answer3: res[0].answer3,
-                            WPM: socket.WPM,
-                            player: [socket.username, peer.username]
-                        });
-                    }else {
-                        console.log("Error : "+err);
-                    }
-                });
-
-            } else {
-                queue.push(socket);
-            }
-        } else {
-            queue.push(socket);
-        }
-    }
-
     socket.on('match making', function (data) {
         console.log('user '+socket.id+' want a match '+data.WPM);
         socket.WPM = data.WPM;
@@ -87,20 +49,6 @@ module.exports = function (socket, io) {
         io.emit('on queue', onQueue);
 
         findOpponent(socket);
-        //socket.on('disconnect', function () {
-         //   console.log('user '+socket.id+' canceled match');
-         //   queue.splice(queue.indexOf(socket.id),1);
-
-        //});
-    });
-
-    socket.on('request in queue', function () {
-       socket.emit('on queue', onQueue);
-    });
-
-    socket.on('match success', function (){
-        onQueue--;
-        io.emit('on queue', onQueue);
     });
 
     socket.on('create host', function (data) {
@@ -161,6 +109,89 @@ module.exports = function (socket, io) {
             socket.emit('host result', 'not found');
         }
     });
+
+    socket.on('match success', function (){
+        onQueue--;
+        io.emit('on queue', onQueue);
+    });
+
+    socket.on('cancel match', function () {
+        console.log('user '+socket.id+' canceled match');
+        if (socket.id){
+            console.log('delete queue '+socket.id);
+            var filtered = queue.filter(function(item) {
+                return item.id !== socket.id;
+            });
+            queue = filtered;
+            onQueue--;
+            io.emit('on queue', onQueue);
+        }
+        if (socket.host){
+            var filtered = host.filter(function(item) {
+                return item.host !== socket.host;
+            });
+            host = filtered;
+        }
+    });
+
+    function findOpponent(socket) {
+        var peer;
+        if (queue.length > 0) {
+            if ((peer = find(queue, "WPM", socket.WPM)) && (socket.id !== peer.id)) {
+                queue.splice(queue.indexOf(peer.id), 1);
+                var room = socket.id + '#' + peer.id;
+
+                peer.join(room);
+                socket.join(room);
+                activeRooms[peer.id] = room;
+                activeRooms[socket.id] = room;
+
+                col.aggregate([{$sample: { size: 1 }}]).toArray(function (err, res) {
+                    if(!err){
+                        console.log('Answer number one = '+res[0].answer1);
+                        var grid = gen.createGrid(11, [res[0].answer1, res[0].answer2, res[0].answer3]);
+                        io.in(room).emit('found match', {
+                            game_board: grid,
+                            sentence: res[0].sentence,
+                            question1: res[0].question1,
+                            answer1: res[0].answer1,
+                            question2: res[0].question2,
+                            answer2: res[0].answer2,
+                            question3: res[0].question3,
+                            answer3: res[0].answer3,
+                            WPM: socket.WPM,
+                            player: [socket.username, peer.username]
+                        });
+                    }else {
+                        console.log("Error : "+err);
+                    }
+                });
+
+            } else {
+                queue.push(socket);
+            }
+        } else {
+            queue.push(socket);
+        }
+    }
+
+    function find(arr, propName, propValue) {
+        for (var i = 0; i < arr.length; i++)
+            if (arr[i][propName] === propValue)
+                return arr[i];
+    }
+
+    function generateCode() {
+        var text = "";
+        var code = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
+
+        for (var i = 0; i < 5; i++)
+            text += code.charAt(Math.floor(Math.random() * code.length));
+
+        return text;
+    }
+
+    ///////////////////// ------------------------------ GAME STATES -----------------///////////////////
 
     socket.on('client ready', function () {
         var nClient = 0;
@@ -239,23 +270,6 @@ module.exports = function (socket, io) {
         socket.broadcast.to(room).emit('enemy searching', {pos1 : data.pos1, pos2 : data.pos2});
     });
 
-    socket.on('cancel match', function () {
-        console.log('user '+socket.id+' canceled match');
-        if (socket.id){
-            console.log('delete queue '+socket.id);
-            var filtered = queue.filter(function(item) {
-                return item.id !== socket.id;
-            });
-            queue = filtered;
-        }
-        if (socket.host){
-            var filtered = host.filter(function(item) {
-                return item.host !== socket.host;
-            });
-            host = filtered;
-        }
-    });
-
     socket.on('disconnect', function () {
         console.log('user disconected');
 
@@ -264,19 +278,4 @@ module.exports = function (socket, io) {
         socket.leave(activeRooms[socket.id]);
     });
 
-    function find(arr, propName, propValue) {
-        for (var i = 0; i < arr.length; i++)
-            if (arr[i][propName] === propValue)
-                return arr[i];
-    }
-
-    function generateCode() {
-        var text = "";
-        var code = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
-
-        for (var i = 0; i < 5; i++)
-            text += code.charAt(Math.floor(Math.random() * code.length));
-
-        return text;
-    }
 };
