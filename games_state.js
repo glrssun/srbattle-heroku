@@ -70,7 +70,6 @@ module.exports = function (socket, io) {
         socket.userid = data.userid;
         socket.username = data.username;
         var peer;
-        console.log('find host '+data.host);
         if (host.length > 0) {
             if ((peer = find(host, 'host', data.host)) && (socket.id !== peer.id)) {
                 host.splice(host.indexOf(peer.host), 1);
@@ -79,10 +78,8 @@ module.exports = function (socket, io) {
                 socket.join(room);
                 activeRooms[peer.id] = room;
                 activeRooms[socket.id] = room;
-                console.log(room);
                 col.aggregate([{$sample: { size: 1 }}]).toArray(function (err, res) {
                     if (!err) {
-                        console.log('Answer number one = ' + res[0].answer1);
                         var grid = gen.createGrid(11, [res[0].answer1, res[0].answer2, res[0].answer3]);
                         io.in(room).emit('found match', {
                             game_board: grid,
@@ -116,9 +113,7 @@ module.exports = function (socket, io) {
     });
 
     socket.on('cancel match', function () {
-        console.log('user '+socket.id+' canceled match');
         if (socket.id){
-            console.log('delete queue '+socket.id);
             var filtered = queue.filter(function(item) {
                 return item.id !== socket.id;
             });
@@ -148,7 +143,6 @@ module.exports = function (socket, io) {
 
                 col.aggregate([{$sample: { size: 1 }}]).toArray(function (err, res) {
                     if(!err){
-                        console.log('Answer number one = '+res[0].answer1);
                         var grid = gen.createGrid(11, [res[0].answer1, res[0].answer2, res[0].answer3]);
                         io.in(room).emit('found match', {
                             game_board: grid,
@@ -220,7 +214,6 @@ module.exports = function (socket, io) {
         var roomId = activeRooms[socket.id];
         var room = io.sockets.adapter.rooms[roomId];
         socket.ready = 'yes';
-        console.log('socket '+socket.id+' ready');
         Object.keys(room.sockets).forEach(function (socketId) {
             nClient += 1;
             check = io.sockets.connected[socketId];
@@ -240,32 +233,27 @@ module.exports = function (socket, io) {
         var readyClients = 0;
         var roomId = activeRooms[socket.id];
         var room = io.sockets.adapter.rooms[roomId];
-        console.log('socket '+socket.id+' found the word');
         socket.ready = 'yes';
         Object.keys(room.sockets).forEach(function (socketId) {
             nClient += 1;
             check = io.sockets.connected[socketId]; //
-            console.log(check.ready);
             if (check.ready === 'yes'){
                 readyClients += 1;
             }
         });
         console.log('client ready '+readyClients);
         if (readyClients === nClient){
-            console.log('game state is : '+data);
             socket.ready = 'no';
             setTimeout(function(){ io.in(roomId).emit('games continue', data) }, 2000);
         }
     });
 
     socket.on('player answer', function (data) {
-        console.log('someone answer');
         var room = activeRooms[socket.id];
         socket.broadcast.to(room).emit('enemy answer', {pos1 : data.pos1, pos2 : data.pos2});
     });
 
     socket.on('player searching', function (data) {
-        console.log('someone searching'+data.pos1);
         var room = activeRooms[socket.id];
         socket.broadcast.to(room).emit('enemy searching', {pos1 : data.pos1, pos2 : data.pos2});
     });
@@ -274,7 +262,7 @@ module.exports = function (socket, io) {
         console.log('user disconected');
 
         console.log(activeRooms[socket.id]);
-        socket.broadcast.to(activeRooms[socket.id]).emit('player quit');
+        socket.broadcast.to(activeRooms[socket.id]).emit('player quit'); ///////////////
         socket.leave(activeRooms[socket.id]);
     });
 
