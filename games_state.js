@@ -193,15 +193,13 @@ module.exports = function (socket, io) {
         var roomId = activeRooms[socket.id];
         var room = io.sockets.adapter.rooms[roomId];
         socket.ready = 'yes';
-        console.log('socket '+socket.id+' ready');
         Object.keys(room.sockets).forEach(function (socketId) {
             nClient += 1;
             check = io.sockets.connected[socketId];
             if (check.ready === 'yes'){
                 readyClients += 1;
             }
-        });
-        console.log('client ready '+readyClients);
+        });;
         if (readyClients === nClient){
             socket.ready = 'no';
             io.in(roomId).emit('game start', '');
@@ -221,7 +219,6 @@ module.exports = function (socket, io) {
                 readyClients += 1;
             }
         });
-        console.log('client ready '+readyClients);
         if (readyClients === nClient){
             socket.ready = 'no';
             io.in(roomId).emit('sync', '');
@@ -241,7 +238,6 @@ module.exports = function (socket, io) {
                 readyClients += 1;
             }
         });
-        console.log('client ready '+readyClients);
         if (readyClients === nClient){
             socket.ready = 'no';
             setTimeout(function(){ io.in(roomId).emit('games continue', data) }, 2000);
