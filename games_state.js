@@ -7,6 +7,7 @@ var mongodb = mongoConnect.getDb();
 var queue = [];
 var activeRooms = {};
 var host = [];
+var onQueue = 0;
 
 var col = mongodb.collection('game_material');
 
@@ -82,6 +83,8 @@ module.exports = function (socket, io) {
         socket.WPM = data.WPM;
         socket.userid = data.userid;
         socket.username = data.username;
+        onQueue++;
+        io.emit('on queue', onQueue);
 
         findOpponent(socket);
         //socket.on('disconnect', function () {
@@ -89,6 +92,15 @@ module.exports = function (socket, io) {
          //   queue.splice(queue.indexOf(socket.id),1);
 
         //});
+    });
+
+    socket.on('request in queue', function () {
+       socket.emit('on queue', onQueue);
+    });
+
+    socket.on('match success', function (){
+        onQueue--;
+        io.emit('on queue', onQueue);
     });
 
     socket.on('create host', function (data) {
@@ -227,15 +239,8 @@ module.exports = function (socket, io) {
         socket.broadcast.to(room).emit('enemy searching', {pos1 : data.pos1, pos2 : data.pos2});
     });
 
-    socket.on('disconnect', function () {
-        console.log('user disconected');
+    socket.on('cancel searching', function () {
         console.log('user '+socket.id+' canceled match');
-        if (socket.host){
-            var filtered = host.filter(function(item) {
-                return item.host !== socket.host;
-            });
-            host = filtered;
-        }
         if (socket.id){
             console.log('delete queue '+socket.id);
             var filtered = queue.filter(function(item) {
@@ -243,6 +248,17 @@ module.exports = function (socket, io) {
             });
             queue = filtered;
         }
+        if (socket.host){
+            var filtered = host.filter(function(item) {
+                return item.host !== socket.host;
+            });
+            host = filtered;
+        }
+    });
+
+    socket.on('disconnect', function () {
+        console.log('user disconected');
+
         console.log(activeRooms[socket.id]);
         socket.broadcast.to(activeRooms[socket.id]).emit('player quit');
         socket.leave(activeRooms[socket.id]);
