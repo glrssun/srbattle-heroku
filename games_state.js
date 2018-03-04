@@ -239,7 +239,7 @@ module.exports = function (socket, io) {
         socket.broadcast.to(room).emit('enemy searching', {pos1 : data.pos1, pos2 : data.pos2});
     });
 
-    socket.on('cancel searching', function () {
+    socket.on('cancel match', function () {
         console.log('user '+socket.id+' canceled match');
         if (socket.id){
             console.log('delete queue '+socket.id);
@@ -263,12 +263,6 @@ module.exports = function (socket, io) {
         socket.broadcast.to(activeRooms[socket.id]).emit('player quit');
         socket.leave(activeRooms[socket.id]);
     });
-
-    //socket.on('game finished', function(){
-    //    roomId = rooms[socket.id];
-    //    socket.leave(roomId);
-    //    socket.disconnect();
-    //});
 
     function find(arr, propName, propValue) {
         for (var i = 0; i < arr.length; i++)
