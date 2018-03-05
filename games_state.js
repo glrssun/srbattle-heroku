@@ -113,20 +113,17 @@ module.exports = function (socket, io) {
     });
 
     socket.on('cancel match', function () {
-        if (socket.id){
-            var filtered = queue.filter(function(item) {
-                return item.id !== socket.id;
-            });
-            queue = filtered;
-            if(onQueue !== 0)onQueue--;
-            io.emit('on queue', onQueue);
-        }
-        if (socket.host){
-            var filtered = host.filter(function(item) {
-                return item.host !== socket.host;
-            });
-            host = filtered;
-        }
+        queue = queue.filter(function (item) {
+            return item.id !== socket.id;
+        });
+        if(onQueue !== 0)onQueue--;
+        io.emit('on queue', onQueue);
+    });
+
+    socket.on('cancel host', function () {
+        host = host.filter(function (item) {
+            return item.host !== socket.host;
+        });
     });
 
     function findOpponent(socket) {
