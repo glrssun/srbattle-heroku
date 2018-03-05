@@ -108,7 +108,7 @@ module.exports = function (socket, io) {
     });
 
     socket.on('match success', function (){
-        onQueue--;
+        if(onQueue !== 0)onQueue--;
         io.emit('on queue', onQueue);
     });
 
@@ -118,7 +118,7 @@ module.exports = function (socket, io) {
                 return item.id !== socket.id;
             });
             queue = filtered;
-            onQueue--;
+            if(onQueue !== 0)onQueue--;
             io.emit('on queue', onQueue);
         }
         if (socket.host){
