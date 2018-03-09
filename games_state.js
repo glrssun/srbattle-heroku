@@ -87,6 +87,7 @@ module.exports = function (socket, io) {
         var peer;
         if (host.length > 0) {
             if ((peer = find(host, 'host', data.host)) && (socket.id !== peer.id)) {
+                console.log('test :'+peer.id);
                 host.splice(host.indexOf(peer.host), 1);
                 var room = socket.id + '#' + peer.id;
                 peer.join(room);
