@@ -45,27 +45,30 @@ module.exports = function (socket, io) {
         socket.WPM = data.WPM;
         socket.userid = data.userid;
         socket.username = data.username;
-        countQueue('plush', data.WPM, onQueue);
+        onQueue[data.WPM.toString()]+1;
 
         io.emit('on queue', onQueue);
 
         findOpponent(socket);
     });
 
-    function countQueue(operation, prop, JSONObj) {
-        if (JSONObj.has(prop)){
-            if (operation === 'plush'){
-                JSONObj.prop++;
-            } else if (operation === 'minus'){
-                JSONObj.prop--;
-            }
-        }
-    }
+    socket.on('match success', function (data){
+        if(onQueue !== 0)onQueue[data.toString()]-1;;
+        io.emit('on queue', onQueue);
+    });
+
+    socket.on('cancel match', function (data) {
+        queue = queue.filter(function (item) {
+            return item.id !== socket.id;
+        });
+        if(onQueue !== 0)onQueue[data.toString()]-1;;
+        io.emit('on queue', onQueue);
+    });
 
     socket.on('create host', function (data) {
        socket.WPM = data.WPM;
        socket.userid = data.userid;
-       socket.username =data.username;
+       socket.username = data.username;
 
        var hostcode = generateCode();
        while (host.includes(hostcode)){
@@ -116,19 +119,6 @@ module.exports = function (socket, io) {
             console.log('host list kosong');
             socket.emit('host result', 'not found');
         }
-    });
-
-    socket.on('match success', function (){
-        if(onQueue !== 0)onQueue--;
-        io.emit('on queue', onQueue);
-    });
-
-    socket.on('cancel match', function () {
-        queue = queue.filter(function (item) {
-            return item.id !== socket.id;
-        });
-        if(onQueue !== 0)onQueue--;
-        io.emit('on queue', onQueue);
     });
 
     socket.on('cancel host', function () {
