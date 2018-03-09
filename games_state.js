@@ -41,12 +41,13 @@ module.exports = function (socket, io) {
     });
 
     socket.on('match making', function (data) {
-        console.log('user '+socket.id+' want a match '+data.WPM + onQueue["200"]);
+        console.log('user '+socket.id+' want a match '+data.WPM);
         socket.WPM = data.WPM;
         socket.userid = data.userid;
         socket.username = data.username;
-        console.log(data.WPM + onQueue["200"]);
-        //onQueue[data.WPM.toString()]+1;
+        console.log('test' + onQueue["200"]);
+        onQueue[(data.WPM).toString()]++;
+        console.log('test' + onQueue["200"]);
         io.emit('on queue', onQueue);
         findOpponent(socket);
     });
