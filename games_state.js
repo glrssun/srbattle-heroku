@@ -46,15 +46,14 @@ module.exports = function (socket, io) {
         socket.userid = data.userid;
         socket.username = data.username;
         prop = (data.WPM).toString();
-        console.log('test' + onQueue[prop]);
         onQueue[prop]++;
-        console.log('test' + onQueue[prop]);
         io.emit('on queue', onQueue);
         findOpponent(socket);
     });
 
     socket.on('match success', function (data){
-        //if(onQueue !== 0)onQueue[data.toString()]-1;;
+        prop = data.toString();
+        if(onQueue !== 0)onQueue[prop]--;
         io.emit('on queue', onQueue);
     });
 
@@ -62,7 +61,8 @@ module.exports = function (socket, io) {
         queue = queue.filter(function (item) {
             return item.id !== socket.id;
         });
-        //if(onQueue !== 0)onQueue[data.toString()]-1;;
+        prop = data.toString();
+        if(onQueue !== 0)onQueue[prop]--
         io.emit('on queue', onQueue);
     });
 
