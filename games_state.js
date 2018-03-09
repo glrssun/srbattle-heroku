@@ -7,7 +7,7 @@ var mongodb = mongoConnect.getDb();
 var queue = [];
 var activeRooms = {};
 var host = [];
-var onQueue = { "200" : 0, "230" : 0, "250" : 0, "280" : 0, "300" : 0, "350" : 0, "400" : 0, "500" : 0,};
+var onQueue = { "200" : 0, "230" : 0, "250" : 0, "280" : 0, "300" : 0, "350" : 0, "400" : 0, "500" : 0};
 
 
 var col = mongodb.collection('game_material');
@@ -46,9 +46,7 @@ module.exports = function (socket, io) {
         socket.userid = data.userid;
         socket.username = data.username;
         onQueue[data.WPM.toString()]+1;
-
         io.emit('on queue', onQueue);
-
         findOpponent(socket);
     });
 
