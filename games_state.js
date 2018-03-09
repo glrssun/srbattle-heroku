@@ -47,6 +47,7 @@ module.exports = function (socket, io) {
         socket.username = data.username;
         console.log(onQueue[data.WPM.toString()]);
         onQueue[data.WPM.toString()]+1;
+        console.log('test');
         console.log('test'+ onQueue[data.WPM.toString()]);
         io.emit('on queue', onQueue);
         findOpponent(socket);
