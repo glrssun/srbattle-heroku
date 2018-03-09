@@ -7,7 +7,8 @@ var mongodb = mongoConnect.getDb();
 var queue = [];
 var activeRooms = {};
 var host = [];
-var onQueue = 0;
+var onQueue = { "200" : 0, "230" : 0, "250" : 0, "280" : 0, "300" : 0, "350" : 0, "400" : 0, "500" : 0,};
+
 
 var col = mongodb.collection('game_material');
 
@@ -22,7 +23,6 @@ module.exports = function (socket, io) {
         col.aggregate([{$sample: { size: 1 }}]).toArray(function (err, res) {
             if(!err){
                 var grid = gen.createGrid(11, [res[0].answer1, res[0].answer2, res[0].answer3]);
-                //var grid = gen.createGrid(11, ["HUTANAH", "TANAHUN", "HANTUTAN"]);
                 socket.emit('game material', {
                     game_board : grid,
                     sentence : res[0].sentence,
@@ -45,11 +45,22 @@ module.exports = function (socket, io) {
         socket.WPM = data.WPM;
         socket.userid = data.userid;
         socket.username = data.username;
-        onQueue++;
+        countQueue('plush', data.WPM, onQueue);
+
         io.emit('on queue', onQueue);
 
         findOpponent(socket);
     });
+
+    function countQueue(operation, prop, JSONObj) {
+        if (JSONObj.has(prop)){
+            if (operation === 'plush'){
+                JSONObj.prop++;
+            } else (operation === 'minus'){
+                JSONObj.prop--;
+            }
+        }
+    }
 
     socket.on('create host', function (data) {
        socket.WPM = data.WPM;
