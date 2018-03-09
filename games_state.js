@@ -41,7 +41,7 @@ module.exports = function (socket, io) {
     });
 
     socket.on('match making', function (data) {
-        console.log('user '+socket.id+' want a match '+data.WPM);
+        console.log('user '+socket.id+' want a match '+data.WPM + onQueue["200"]);
         socket.WPM = data.WPM;
         socket.userid = data.userid;
         socket.username = data.username;
