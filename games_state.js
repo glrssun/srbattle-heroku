@@ -45,7 +45,7 @@ module.exports = function (socket, io) {
         socket.WPM = data.WPM;
         socket.userid = data.userid;
         socket.username = data.username;
-        prop = (200).toString();
+        prop = (data.WPM).toString();
         console.log('test' + onQueue[prop]);
         onQueue[prop]++;
         console.log('test' + onQueue[prop]);
