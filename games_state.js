@@ -7,7 +7,7 @@ var mongodb = mongoConnect.getDb();
 var queue = [];
 var activeRooms = {};
 var host = [];
-var onQueue = { "200" : 0, "230" : 0, "250" : 0, "280" : 0, "300" : 0, "350" : 0, "400" : 0, "500" : 0};
+var onQueue = { '200' : 0, '230' : 0, '250' : 0, '280' : 0, '300' : 0, '350' : 0, '400' : 0, '500' : 0};
 
 
 var col = mongodb.collection('game_material');
