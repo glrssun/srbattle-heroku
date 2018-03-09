@@ -56,7 +56,7 @@ module.exports = function (socket, io) {
         if (JSONObj.has(prop)){
             if (operation === 'plush'){
                 JSONObj.prop++;
-            } else (operation === 'minus'){
+            } else if (operation === 'minus'){
                 JSONObj.prop--;
             }
         }
