@@ -53,7 +53,7 @@ module.exports = function (socket, io) {
 
     socket.on('match success', function (data){
         prop = data.toString();
-        if(onQueue !== 0)onQueue[prop]--;
+        if(onQueue[prop] !== 0)onQueue[prop]--;
         io.emit('on queue', onQueue);
     });
 
@@ -62,7 +62,7 @@ module.exports = function (socket, io) {
             return item.id !== socket.id;
         });
         prop = data.toString();
-        if(onQueue !== 0)onQueue[prop]--
+        if(onQueue[prop] !== 0)onQueue[prop]--
         io.emit('on queue', onQueue);
     });
 
@@ -213,10 +213,10 @@ module.exports = function (socket, io) {
         var room = io.sockets.adapter.rooms[roomId];
         socket.ready = 'yes';
         Object.keys(room.sockets).forEach(function (socketId) {
-            nClient += 1;
+            nClient ++;
             check = io.sockets.connected[socketId];
             if (check.ready === 'yes'){
-                readyClients += 1;
+                readyClients ++;
             }
         });
         if (readyClients === nClient){
@@ -232,10 +232,10 @@ module.exports = function (socket, io) {
         var room = io.sockets.adapter.rooms[roomId];
         socket.ready = 'yes';
         Object.keys(room.sockets).forEach(function (socketId) {
-            nClient += 1;
+            nClient ++;
             check = io.sockets.connected[socketId]; //
             if (check.ready === 'yes'){
-                readyClients += 1;
+                readyClients ++;
             }
         });
         if (readyClients === nClient){
