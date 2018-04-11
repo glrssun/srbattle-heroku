@@ -27,22 +27,23 @@ function generateGrid(gridSize, words) {
         placeWord(gridSize, wordList[i], grid);
     }
 
+    /*
     if (isOverlapWordExist(grid, gridSize)){
         return generateGrid(gridSize, wordList);
-    }else {
-        for(i = 0; i < gridSize; i++){
-            for(j = 0; j < gridSize; j++) {
-                if(grid[i][j] === '') grid[i][j] = letters[Math.floor(Math.random() * letters.length)];
-            }
+    }else { */
+    for(i = 0; i < gridSize; i++){
+        for(j = 0; j < gridSize; j++) {
+            if(grid[i][j] === '') grid[i][j] = letters[Math.floor(Math.random() * letters.length)];
         }
-        for(i = 0; i < wordList.length; i++){
-            console.log("WORD "+wordList[i]);
-            if (checkNoDuplicateWord(gridSize, wordList[i], grid) > 1 && checkNoDuplicateWord(gridSize, wordList[i], grid) < 1){
-                return generateGrid(gridSize, wordList);
-            }
-        }
-        return grid;
     }
+    for(i = 0; i < wordList.length; i++){
+        console.log("WORD "+wordList[i]);
+        if (checkNoDuplicateWord(gridSize, wordList[i], grid) > 1 && checkNoDuplicateWord(gridSize, wordList[i], grid) < 1){
+            return generateGrid(gridSize, wordList);
+        }
+    }
+    return grid;
+    //}
 }
 
 function isOverlapWordExist(grid, gridSize) {
