@@ -3,7 +3,7 @@
   <component name="ChangeListManager">
     <list default="true" id="3aaaa39a-34ec-4d70-9f12-5bc3012d2a6f" name="Default" comment="&quot;Update server&quot;">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change beforePath="$PROJECT_DIR$/wordgenerator.js" afterPath="$PROJECT_DIR$/wordgenerator.js" />
+      <change beforePath="$PROJECT_DIR$/games_state.js" afterPath="$PROJECT_DIR$/games_state.js" />
     </list>
     <ignored path="$PROJECT_DIR$/.tmp/" />
     <ignored path="$PROJECT_DIR$/temp/" />
@@ -47,21 +47,21 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="wordgenerator.js" pinned="false" current-in-tab="true">
+      <file leaf-file-name="wordgenerator.js" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/wordgenerator.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="510">
+            <state relative-caret-position="748">
               <caret line="44" column="16" lean-forward="false" selection-start-line="44" selection-start-column="16" selection-end-line="44" selection-end-column="16" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="games_state.js" pinned="false" current-in-tab="false">
+      <file leaf-file-name="games_state.js" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/games_state.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="662">
-              <caret line="265" column="2" lean-forward="true" selection-start-line="265" selection-start-column="2" selection-end-line="265" selection-end-column="2" />
+            <state relative-caret-position="153">
+              <caret line="9" column="74" lean-forward="true" selection-start-line="9" selection-start-column="74" selection-end-line="9" selection-end-column="74" />
               <folding />
             </state>
           </provider>
@@ -140,8 +140,8 @@
         <option value="$PROJECT_DIR$/server.js" />
         <option value="$PROJECT_DIR$/mongo_connect.js" />
         <option value="$PROJECT_DIR$/account.js" />
-        <option value="$PROJECT_DIR$/games_state.js" />
         <option value="$PROJECT_DIR$/wordgenerator.js" />
+        <option value="$PROJECT_DIR$/games_state.js" />
       </list>
     </option>
   </component>
@@ -197,8 +197,8 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="Scratches" />
       <pane id="Scope" />
+      <pane id="Scratches" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -286,12 +286,13 @@
       <workItem from="1520587956654" duration="2469000" />
       <workItem from="1520637861057" duration="887000" />
       <workItem from="1521007845410" duration="435000" />
-      <workItem from="1523454385442" duration="101000" />
+      <workItem from="1523454385442" duration="205000" />
+      <workItem from="1524026254536" duration="90000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="188160000" />
+    <option name="totallyTimeSpent" value="188354000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1382" height="784" extended-state="6" />
@@ -700,18 +701,26 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/mysqlconnect.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/server.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="442">
           <caret line="26" column="15" lean-forward="false" selection-start-line="26" selection-start-column="8" selection-end-line="28" selection-end-column="11" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/wordgenerator.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="748">
+          <caret line="44" column="16" lean-forward="false" selection-start-line="44" selection-start-column="16" selection-end-line="44" selection-end-column="16" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/mysqlconnect.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding />
         </state>
       </provider>
@@ -728,16 +737,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/games_state.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="662">
-          <caret line="265" column="2" lean-forward="true" selection-start-line="265" selection-start-column="2" selection-end-line="265" selection-end-column="2" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/wordgenerator.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="510">
-          <caret line="44" column="16" lean-forward="false" selection-start-line="44" selection-start-column="16" selection-end-line="44" selection-end-column="16" />
+        <state relative-caret-position="153">
+          <caret line="9" column="74" lean-forward="true" selection-start-line="9" selection-start-column="74" selection-end-line="9" selection-end-column="74" />
           <folding />
         </state>
       </provider>
